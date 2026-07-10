@@ -54,6 +54,20 @@ document.querySelectorAll<HTMLButtonElement>(".lang__btn").forEach((btn) => {
   });
 });
 
+/* ── Language gate — pick SR/EN before entering ─────────────────
+   The inline head script sets html.gate-open pre-paint (JS only,
+   so no-JS visitors and crawlers are never blocked). */
+const gate = document.getElementById("lang-gate");
+gate?.querySelectorAll<HTMLButtonElement>("[data-gate-lang]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    applyLang(btn.dataset.gateLang as Lang);
+    document.documentElement.classList.remove("gate-open"); // unlock scroll
+    gate.classList.add("gate--closing"); // fade out
+    window.setTimeout(() => gate.classList.remove("gate--closing"), 400);
+    document.querySelector<HTMLElement>(".hero__h1")?.focus();
+  });
+});
+
 /* ── CTA + form endpoints (single source: src/config.ts) ───────── */
 if (!CALCOM_URL.startsWith("<<")) {
   document.querySelectorAll<HTMLAnchorElement>("[data-calcom]").forEach((a) => {

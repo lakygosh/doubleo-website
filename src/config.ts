@@ -7,4 +7,4 @@
  *                    or Web3Forms / Basin / Getform equivalent)
  */
 export const CALCOM_URL = "<<CALCOM_URL>>";
-export const FORM_ENDPOINT = "<<FORM_ENDPOINT>>";
+export const FORM_ENDPOINT = "https://formsubmit.co/ajax/lazar.gosic@doubleo.agency";

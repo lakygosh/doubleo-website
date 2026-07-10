@@ -3,16 +3,12 @@
 Marketing site for the Double O AI automation agency. Bilingual (Serbian default / English),
 fully static, built with Vite + TypeScript — no server runtime, no database.
 
-## Before going live — two placeholders
+## Config — `src/config.ts`
 
-Both live in **`src/config.ts`** (single source, nothing else to edit):
-
-| Placeholder | Replace with |
+| Value | Status |
 |---|---|
-| `<<CALCOM_URL>>` | Your Cal.com booking link, e.g. `https://cal.com/doubleo/strategy` |
-| `<<FORM_ENDPOINT>>` | A no-backend form endpoint, e.g. Formspree `https://formspree.io/f/xxxxxxxx` (Web3Forms / Basin also work — anything that accepts a POST) |
-
-Until `CALCOM_URL` is set, every "book a call" button gracefully falls back to the contact form (`#contact`).
+| `CALCOM_URL` | still `<<CALCOM_URL>>` — set your Cal.com link; until then "book a call" buttons fall back to the contact form |
+| `FORM_ENDPOINT` | set to FormSubmit → emails go to `lazar.gosic@doubleo.agency`. **One-time activation:** submit the form once, then click the confirmation link FormSubmit emails you. After activation, FormSubmit shows a random alias endpoint — swap it in to keep the raw address out of the public bundle. |
 
 ## Run locally
 

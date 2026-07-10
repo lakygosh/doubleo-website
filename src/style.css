@@ -87,6 +87,64 @@ img, svg, video { max-width: 100%; height: auto; }
 }
 .skip-link:focus { top: 1rem; }
 
+/* ── Language gate ───────────────────────────────────────────── */
+.gate {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(140, 226, 164, 0.07), transparent 60%),
+    var(--ink);
+  opacity: 1;
+  transition: opacity 0.35s var(--ease);
+}
+html.gate-open .gate,
+.gate.gate--closing { display: flex; }
+.gate--closing { opacity: 0; pointer-events: none; }
+html.gate-open body { overflow: hidden; }
+
+.gate__box {
+  text-align: center;
+  max-width: 26rem;
+  width: 100%;
+}
+.gate__mark { color: var(--text); margin-bottom: 1.25rem; }
+.gate__title {
+  font: 700 1.6rem var(--font-display);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+.gate__sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+.gate__btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.gate__btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font: 600 1.05rem var(--font-display);
+  padding: 1.05rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s, transform 0.15s var(--ease);
+}
+.gate__btn:hover,
+.gate__btn:focus-visible {
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-2px);
+}
+
 /* ── Buttons ─────────────────────────────────────────────────── */
 .btn {
   display: inline-block;
