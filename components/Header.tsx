@@ -25,6 +25,7 @@ export function Header() {
       <Link href="/#solutions">{t("nav.solutions")}</Link>
       <Link href="/#process">{t("nav.process")}</Link>
       <Link href="/#why">{t("nav.why")}</Link>
+      <Link href="/blog">{t("nav.blog")}</Link>
       <Link href="/#contact">{t("nav.contact")}</Link>
     </>
   );
@@ -65,8 +66,15 @@ export function Header() {
         </div>
       </div>
 
-      <div className={`mobile-menu${open ? " is-open" : ""}`} id="mobile-menu" hidden={!open}>
-        <div onClick={() => setOpen(false)}>{navLinks}</div>
+      <div
+        className={`mobile-menu${open ? " is-open" : ""}`}
+        id="mobile-menu"
+        hidden={!open}
+        onClick={(e) => {
+          if ((e.target as HTMLElement).tagName === "A") setOpen(false);
+        }}
+      >
+        {navLinks}
         <a
           className="btn btn--solid"
           href={CALCOM_URL || "/#contact"}

@@ -16,6 +16,7 @@ export function Footer() {
         <nav className="footer__links" aria-label="Footer">
           <Link href="/#solutions">{t("footer.solutions")}</Link>
           <Link href="/#process">{t("footer.process")}</Link>
+          <Link href="/blog">{t("nav.blog")}</Link>
           <Link href="/#contact">{t("footer.contact")}</Link>
         </nav>
         <div className="footer__meta">
