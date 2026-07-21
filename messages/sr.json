@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Double O — AI sistemi koji pretvaraju pažnju u prihod, 24/7",
+    "description": "Gotovi AI sistemi za vaš biznis: recepcioner koji odgovara na svaki poziv, reaktivacija starih lead-ova, trenutni odgovor na upite i sadržaj koji vas drži vidljivim. Zakažite besplatan strateški poziv."
+  },
+  "skip": "Preskoči na sadržaj",
+  "nav": {
+    "solutions": "Rešenja",
+    "process": "Proces",
+    "why": "Zašto Double O",
+    "contact": "Kontakt",
+    "cta": "Zakaži poziv",
+    "menuOpen": "Otvori meni",
+    "menuClose": "Zatvori meni",
+    "langLabel": "Izbor jezika"
+  },
+  "hero": {
+    "status": "Sistem aktivan · 00:00–24:00",
+    "h1": "Svaki poziv odgovoren. Svaki lead ispraćen. <em>I u tri ujutru.</em>",
+    "sub": "Double O gradi gotove AI sisteme koji rade umesto vas: javljaju se na telefon, zakazuju termine, vraćaju stare lead-ove i drže vaš brend prisutnim — bez ijednog novog zapošljavanja.",
+    "ctaPrimary": "Zakaži besplatan poziv",
+    "ctaSecondary": "Pogledaj rešenja",
+    "note": "Besplatan strateški poziv · bez obaveze · plan dobijate u svakom slučaju"
+  },
+  "log": {
+    "title": "Dežurni dnevnik",
+    "shift": "noćna smena",
+    "caption": "Ovako izgleda tipična noć kad sistem radi za vas."
+  },
+  "strip": {
+    "calls": "Pozivi",
+    "callsV": "odgovoreni",
+    "leads": "Lead-ovi",
+    "leadsV": "ispraćeni",
+    "content": "Objave",
+    "contentV": "zakazane",
+    "hours": "Radno vreme",
+    "hoursV": "ne postoji"
+  },
+  "problem": {
+    "kicker": "Problem",
+    "h2": "Gde vam <em>curi</em> prihod",
+    "intro": "Mali biznisi ne gube poslove zato što loše rade. Gube ih zato što se ne jave na vreme, ne isprate upit i nestanu sa mreža. To nisu tri sitnice — to su tri rupe kroz koje ističe novac koji ste već platili da privučete.",
+    "l1": {
+      "time": "17:32, utorak",
+      "leak": "Telefon zvoni. Vi ste usred posla. Klijent posle četvrtog zvona zove sledećeg iz Google pretrage — i zakazuje kod njega.",
+      "fix": "AI recepcioner preuzima poziv na prvo zvono i zakazuje termin pre nego što klijent uopšte pomisli na konkurenciju."
+    },
+    "l2": {
+      "time": "Baza kontakata",
+      "leak": "Stotine starih upita stoje u tabeli. Svaki od njih ste već platili — oglasima, vremenom, radom. Niko ih više ne zove.",
+      "fix": "Reaktivacija ih kontaktira s konkretnim razlogom da se vrate. Prihod iz liste koja je do juče samo stajala."
+    },
+    "l3": {
+      "time": "Nedelje tišine",
+      "leak": "Profil koji ćuti izgleda kao zatvorena radnja. Klijenti vas ne nalaze na Google-u, a poverenje se topi sa svakom nedeljom bez objave.",
+      "fix": "Sistem za sadržaj objavljuje umesto vas — dosledno, u vašem tonu — i piše SEO tekstove zbog kojih vas Google predlaže."
+    },
+    "leakLabel": "Curenje",
+    "fixLabel": "Double O",
+    "outro": "Rešenje nije još jedno zapošljavanje. Rešenje je sistem koji nikad ne spava, ne zaboravlja i ne traži pauzu."
+  },
+  "solutions": {
+    "kicker": "Rešenja",
+    "h2": "Pet sistema. Jedan cilj: <em>ništa ne propuštate.</em>",
+    "intro": "Ne prodajemo softver sa cenovnikom. Biramo sistem koji zatvara najveću rupu u vašem prihodu — i gradimo ga do kraja, u glasu vašeg brenda.",
+    "idealFor": "Idealno za"
+  },
+  "s1": {
+    "name": "AI recepcioner",
+    "h3": "Nula propuštenih poziva. Nula izgubljenih termina.",
+    "body": "Javlja se na svaki dolazni poziv u glasu vašeg brenda — zna vaše usluge, cene i raspored. Zakazuje termine direktno u kalendar, odgovara na česta pitanja, filtrira spam, a poziv koji traži čoveka prosleđuje vama. Radi non-stop: klijent koji zove u 21:40 dobija isti tretman kao onaj u podne.",
+    "ideal": "ordinacije, salone, stomatologe, servise, restorane — svaki posao gde telefon donosi novac",
+    "v": {
+      "header": "Dolazni poziv · 21:47",
+      "caller": "Dobro veče, da li radite subotom? Trebalo bi mi šišanje…",
+      "agent": "Radimo! Subota u 11:00 je slobodna — da vas upišem?",
+      "result": "✓ Termin zakazan · ubačen u kalendar"
+    }
+  },
+  "s2": {
+    "name": "Reaktivacija lead-ova",
+    "h3": "Prihod iz baze koju već imate.",
+    "body": "Glasovni agent (radi i preko emaila) zove vaše stare i neaktivne kontakte s konkretnim razlogom da se vrate — promocija, kontrola, slobodan termin. Poznaje istoriju svakog kontakta i vaš biznis, pa razgovor zvuči kao briga, a ne kao prodaja. Te ljude ste već platili da ih privučete; ovo je naplata drugog dela.",
+    "ideal": "svaki biznis sa bazom starih ili nekonvertovanih upita",
+    "v": {
+      "header": "Kampanja: stara baza · dan 3",
+      "r1n": "M. Petrović · upit iz marta",
+      "r1s": "termin zakazan",
+      "r2n": "J. Ilić · neaktivan 14 meseci",
+      "r2s": "zainteresovan — prati se",
+      "r3n": "S. Marković · nekonvertovan",
+      "r3s": "poziv zakazan za sutra"
+    }
+  },
+  "s3": {
+    "name": "Speed to Lead",
+    "h3": "Prvi stižete do svakog upita. Uvek.",
+    "body": "Onog trenutka kad neko ostavi podatke — kroz oglas, formu ili poruku — sistem ga zove ili mu piše. Ne sutra, ne za dva sata: odmah, dok je interesovanje na vrhuncu i dok konkurencija još nije ni videla upit. Isti budžet za oglase, više zakazanih poslova.",
+    "ideal": "biznise koji vode plaćene oglase ili primaju upite kroz forme",
+    "v": {
+      "header": "Novi lead · Meta oglas",
+      "t1": "Prijava primljena",
+      "t2": "Sistem poziva lead",
+      "t3": "Razgovor u toku…",
+      "note": "konkurencija: još nije ni otvorila upit"
+    }
+  },
+  "s4": {
+    "name": "Content Dashboard",
+    "h3": "Brend koji nikad ne ućuti.",
+    "body": "Kompletne, spremne objave za društvene mreže — vizual, tekst, raspored — plus SEO blog tekstovi za sajt. Kvalitet i ritam koji se ne oslanjaju na to da li je neko „stigao da objavi“. Publika vas viđa svake nedelje, a Google vas nalazi kad neko traži ono što radite.",
+    "ideal": "brendove koji objavljuju neredovno ili su potpuno utihnuli",
+    "v": {
+      "header": "Ova nedelja · spremno za objavu",
+      "d1": "Pon",
+      "d2": "Uto",
+      "d3": "Sre",
+      "d4": "Čet",
+      "d5": "Pet",
+      "p1": "objava",
+      "p2": "reel",
+      "p3": "objava",
+      "p4": "SEO blog",
+      "p5": "objava"
+    }
+  },
+  "s5": {
+    "name": "AI UGC kreative",
+    "h3": "Više kreativa, brže testiranje, deo cene.",
+    "body": "UGC video oglasi generisani AI-jem — bez potrage za kreatorima, bez čekanja na snimanje, bez honorara po klipu. Kad vaši oglasi žive od obima kreativa, ovo je razlika između tri varijante mesečno i trideset: više testova, brže učenje, niža cena po pobedničkom oglasu.",
+    "ideal": "e-commerce i DTC brendove koji se oslanjaju na UGC oglase",
+    "v": {
+      "header": "Serija kreativa · proizvod X",
+      "v1": "hook A",
+      "v2": "hook B",
+      "v3": "hook C",
+      "v4": "+ još 9",
+      "status": "u testiranju"
+    }
+  },
+  "process": {
+    "kicker": "Proces",
+    "h2": "Od poziva do sistema koji radi",
+    "docLabel": "Radni nalog · Double O",
+    "docNo": "br. 00",
+    "s1": {
+      "title": "Besplatan strateški poziv",
+      "body": "Prolazimo kroz vaš način rada i nalazimo tačno gde prihod curi: propušteni pozivi, zaboravljeni upiti, mrtva baza, tišina na mrežama. Izlazite sa konkretnim planom — sarađivali sa nama posle ili ne."
+    },
+    "s2": {
+      "title": "Mi gradimo sistem",
+      "body": "Sve radimo mi, od početka do kraja: sistem uči vaš glas, vaše usluge i vaša pravila, i povezuje se s alatima koje već koristite — kalendar, telefon, CRM. Vi ne dirate ništa."
+    },
+    "s3": {
+      "title": "Sistem radi — vi gledate rezultate",
+      "body": "Termini se pune, stari kontakti se javljaju, objave izlaze na vreme. Vi se bavite poslom koji znate — sistem se bavi onim što ste do sada propuštali."
+    }
+  },
+  "why": {
+    "kicker": "Zašto Double O",
+    "h2": "Ne prodajemo tehnologiju. <em>Prodajemo rezultat.</em>",
+    "body": "Prvo smo ljudi iz marketinga i operacija, pa tek onda „AI“. Tehnologija je alat — ono što vi dobijate su zakazani termini, vraćeni lead-ovi, veća konverzija iz istog budžeta i brend koji je uvek prisutan. Ako sistem to ne donosi, ne gradimo ga.",
+    "p1": { "t": "Sve radimo mi", "b": "Od strategije do puštanja u rad. Vaš posao je da radite svoj posao." },
+    "p2": { "t": "Uvek dostupni", "b": "Potpuno remote, na vezi 24/7 — kao i sistemi koje gradimo." },
+    "p3": { "t": "Cena po projektu", "b": "Bez cenovnika i paketa. Prvo utvrdimo šta vam donosi novac, pa dogovorimo projekat — vrednost koju dobijete uvek premašuje cenu koju platite." }
+  },
+  "cta": {
+    "h2": "Saznajte gde vam <em>curi</em> prihod.",
+    "body": "Kratak poziv, konkretan plan, nula obaveze. Ako posle poziva odlučite da sve uradite sami — plan vam ostaje.",
+    "button": "Zakaži besplatan strateški poziv",
+    "micro": "30 minuta · online · bez pripreme"
+  },
+  "contact": {
+    "kicker": "Kontakt",
+    "h2": "Radije pišete nego pričate?",
+    "body": "Opišite nam ukratko čime se bavite i šta vas trenutno koči. Odgovaramo u roku od 24 sata — obično mnogo brže.",
+    "name": "Ime i prezime",
+    "email": "Email adresa",
+    "business": "Biznis / sajt",
+    "message": "Poruka",
+    "messagePh": "Npr: vodimo stomatološku ordinaciju, propuštamo pozive posle 17h…",
+    "send": "Pošalji poruku",
+    "sending": "Šalje se…",
+    "success": "Poruka je stigla. Javljamo se u roku od 24 sata — verovatno i brže.",
+    "error": "Nešto je zapelo pri slanju. Pokušajte ponovo — ili nam pišite direktno na hello@doubleo.agency."
+  },
+  "footer": {
+    "tag": "Sistemi koje gradimo ne spavaju. Zato možete vi.",
+    "solutions": "Rešenja",
+    "process": "Proces",
+    "contact": "Kontakt",
+    "rights": "Sva prava zadržana."
+  },
+  "blog": {
+    "kicker": "Blog",
+    "indexTitle": "Blog",
+    "indexIntro": "Beleške o AI sistemima, automatizaciji i tome kako mali biznisi prestaju da gube prihod.",
+    "empty": "Uskoro stižu prvi tekstovi.",
+    "readMore": "Pročitaj više",
+    "back": "Nazad na blog"
+  },
+  "chat": {
+    "subtitle": "Nova · AI asistent",
+    "welcome": "Zdravo! Ja sam Nova, AI asistent agencije Double O. Kako mogu da pomognem?",
+    "placeholder": "Napišite poruku…",
+    "error": "Nešto je zapelo na našoj strani.",
+    "errorFallback": "Možete zakazati poziv direktno ovde: {url}",
+    "errorRetry": "Pokušajte ponovo za trenutak."
+  }
+}
