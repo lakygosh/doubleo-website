@@ -1,42 +1,60 @@
 # Double O — doubleo.agency
 
-Marketing site for the Double O AI automation agency. Bilingual (Serbian default / English),
-fully static, built with Vite + TypeScript — no server runtime, no database.
+Marketing site + blog for the Double O AI automation agency. Bilingual (Serbian default / English),
+built with Next.js (App Router, SSR/SSG) and deployed on Vercel. The blog is fed by an n8n
+automation via a bearer-token-protected API and stored in Supabase (Postgres).
 
-## Config — `src/config.ts`
+## Stack
 
-| Value | Status |
+- **Next.js 15** (App Router) — homepage + blog, SSR/SSG for SEO
+- **next-intl** — `/sr` and `/en` locale routing; UI copy lives in `messages/sr.json` / `messages/en.json`
+- **Supabase** (Postgres + Auth) — blog post storage, RLS, admin login
+- **Vercel** — hosting, on-demand revalidation
+
+## Config
+
+| Var | Purpose |
 |---|---|
-| `CALCOM_URL` | still `<<CALCOM_URL>>` — set your Cal.com link; until then "book a call" buttons fall back to the contact form |
-| `FORM_ENDPOINT` | set to FormSubmit → emails go to `lazar.gosic@doubleo.agency`. **One-time activation:** submit the form once, then click the confirmation link FormSubmit emails you. After activation, FormSubmit shows a random alias endpoint — swap it in to keep the raw address out of the public bundle. |
+| `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase project + public anon key |
+| `SUPABASE_SERVICE_ROLE_KEY` | server-only, used by the ingestion API and admin actions |
+| `POSTS_API_BEARER_TOKEN` | secret n8n sends as `Authorization: Bearer <token>` to `POST /api/posts` |
+| `NEXT_PUBLIC_SITE_URL` | canonical/OG/sitemap base URL |
+| `NEXT_PUBLIC_CALCOM_URL` / `NEXT_PUBLIC_FORM_ENDPOINT` | booking link + contact form relay (unchanged from the old site) |
+
+Copy `.env.local.example` to `.env.local` and fill in real values for local dev. Set the same vars
+on the Vercel project (Production + Preview) before deploying.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev        # dev server at http://localhost:5173
-npm run build      # production build → dist/
-npm run preview    # serve the production build locally
-npm run og         # regenerate public/og.png + apple-touch-icon.png (only if you change branding)
+npm run dev      # http://localhost:3000
+npm run build
+npm run start
 ```
 
-## Deploy to Hostinger (shared hosting)
+## Database setup (one-time, in the Supabase SQL editor)
 
-1. Set the two values in `src/config.ts`.
-2. `npm run build` → everything you need is in `dist/`.
-3. hPanel → **File Manager** → open `public_html`, delete the default placeholder files.
-4. Upload the **contents** of `dist/` (not the folder itself) into `public_html`:
-   - File Manager: zip `dist`'s contents, upload the zip, right-click → Extract, then delete the zip; or
-   - FTP (FileZilla): host/user/pass from hPanel → *Files → FTP Accounts*, drag the contents of `dist/` into `public_html`.
-5. Check `https://doubleo.agency/` — the site is a single `index.html` plus `assets/`, `og.png`, `favicon.svg`, `apple-touch-icon.png`, `robots.txt`, `sitemap.xml`.
+Run `supabase/migrations/0001_init.sql` — creates the `posts` and `settings` tables with RLS.
+Then create at least one admin user manually in the Supabase dashboard
+(Authentication → Users → Add user) — there is no self-signup for `/admin`.
 
-All asset paths are relative (`base: "./"` in `vite.config.ts`), so it also works from a subfolder.
+## Blog content pipeline
+
+1. n8n generates a post (Markdown, bilingual SR/EN) and uploads any images to Cloudflare R2.
+2. n8n `POST`s to `/api/posts` with an `Authorization: Bearer <POSTS_API_BEARER_TOKEN>` header.
+3. The post lands as a **draft** unless the `auto_publish` toggle in `/admin` is on.
+4. Review drafts and publish them from `/admin` (Supabase Auth login required).
+
+See `app/api/posts/route.ts` for the exact request/response shape.
 
 ## Where things live
 
-- `index.html` — full page, Serbian copy baked in (SEO default), JSON-LD Organization + Service schema
-- `src/i18n.ts` — every line of copy in both languages; edit copy here (SR also needs the matching text in `index.html`)
-- `src/style.css` — design system ("night shift": ink / warm off-white / signal green / leak amber)
-- `src/main.ts` — language toggle, live ops-log ticker, scroll reveals, mobile menu, contact form
-- `scripts/make-og.mjs` — regenerates the Open Graph image and touch icon
-- Real social proof: search `ADD_REAL_PROOF` in `index.html` — add case studies there when they exist; do not invent testimonials.
+- `app/[locale]/` — homepage, `/blog`, `/blog/[slug]` (locale-prefixed, SSR/SSG)
+- `app/admin/` — login-gated admin panel (drafts, publish/unpublish/delete, auto-publish toggle)
+- `app/api/posts/route.ts` — n8n ingestion endpoint
+- `lib/posts.ts`, `lib/settings.ts` — Supabase data access
+- `lib/supabase/` — Supabase client helpers (server, browser, middleware session refresh)
+- `messages/sr.json`, `messages/en.json` — all homepage UI copy
+- `app/globals.css` — design system ("night shift": ink / warm off-white / signal green / leak amber), ported unchanged from the old Vite site
+- `supabase/migrations/0001_init.sql` — schema + RLS

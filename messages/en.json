@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "Double O — AI systems that turn attention into revenue, 24/7",
+    "description": "Done-for-you AI systems for your business: a receptionist that answers every call, cold-lead reactivation, instant lead response and content that keeps you visible. Book a free strategy call."
+  },
+  "skip": "Skip to content",
+  "nav": {
+    "solutions": "Solutions",
+    "process": "Process",
+    "why": "Why Double O",
+    "contact": "Contact",
+    "cta": "Book a call",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "langLabel": "Language selection"
+  },
+  "hero": {
+    "status": "System active · 24/7",
+    "h1": "Every call answered. Every lead followed up. <em>Even at 3 a.m.</em>",
+    "sub": "Double O builds done-for-you AI systems that work in your place: they answer the phone, book appointments, bring old leads back and keep your brand visible — without a single new hire.",
+    "ctaPrimary": "Book a free call",
+    "ctaSecondary": "See the solutions",
+    "note": "Free strategy call · no obligation · you keep the plan either way"
+  },
+  "log": {
+    "title": "Operations log",
+    "shift": "night shift",
+    "caption": "What a typical night looks like once the system runs for you."
+  },
+  "strip": {
+    "calls": "Calls",
+    "callsV": "answered",
+    "leads": "Leads",
+    "leadsV": "followed up",
+    "content": "Posts",
+    "contentV": "scheduled",
+    "hours": "Business hours",
+    "hoursV": "don’t exist"
+  },
+  "problem": {
+    "kicker": "The problem",
+    "h2": "Where your revenue <em>leaks</em>",
+    "intro": "Small businesses don’t lose work because they’re bad at it. They lose it because nobody picks up in time, nobody follows up, and the brand goes quiet. Those aren’t three small flaws — they’re three holes draining money you already paid to attract.",
+    "l1": {
+      "time": "5:32 pm, Tuesday",
+      "leak": "The phone rings. You’re mid-job. After the fourth ring the caller dials the next result on Google — and books with them.",
+      "fix": "The AI receptionist picks up on the first ring and books the appointment before the caller ever thinks of a competitor."
+    },
+    "l2": {
+      "time": "Your contact list",
+      "leak": "Hundreds of old enquiries sit in a spreadsheet. You already paid for every one of them — in ads, time and work. Nobody calls them anymore.",
+      "fix": "Reactivation reaches out with a concrete reason to come back. Revenue from a list that was just sitting there."
+    },
+    "l3": {
+      "time": "Weeks of silence",
+      "leak": "A quiet profile looks like a closed shop. Customers can’t find you on Google, and trust erodes with every week you don’t post.",
+      "fix": "The content system publishes for you — consistently, in your voice — and writes the SEO articles that make Google recommend you."
+    },
+    "leakLabel": "The leak",
+    "fixLabel": "Double O",
+    "outro": "The answer isn’t another hire. It’s a system that never sleeps, never forgets and never asks for a break."
+  },
+  "solutions": {
+    "kicker": "Solutions",
+    "h2": "Five systems. One goal: <em>you miss nothing.</em>",
+    "intro": "We don’t sell software off a price list. We pick the system that closes the biggest hole in your revenue — and build it end to end, in your brand’s voice.",
+    "idealFor": "Ideal for"
+  },
+  "s1": {
+    "name": "AI Inbound Receptionist",
+    "h3": "Zero missed calls. Zero lost bookings.",
+    "body": "It answers every incoming call in your brand’s voice — it knows your services, prices and schedule. It books appointments straight into your calendar, handles common questions, screens out spam, and hands anything that needs a human over to you. It never clocks out: the caller at 9:40 pm gets the same treatment as the one at noon.",
+    "ideal": "clinics, salons, dental practices, repair shops, restaurants — any business where the phone brings in money",
+    "v": {
+      "header": "Incoming call · 9:47 pm",
+      "caller": "Hi, are you open Saturdays? I’d need a haircut…",
+      "agent": "We are! Saturday 11:00 is free — shall I book you in?",
+      "result": "✓ Booked · added to calendar"
+    }
+  },
+  "s2": {
+    "name": "Lead Reactivation",
+    "h3": "Revenue from the list you already own.",
+    "body": "A voice agent (email works too) calls your old and inactive contacts with a concrete reason to return — a promotion, a check-up, an open slot. It knows each contact’s history and your business, so the conversation lands as care, not a sales pitch. You already paid to acquire these people; this collects the part you never did.",
+    "ideal": "any business sitting on a database of past or unconverted leads",
+    "v": {
+      "header": "Campaign: old list · day 3",
+      "r1n": "M. Harris · enquiry from March",
+      "r1s": "booked",
+      "r2n": "J. Cole · inactive 14 months",
+      "r2s": "interested — following up",
+      "r3n": "S. Brooks · unconverted",
+      "r3s": "call scheduled tomorrow"
+    }
+  },
+  "s3": {
+    "name": "Speed to Lead",
+    "h3": "You reach every lead first. Every time.",
+    "body": "The moment someone leaves their details — through an ad, a form, a message — the system calls or writes to them. Not tomorrow, not in two hours: right now, while interest is at its peak and before your competitors have even seen the enquiry. Same ad budget, more booked work.",
+    "ideal": "businesses running paid ads or collecting inbound form leads",
+    "v": {
+      "header": "New lead · Meta ad",
+      "t1": "Form submitted",
+      "t2": "System calls the lead",
+      "t3": "Conversation running…",
+      "note": "competitors: haven’t even opened it"
+    }
+  },
+  "s4": {
+    "name": "Content Dashboard",
+    "h3": "A brand that never goes quiet.",
+    "body": "Complete, ready-to-post social content — visual, copy, schedule — plus SEO blog articles for your site. Quality and rhythm that don’t depend on whether anyone “got around to posting”. Your audience sees you every week, and Google finds you when someone searches for what you do.",
+    "ideal": "brands that post inconsistently or have gone quiet altogether",
+    "v": {
+      "header": "This week · ready to post",
+      "d1": "Mon",
+      "d2": "Tue",
+      "d3": "Wed",
+      "d4": "Thu",
+      "d5": "Fri",
+      "p1": "post",
+      "p2": "reel",
+      "p3": "post",
+      "p4": "SEO blog",
+      "p5": "post"
+    }
+  },
+  "s5": {
+    "name": "AI UGC Creatives",
+    "h3": "More creatives, faster testing, a fraction of the cost.",
+    "body": "UGC-style video ads generated with AI — no creator hunting, no waiting on shoots, no per-clip fees. When your ads live and die by creative volume, this is the difference between three variants a month and thirty: more tests, faster learning, a lower cost per winning ad.",
+    "ideal": "e-commerce and DTC brands that rely on UGC ads",
+    "v": {
+      "header": "Creative batch · product X",
+      "v1": "hook A",
+      "v2": "hook B",
+      "v3": "hook C",
+      "v4": "+ 9 more",
+      "status": "testing"
+    }
+  },
+  "process": {
+    "kicker": "Process",
+    "h2": "From one call to a running system",
+    "docLabel": "Work order · Double O",
+    "docNo": "no. 00",
+    "s1": {
+      "title": "Free strategy call",
+      "body": "We walk through how you operate and pinpoint exactly where revenue leaks: missed calls, forgotten enquiries, a dead list, silence online. You leave with a concrete plan — whether you work with us afterwards or not."
+    },
+    "s2": {
+      "title": "We build the system",
+      "body": "We do everything, end to end: the system learns your voice, your services and your rules, and plugs into the tools you already use — calendar, phone, CRM. You don’t touch a thing."
+    },
+    "s3": {
+      "title": "It runs — you watch the results",
+      "body": "The calendar fills, old contacts write back, posts go out on time. You do the work you know — the system handles everything you used to miss."
+    }
+  },
+  "why": {
+    "kicker": "Why Double O",
+    "h2": "We don’t sell technology. <em>We sell the result.</em>",
+    "body": "We’re marketing and operations people first, “AI” second. Technology is the tool — what you get is booked appointments, revived leads, higher conversion from the same budget, and a brand that’s always present. If a system doesn’t deliver that, we don’t build it.",
+    "p1": { "t": "Done for you", "b": "From strategy to go-live. Your job is to keep running your business." },
+    "p2": { "t": "Always on", "b": "Fully remote, reachable 24/7 — same as the systems we build." },
+    "p3": { "t": "Priced per project", "b": "No price list, no tiers. We establish what makes you money first, then scope the project — the value you receive always exceeds the price you pay." }
+  },
+  "cta": {
+    "h2": "Find out where your revenue is <em>leaking.</em>",
+    "body": "A short call, a concrete plan, zero obligation. If you decide to do it all yourself afterwards — the plan is yours to keep.",
+    "button": "Book a free strategy call",
+    "micro": "30 minutes · online · no prep needed"
+  },
+  "contact": {
+    "kicker": "Contact",
+    "h2": "Rather write than talk?",
+    "body": "Tell us briefly what you do and what’s holding you back right now. We reply within 24 hours — usually much faster.",
+    "name": "Full name",
+    "email": "Email address",
+    "business": "Business / website",
+    "message": "Message",
+    "messagePh": "E.g. we run a dental practice and miss every call after 5 pm…",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Message received. We’ll get back to you within 24 hours — probably sooner.",
+    "error": "Something went wrong while sending. Try again — or write to us directly at hello@doubleo.agency."
+  },
+  "footer": {
+    "tag": "The systems we build don’t sleep. So you can.",
+    "solutions": "Solutions",
+    "process": "Process",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "blog": {
+    "kicker": "Blog",
+    "indexTitle": "Blog",
+    "indexIntro": "Notes on AI systems, automation, and how small businesses stop leaking revenue.",
+    "empty": "The first posts are coming soon.",
+    "readMore": "Read more",
+    "back": "Back to blog"
+  },
+  "chat": {
+    "subtitle": "Nova · AI assistant",
+    "welcome": "Hi! I'm Nova, Double O's AI assistant. How can I help?",
+    "placeholder": "Type a message…",
+    "error": "Sorry — something went wrong on my end.",
+    "errorFallback": "You can book a call directly here: {url}",
+    "errorRetry": "Please try again in a moment."
+  }
+}
