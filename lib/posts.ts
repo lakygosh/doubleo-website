@@ -93,6 +93,15 @@ export async function getAllPostsForAdmin(): Promise<Post[]> {
   return data ?? [];
 }
 
+/** Admin read: a single post by id regardless of status (RLS allows this for authenticated users). */
+export async function getPostByIdForAdmin(id: string): Promise<Post | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("posts").select("*").eq("id", id).maybeSingle();
+
+  if (error) throw error;
+  return data;
+}
+
 export type NewPostInput = {
   slug: string;
   title_sr: string;
