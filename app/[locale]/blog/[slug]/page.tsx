@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Markdown } from "@/lib/markdown";
 import { getPublishedPostBySlug, getPublishedPosts, localizePost } from "@/lib/posts";
@@ -73,21 +72,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
   return (
     <main id="main">
-      <article style={{ maxWidth: "72ch", margin: "0 auto", padding: "4rem var(--gutter)" }}>
+      <article className="post">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <Link href="/blog">{t("back")}</Link>
-        <h1>{localized.title}</h1>
+        <Link href="/blog" className="post__back">
+          &larr; {t("back")}
+        </Link>
+        <h1 className="post__title">{localized.title}</h1>
         {localized.coverImageUrl && (
-          <Image
-            src={localized.coverImageUrl}
-            alt={localized.title}
-            width={1200}
-            height={630}
-            priority
-            style={{ width: "100%", height: "auto", borderRadius: "var(--radius, 8px)" }}
-          />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={localized.coverImageUrl} alt={localized.title} className="post__cover" />
         )}
-        <Markdown content={localized.content} />
+        <div className="post__body">
+          <Markdown content={localized.content} />
+        </div>
       </article>
     </main>
   );
