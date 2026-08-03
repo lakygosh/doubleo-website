@@ -27,7 +27,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main style={{ maxWidth: 360, margin: "10vh auto", padding: "0 1.5rem", fontFamily: "system-ui, sans-serif" }}>
+    <main style={{ maxWidth: 360, margin: "10vh auto", padding: "0 1.5rem" }}>
       <h1>Admin login</h1>
       <form onSubmit={onSubmit} style={{ display: "grid", gap: "0.75rem" }}>
         <label>
@@ -38,7 +38,6 @@ export default function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             required
             autoComplete="email"
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
           />
         </label>
         <label>
@@ -49,11 +48,10 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
             autoComplete="current-password"
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
           />
         </label>
-        {error && <p style={{ color: "crimson" }}>{error}</p>}
-        <button type="submit" disabled={loading} style={{ padding: "0.6rem" }}>
+        {error && <p style={{ color: "#cb272f" }}>{error}</p>}
+        <button type="submit" className="admin__primary" disabled={loading}>
           {loading ? "Signing in…" : "Sign in"}
         </button>
       </form>

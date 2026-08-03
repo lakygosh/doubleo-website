@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/Reveal";
-import { OpsLogTicker } from "@/components/OpsLogTicker";
+import { HeroChatCard } from "@/components/HeroChatCard";
 import { ContactForm } from "@/components/ContactForm";
 import { CALCOM_URL } from "@/lib/config";
 import type { Locale } from "@/i18n/routing";
@@ -35,7 +35,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="hero__note">{t("hero.note")}</p>
           </div>
 
-          <OpsLogTicker />
+          <HeroChatCard />
         </div>
 
         <div className="strip">

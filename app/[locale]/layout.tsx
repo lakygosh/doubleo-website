@@ -138,8 +138,8 @@ export default async function LocaleLayout({
         data-error={t("error")}
         data-error-fallback={t("errorFallback", { url: CALCOM_URL || SITE_URL })}
         data-error-retry={t("errorRetry")}
-        data-accent="#8ce2a4"
-        data-accent-text="#0e1210"
+        data-accent="#9fe870"
+        data-accent-text="#163300"
         data-position="right"
         data-fallback-url={CALCOM_URL}
       />

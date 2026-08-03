@@ -41,7 +41,7 @@ export function AdminDashboard({
         <button onClick={signOut}>Sign out</button>
       </div>
 
-      <section style={{ margin: "1.5rem 0", padding: "1rem", border: "1px solid #ddd", borderRadius: 8 }}>
+      <section className="admin__card" style={{ margin: "1.5rem 0", padding: "1rem" }}>
         <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <input
             type="checkbox"
@@ -62,17 +62,17 @@ export function AdminDashboard({
         {drafts.length === 0 && <p>No drafts waiting for review.</p>}
         <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: "0.75rem" }}>
           {drafts.map((post) => (
-            <li key={post.id} style={{ border: "1px solid #ddd", borderRadius: 8, padding: "0.75rem 1rem" }}>
+            <li key={post.id} className="admin__card" style={{ padding: "0.75rem 1rem" }}>
               <Link href={`/admin/posts/${post.id}`} style={{ fontWeight: "bold" }}>
                 {post.title_sr} / {post.title_en}
               </Link>
-              <div style={{ color: "#666", fontSize: "0.85rem" }}>/{post.slug}</div>
+              <div style={{ color: "#6b706a", fontSize: "0.85rem" }}>/{post.slug}</div>
               <div style={{ marginTop: "0.5rem", display: "flex", gap: "0.5rem" }}>
                 <Link href={`/admin/posts/${post.id}`}>Preview</Link>
-                <button disabled={pending} onClick={() => run(() => publishPost(post.id, post.slug))}>
+                <button className="admin__primary" disabled={pending} onClick={() => run(() => publishPost(post.id, post.slug))}>
                   Publish
                 </button>
-                <button disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
+                <button className="admin__danger" disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
                   Delete
                 </button>
               </div>
@@ -85,17 +85,17 @@ export function AdminDashboard({
         <h2>Published ({published.length})</h2>
         <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: "0.75rem" }}>
           {published.map((post) => (
-            <li key={post.id} style={{ border: "1px solid #ddd", borderRadius: 8, padding: "0.75rem 1rem" }}>
+            <li key={post.id} className="admin__card" style={{ padding: "0.75rem 1rem" }}>
               <Link href={`/admin/posts/${post.id}`} style={{ fontWeight: "bold" }}>
                 {post.title_sr} / {post.title_en}
               </Link>
-              <div style={{ color: "#666", fontSize: "0.85rem" }}>/{post.slug}</div>
+              <div style={{ color: "#6b706a", fontSize: "0.85rem" }}>/{post.slug}</div>
               <div style={{ marginTop: "0.5rem", display: "flex", gap: "0.5rem" }}>
                 <Link href={`/admin/posts/${post.id}`}>Preview</Link>
                 <button disabled={pending} onClick={() => run(() => unpublishPost(post.id, post.slug))}>
                   Unpublish
                 </button>
-                <button disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
+                <button className="admin__danger" disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
                   Delete
                 </button>
               </div>

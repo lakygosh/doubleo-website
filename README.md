@@ -56,5 +56,5 @@ See `app/api/posts/route.ts` for the exact request/response shape.
 - `lib/posts.ts`, `lib/settings.ts` — Supabase data access
 - `lib/supabase/` — Supabase client helpers (server, browser, middleware session refresh)
 - `messages/sr.json`, `messages/en.json` — all homepage UI copy
-- `app/globals.css` — design system ("night shift": ink / warm off-white / signal green / leak amber), ported unchanged from the old Vite site
+- `app/globals.css` — design system (Wise-inspired: screen-white canvas, forest-green darker elements, bright lime-green CTAs, Inter, soft rounded geometry)
 - `supabase/migrations/0001_init.sql` — schema + RLS

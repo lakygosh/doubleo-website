@@ -16,17 +16,23 @@
     "langLabel": "Izbor jezika"
   },
   "hero": {
-    "status": "Sistem aktivan · 00:00–24:00",
-    "h1": "Chatbot koji odgovara posetiocima i zakazuje termine — <em>umesto vas, 0–24.</em>",
-    "sub": "Double O gradi chatbota koji na vašem sajtu, u Instagram porukama i na Viberu/WhatsAppu odgovara na upite, zakazuje termine i konsultacije, a vama prosleđuje samo ono što traži čoveka. Jedan „mozak“, više kanala — bez novog zaposlenog.",
+    "status": "Odgovor u sekundi · 0–24",
+    "h1": "Chatbot koji odgovara svakom posetiocu i <em>zakazuje termin.</em>",
+    "sub": "Jedan chatbot na vašem sajtu, Instagramu i Viberu/WhatsAppu — odgovara na pitanja i zakazuje termine u svako doba. Jedan „mozak“, svi kanali, bez novog zaposlenog.",
     "ctaPrimary": "Zakaži besplatan poziv",
     "ctaSecondary": "Pogledaj rešenja",
     "note": "Besplatan strateški poziv · bez obaveze · plan dobijate u svakom slučaju"
   },
-  "log": {
-    "title": "Dežurni dnevnik",
-    "shift": "noćna smena",
-    "caption": "Ovako izgleda tipična noć kad sistem radi za vas."
+  "heroCard": {
+    "aria": "Prikaz chatbota: Nova odgovara posetiocu i zakazuje termin",
+    "name": "Nova",
+    "status": "Na vezi · odgovara odmah",
+    "channel": "Instagram",
+    "q": "Zdravo! Radite li subotom? Trebalo bi mi šišanje.",
+    "a": "Radimo — subota u 11:00 je slobodna. Da vas upišem?",
+    "slotLabel": "Termin zakazan",
+    "slot": "Sub · 11:00",
+    "foot": "Odgovoreno i zakazano za par sekundi — bez ijednog vašeg klika."
   },
   "strip": {
     "calls": "Poruke",
