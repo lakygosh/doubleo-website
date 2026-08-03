@@ -16,17 +16,23 @@
     "langLabel": "Language selection"
   },
   "hero": {
-    "status": "System active · 24/7",
-    "h1": "A chatbot that answers your visitors and books appointments — <em>in your place, 24/7.</em>",
-    "sub": "Double O builds a chatbot that answers enquiries on your website, in Instagram messages and on Viber/WhatsApp, books appointments and consultations, and hands you only what needs a human. One brain, many channels — without a single new hire.",
+    "status": "Answers in seconds · 24/7",
+    "h1": "A chatbot that answers every visitor and <em>books the appointment.</em>",
+    "sub": "One chatbot across your website, Instagram and Viber/WhatsApp — answering questions and booking appointments around the clock. One brain, every channel, no new hire.",
     "ctaPrimary": "Book a free call",
-    "ctaSecondary": "See the solutions",
+    "ctaSecondary": "Explore solutions",
     "note": "Free strategy call · no obligation · you keep the plan either way"
   },
-  "log": {
-    "title": "Operations log",
-    "shift": "night shift",
-    "caption": "What a typical night looks like once the system runs for you."
+  "heroCard": {
+    "aria": "Chatbot preview: Nova answering a visitor and booking an appointment",
+    "name": "Nova",
+    "status": "Online · replies instantly",
+    "channel": "Instagram",
+    "q": "Hi! Are you open Saturday? I'd like to book a haircut.",
+    "a": "We are — Saturday at 11:00 is free. Want me to book it for you?",
+    "slotLabel": "Appointment booked",
+    "slot": "Sat · 11:00",
+    "foot": "Answered and booked in seconds — no one lifted a finger."
   },
   "strip": {
     "calls": "Messages",

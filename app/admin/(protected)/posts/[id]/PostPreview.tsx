@@ -27,17 +27,17 @@ export function PostPreview({ post }: { post: Post }) {
   }
 
   return (
-    <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem 1.5rem", fontFamily: "system-ui, sans-serif" }}>
+    <main style={{ maxWidth: 800, margin: "0 auto", padding: "2rem 1.5rem" }}>
       <p>
         <Link href="/admin">&larr; Back to dashboard</Link>
       </p>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
         <div>
-          <span style={{ padding: "0.2rem 0.6rem", borderRadius: 4, fontSize: "0.8rem", background: post.status === "published" ? "#d4f7dc" : "#fff3cd" }}>
+          <span className={`admin__badge admin__badge--${post.status === "published" ? "published" : "draft"}`}>
             {post.status}
           </span>
-          <span style={{ marginLeft: "0.75rem", color: "#666", fontSize: "0.85rem" }}>/{post.slug}</span>
+          <span style={{ marginLeft: "0.75rem", color: "#6b706a", fontSize: "0.85rem" }}>/{post.slug}</span>
         </div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <button type="button" onClick={() => setLocale("sr")} disabled={locale === "sr"}>
@@ -51,7 +51,7 @@ export function PostPreview({ post }: { post: Post }) {
 
       <div style={{ marginTop: "1rem", display: "flex", gap: "0.5rem" }}>
         {post.status === "draft" ? (
-          <button disabled={pending} onClick={() => run(() => publishPost(post.id, post.slug))}>
+          <button className="admin__primary" disabled={pending} onClick={() => run(() => publishPost(post.id, post.slug))}>
             Publish
           </button>
         ) : (
@@ -59,7 +59,7 @@ export function PostPreview({ post }: { post: Post }) {
             Unpublish
           </button>
         )}
-        <button disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
+        <button className="admin__danger" disabled={pending} onClick={() => run(() => deletePost(post.id, post.slug))}>
           Delete
         </button>
       </div>
@@ -69,11 +69,11 @@ export function PostPreview({ post }: { post: Post }) {
       <article>
         {post.cover_image_url && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={post.cover_image_url} alt={title} style={{ width: "100%", height: "auto", borderRadius: 8 }} />
+          <img src={post.cover_image_url} alt={title} style={{ width: "100%", height: "auto", borderRadius: 16 }} />
         )}
         <h1>{title}</h1>
-        {excerpt && <p style={{ color: "#555", fontStyle: "italic" }}>{excerpt}</p>}
-        <div style={{ fontSize: "0.85rem", color: "#888", marginBottom: "1.5rem" }}>
+        {excerpt && <p style={{ color: "#6b706a", fontStyle: "italic" }}>{excerpt}</p>}
+        <div style={{ fontSize: "0.85rem", color: "#6b706a", marginBottom: "1.5rem" }}>
           <div>
             <strong>SEO title:</strong> {seoTitle}
           </div>

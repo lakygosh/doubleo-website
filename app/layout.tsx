@@ -1,4 +1,3 @@
-import "@fontsource-variable/space-grotesk";
 import "@fontsource-variable/inter";
 import "./globals.css";
 import type { ReactNode } from "react";
