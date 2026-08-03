@@ -65,12 +65,18 @@ const jsonLd = {
       logo: `${SITE_URL}/og.png`,
       email: "hello@doubleo.agency",
       description:
-        "AI automation agency: done-for-you systems that answer calls, revive old leads, respond to new enquiries instantly, and keep a brand's presence going — 24/7.",
+        "AI automation agency: a chatbot for website, Instagram and Viber/WhatsApp that answers enquiries and books appointments, plus content, lead reactivation and — as an upgrade — an AI phone receptionist. Done-for-you, 24/7.",
     },
     {
       "@type": "Service",
-      serviceType: "AI Inbound Receptionist",
-      name: "AI Receptionist",
+      serviceType: "AI Chatbot",
+      name: "AI Chatbot (Website, Instagram, Viber/WhatsApp)",
+      provider: { "@id": `${SITE_URL}/#org` },
+    },
+    {
+      "@type": "Service",
+      serviceType: "Content Dashboard",
+      name: "Content Dashboard",
       provider: { "@id": `${SITE_URL}/#org` },
     },
     {
@@ -87,14 +93,14 @@ const jsonLd = {
     },
     {
       "@type": "Service",
-      serviceType: "Content Dashboard",
-      name: "Content Dashboard",
+      serviceType: "AI UGC Creatives",
+      name: "AI UGC Creatives",
       provider: { "@id": `${SITE_URL}/#org` },
     },
     {
       "@type": "Service",
-      serviceType: "AI UGC Creatives",
-      name: "AI UGC Creatives",
+      serviceType: "AI Inbound Receptionist",
+      name: "AI Receptionist",
       provider: { "@id": `${SITE_URL}/#org` },
     },
   ],

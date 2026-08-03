@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Double O — AI systems that turn attention into revenue, 24/7",
-    "description": "Done-for-you AI systems for your business: a receptionist that answers every call, cold-lead reactivation, instant lead response and content that keeps you visible. Book a free strategy call."
+    "title": "Double O — a chatbot that answers visitors and books appointments, 24/7",
+    "description": "A chatbot for your website, Instagram and Viber/WhatsApp that answers enquiries and books appointments in your place — plus lead reactivation, content and, as an upgrade, an AI phone receptionist. Book a free strategy call."
   },
   "skip": "Skip to content",
   "nav": {
@@ -17,8 +17,8 @@
   },
   "hero": {
     "status": "System active · 24/7",
-    "h1": "Every call answered. Every lead followed up. <em>Even at 3 a.m.</em>",
-    "sub": "Double O builds done-for-you AI systems that work in your place: they answer the phone, book appointments, bring old leads back and keep your brand visible — without a single new hire.",
+    "h1": "A chatbot that answers your visitors and books appointments — <em>in your place, 24/7.</em>",
+    "sub": "Double O builds a chatbot that answers enquiries on your website, in Instagram messages and on Viber/WhatsApp, books appointments and consultations, and hands you only what needs a human. One brain, many channels — without a single new hire.",
     "ctaPrimary": "Book a free call",
     "ctaSecondary": "See the solutions",
     "note": "Free strategy call · no obligation · you keep the plan either way"
@@ -29,12 +29,12 @@
     "caption": "What a typical night looks like once the system runs for you."
   },
   "strip": {
-    "calls": "Calls",
+    "calls": "Messages",
     "callsV": "answered",
-    "leads": "Leads",
-    "leadsV": "followed up",
-    "content": "Posts",
-    "contentV": "scheduled",
+    "leads": "Appointments",
+    "leadsV": "booked",
+    "content": "Channels",
+    "contentV": "3 in one",
     "hours": "Business hours",
     "hoursV": "don’t exist"
   },
@@ -43,9 +43,9 @@
     "h2": "Where your revenue <em>leaks</em>",
     "intro": "Small businesses don’t lose work because they’re bad at it. They lose it because nobody picks up in time, nobody follows up, and the brand goes quiet. Those aren’t three small flaws — they’re three holes draining money you already paid to attract.",
     "l1": {
-      "time": "5:32 pm, Tuesday",
-      "leak": "The phone rings. You’re mid-job. After the fourth ring the caller dials the next result on Google — and books with them.",
-      "fix": "The AI receptionist picks up on the first ring and books the appointment before the caller ever thinks of a competitor."
+      "time": "10:14 pm, Friday",
+      "leak": "A visitor messages you on Instagram: “Are you open Saturday?” Your reply lands on Monday — they’ve already booked with a competitor who answered in two minutes.",
+      "fix": "The chatbot replies in seconds — on your site, Instagram and Viber — and books the appointment before the visitor moves on."
     },
     "l2": {
       "time": "Your contact list",
@@ -63,54 +63,30 @@
   },
   "solutions": {
     "kicker": "Solutions",
-    "h2": "Five systems. One goal: <em>you miss nothing.</em>",
-    "intro": "We don’t sell software off a price list. We pick the system that closes the biggest hole in your revenue — and build it end to end, in your brand’s voice.",
+    "h2": "One chatbot, three channels — <em>and the systems around it.</em>",
+    "intro": "The chatbot sits at the centre, catching every enquiry. Around it we build the supporting systems — content, reactivation and instant lead response — and, as an upgrade, a phone receptionist.",
     "idealFor": "Ideal for"
   },
   "s1": {
-    "name": "AI Inbound Receptionist",
-    "h3": "Zero missed calls. Zero lost bookings.",
-    "body": "It answers every incoming call in your brand’s voice — it knows your services, prices and schedule. It books appointments straight into your calendar, handles common questions, screens out spam, and hands anything that needs a human over to you. It never clocks out: the caller at 9:40 pm gets the same treatment as the one at noon.",
-    "ideal": "clinics, salons, dental practices, repair shops, restaurants — any business where the phone brings in money",
+    "name": "Chatbot",
+    "h3": "One brain. Three channels. No enquiry left unanswered.",
+    "body": "The same chatbot answers on your website, in Instagram DMs and on Viber/WhatsApp. It knows your services, prices and schedule, answers common questions, books appointments and consultations straight into the calendar, and hands you only what needs a human. One solution learns once — every channel speaks in the same voice.",
+    "ideal": "clinics, salons, service businesses, agencies — any business that gets questions before it gets customers",
     "v": {
-      "header": "Incoming call · 9:47 pm",
-      "caller": "Hi, are you open Saturdays? I’d need a haircut…",
-      "agent": "We are! Saturday 11:00 is free — shall I book you in?",
-      "result": "✓ Booked · added to calendar"
+      "header": "One bot · three channels",
+      "c1n": "Website",
+      "c1d": "visitors researching before they reach out",
+      "c2n": "Instagram DM",
+      "c2d": "questions in messages and comments",
+      "c3n": "Viber / WhatsApp",
+      "c3d": "customers who’d rather text",
+      "foot": "Same brain, same voice — across all three."
     }
   },
   "s2": {
-    "name": "Lead Reactivation",
-    "h3": "Revenue from the list you already own.",
-    "body": "A voice agent (email works too) calls your old and inactive contacts with a concrete reason to return — a promotion, a check-up, an open slot. It knows each contact’s history and your business, so the conversation lands as care, not a sales pitch. You already paid to acquire these people; this collects the part you never did.",
-    "ideal": "any business sitting on a database of past or unconverted leads",
-    "v": {
-      "header": "Campaign: old list · day 3",
-      "r1n": "M. Harris · enquiry from March",
-      "r1s": "booked",
-      "r2n": "J. Cole · inactive 14 months",
-      "r2s": "interested — following up",
-      "r3n": "S. Brooks · unconverted",
-      "r3s": "call scheduled tomorrow"
-    }
-  },
-  "s3": {
-    "name": "Speed to Lead",
-    "h3": "You reach every lead first. Every time.",
-    "body": "The moment someone leaves their details — through an ad, a form, a message — the system calls or writes to them. Not tomorrow, not in two hours: right now, while interest is at its peak and before your competitors have even seen the enquiry. Same ad budget, more booked work.",
-    "ideal": "businesses running paid ads or collecting inbound form leads",
-    "v": {
-      "header": "New lead · Meta ad",
-      "t1": "Form submitted",
-      "t2": "System calls the lead",
-      "t3": "Conversation running…",
-      "note": "competitors: haven’t even opened it"
-    }
-  },
-  "s4": {
     "name": "Content Dashboard",
     "h3": "A brand that never goes quiet.",
-    "body": "Complete, ready-to-post social content — visual, copy, schedule — plus SEO blog articles for your site. Quality and rhythm that don’t depend on whether anyone “got around to posting”. Your audience sees you every week, and Google finds you when someone searches for what you do.",
+    "body": "Ready-to-post social content — visual, copy, schedule — plus SEO articles for your site. Your audience sees you every week, and Google finds you when someone searches for what you do.",
     "ideal": "brands that post inconsistently or have gone quiet altogether",
     "v": {
       "header": "This week · ready to post",
@@ -126,10 +102,38 @@
       "p5": "post"
     }
   },
+  "s3": {
+    "name": "Lead Reactivation",
+    "h3": "Revenue from the list you already own.",
+    "body": "A voice agent (email works too) calls your old and inactive contacts with a concrete reason to return. People you already paid to acquire — billed a second time.",
+    "ideal": "any business sitting on a database of past or unconverted leads",
+    "v": {
+      "header": "Campaign: old list · day 3",
+      "r1n": "M. Harris · enquiry from March",
+      "r1s": "booked",
+      "r2n": "J. Cole · inactive 14 months",
+      "r2s": "interested — following up",
+      "r3n": "S. Brooks · unconverted",
+      "r3s": "call scheduled tomorrow"
+    }
+  },
+  "s4": {
+    "name": "Speed to Lead",
+    "h3": "You reach every lead first. Every time.",
+    "body": "The moment someone leaves their details — through an ad, a form, a message — the system calls or texts them right away, while interest is at its peak and before your competitors have even seen the enquiry.",
+    "ideal": "businesses running paid ads or collecting inbound form leads",
+    "v": {
+      "header": "New lead · Meta ad",
+      "t1": "Form submitted",
+      "t2": "System calls the lead",
+      "t3": "Conversation running…",
+      "note": "competitors: haven’t even opened it"
+    }
+  },
   "s5": {
     "name": "AI UGC Creatives",
     "h3": "More creatives, faster testing, a fraction of the cost.",
-    "body": "UGC-style video ads generated with AI — no creator hunting, no waiting on shoots, no per-clip fees. When your ads live and die by creative volume, this is the difference between three variants a month and thirty: more tests, faster learning, a lower cost per winning ad.",
+    "body": "AI-generated UGC-style video ads — no creator hunting, no waiting on shoots. Instead of three variants a month, thirty: more tests, faster learning, a lower cost per winning ad.",
     "ideal": "e-commerce and DTC brands that rely on UGC ads",
     "v": {
       "header": "Creative batch · product X",
@@ -140,6 +144,18 @@
       "status": "testing"
     }
   },
+  "s6": {
+    "name": "AI Receptionist",
+    "h3": "The next step: once the chatbot covers messages, but missed calls remain.",
+    "body": "Once the chatbot takes on written enquiries, the phone is the last gap left. The AI receptionist answers incoming calls in your brand’s voice, handles common questions and books appointments. An upgrade to the chatbot, not a separate product — we add it once call volume justifies it.",
+    "ideal": "businesses where plenty of phone calls remain even after the chatbot",
+    "v": {
+      "header": "Incoming call · 9:47 pm",
+      "caller": "Hi, are you open Saturdays? I’d need a haircut…",
+      "agent": "We are! Saturday 11:00 is free — shall I book you in?",
+      "result": "✓ Booked · added to calendar"
+    }
+  },
   "process": {
     "kicker": "Process",
     "h2": "From one call to a running system",
@@ -147,7 +163,7 @@
     "docNo": "no. 00",
     "s1": {
       "title": "Free strategy call",
-      "body": "We walk through how you operate and pinpoint exactly where revenue leaks: missed calls, forgotten enquiries, a dead list, silence online. You leave with a concrete plan — whether you work with us afterwards or not."
+      "body": "We walk through how you operate and pinpoint exactly where revenue leaks: missed enquiries, forgotten leads, a dead list, silence online. You leave with a concrete plan — whether you work with us afterwards or not."
     },
     "s2": {
       "title": "We build the system",
@@ -180,7 +196,7 @@
     "email": "Email address",
     "business": "Business / website",
     "message": "Message",
-    "messagePh": "E.g. we run a dental practice and miss every call after 5 pm…",
+    "messagePh": "E.g. we run a dental practice and can’t keep up with messages and enquiries…",
     "send": "Send message",
     "sending": "Sending…",
     "success": "Message received. We’ll get back to you within 24 hours — probably sooner.",
