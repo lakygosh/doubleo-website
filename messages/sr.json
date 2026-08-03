@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Double O — AI sistemi koji pretvaraju pažnju u prihod, 24/7",
-    "description": "Gotovi AI sistemi za vaš biznis: recepcioner koji odgovara na svaki poziv, reaktivacija starih lead-ova, trenutni odgovor na upite i sadržaj koji vas drži vidljivim. Zakažite besplatan strateški poziv."
+    "title": "Double O — chatbot koji odgovara posetiocima i zakazuje termine, 0–24",
+    "description": "Chatbot za sajt, Instagram i Viber/WhatsApp koji odgovara na upite i zakazuje termine umesto vas — plus reaktivacija lead-ova, sadržaj i, kao nadogradnja, telefonski AI recepcioner. Zakažite besplatan strateški poziv."
   },
   "skip": "Preskoči na sadržaj",
   "nav": {
@@ -17,8 +17,8 @@
   },
   "hero": {
     "status": "Sistem aktivan · 00:00–24:00",
-    "h1": "Svaki poziv odgovoren. Svaki lead ispraćen. <em>I u tri ujutru.</em>",
-    "sub": "Double O gradi gotove AI sisteme koji rade umesto vas: javljaju se na telefon, zakazuju termine, vraćaju stare lead-ove i drže vaš brend prisutnim — bez ijednog novog zapošljavanja.",
+    "h1": "Chatbot koji odgovara posetiocima i zakazuje termine — <em>umesto vas, 0–24.</em>",
+    "sub": "Double O gradi chatbota koji na vašem sajtu, u Instagram porukama i na Viberu/WhatsAppu odgovara na upite, zakazuje termine i konsultacije, a vama prosleđuje samo ono što traži čoveka. Jedan „mozak“, više kanala — bez novog zaposlenog.",
     "ctaPrimary": "Zakaži besplatan poziv",
     "ctaSecondary": "Pogledaj rešenja",
     "note": "Besplatan strateški poziv · bez obaveze · plan dobijate u svakom slučaju"
@@ -29,12 +29,12 @@
     "caption": "Ovako izgleda tipična noć kad sistem radi za vas."
   },
   "strip": {
-    "calls": "Pozivi",
-    "callsV": "odgovoreni",
-    "leads": "Lead-ovi",
-    "leadsV": "ispraćeni",
-    "content": "Objave",
-    "contentV": "zakazane",
+    "calls": "Poruke",
+    "callsV": "odgovorene",
+    "leads": "Termini",
+    "leadsV": "zakazani",
+    "content": "Kanali",
+    "contentV": "3 u jednom",
     "hours": "Radno vreme",
     "hoursV": "ne postoji"
   },
@@ -43,9 +43,9 @@
     "h2": "Gde vam <em>curi</em> prihod",
     "intro": "Mali biznisi ne gube poslove zato što loše rade. Gube ih zato što se ne jave na vreme, ne isprate upit i nestanu sa mreža. To nisu tri sitnice — to su tri rupe kroz koje ističe novac koji ste već platili da privučete.",
     "l1": {
-      "time": "17:32, utorak",
-      "leak": "Telefon zvoni. Vi ste usred posla. Klijent posle četvrtog zvona zove sledećeg iz Google pretrage — i zakazuje kod njega.",
-      "fix": "AI recepcioner preuzima poziv na prvo zvono i zakazuje termin pre nego što klijent uopšte pomisli na konkurenciju."
+      "time": "22:14, petak",
+      "leak": "Posetilac vam piše na Instagramu: „Radite li subotom?“ Odgovor stiže tek u ponedeljak — on je već zakazao kod konkurencije koja se javila za dva minuta.",
+      "fix": "Chatbot odgovara u sekundi — na sajtu, Instagramu i Viberu — i zakazuje termin pre nego što posetilac ode dalje."
     },
     "l2": {
       "time": "Baza kontakata",
@@ -63,54 +63,30 @@
   },
   "solutions": {
     "kicker": "Rešenja",
-    "h2": "Pet sistema. Jedan cilj: <em>ništa ne propuštate.</em>",
-    "intro": "Ne prodajemo softver sa cenovnikom. Biramo sistem koji zatvara najveću rupu u vašem prihodu — i gradimo ga do kraja, u glasu vašeg brenda.",
+    "h2": "Jedan chatbot, tri kanala — <em>i sistemi koji ga prate.</em>",
+    "intro": "U središtu je chatbot koji hvata svaki upit. Oko njega gradimo prateće sisteme — sadržaj, reaktivaciju i brz odgovor na lead-ove — a kao nadogradnju i telefonskog recepcionera.",
     "idealFor": "Idealno za"
   },
   "s1": {
-    "name": "AI recepcioner",
-    "h3": "Nula propuštenih poziva. Nula izgubljenih termina.",
-    "body": "Javlja se na svaki dolazni poziv u glasu vašeg brenda — zna vaše usluge, cene i raspored. Zakazuje termine direktno u kalendar, odgovara na česta pitanja, filtrira spam, a poziv koji traži čoveka prosleđuje vama. Radi non-stop: klijent koji zove u 21:40 dobija isti tretman kao onaj u podne.",
-    "ideal": "ordinacije, salone, stomatologe, servise, restorane — svaki posao gde telefon donosi novac",
+    "name": "Chatbot",
+    "h3": "Jedan mozak. Tri kanala. Nijedan upit bez odgovora.",
+    "body": "Isti chatbot odgovara na vašem sajtu, u Instagram DM-u i na Viberu/WhatsAppu. Zna vaše usluge, cene i raspored, odgovara na česta pitanja, zakazuje termine i konsultacije direktno u kalendar, a vama prosleđuje samo ono što traži čoveka. Jedno rešenje uči jednom — svi kanali govore istim glasom.",
+    "ideal": "ordinacije, salone, servise, agencije — svaki posao koji dobija pitanja pre nego što dobije klijenta",
     "v": {
-      "header": "Dolazni poziv · 21:47",
-      "caller": "Dobro veče, da li radite subotom? Trebalo bi mi šišanje…",
-      "agent": "Radimo! Subota u 11:00 je slobodna — da vas upišem?",
-      "result": "✓ Termin zakazan · ubačen u kalendar"
+      "header": "Jedan bot · tri kanala",
+      "c1n": "Sajt",
+      "c1d": "posetioci koji istražuju pre nego što se jave",
+      "c2n": "Instagram DM",
+      "c2d": "pitanja kroz poruke i komentare",
+      "c3n": "Viber / WhatsApp",
+      "c3d": "klijenti koji radije pišu",
+      "foot": "Isti mozak, isti glas — na sva tri kanala."
     }
   },
   "s2": {
-    "name": "Reaktivacija lead-ova",
-    "h3": "Prihod iz baze koju već imate.",
-    "body": "Glasovni agent (radi i preko emaila) zove vaše stare i neaktivne kontakte s konkretnim razlogom da se vrate — promocija, kontrola, slobodan termin. Poznaje istoriju svakog kontakta i vaš biznis, pa razgovor zvuči kao briga, a ne kao prodaja. Te ljude ste već platili da ih privučete; ovo je naplata drugog dela.",
-    "ideal": "svaki biznis sa bazom starih ili nekonvertovanih upita",
-    "v": {
-      "header": "Kampanja: stara baza · dan 3",
-      "r1n": "M. Petrović · upit iz marta",
-      "r1s": "termin zakazan",
-      "r2n": "J. Ilić · neaktivan 14 meseci",
-      "r2s": "zainteresovan — prati se",
-      "r3n": "S. Marković · nekonvertovan",
-      "r3s": "poziv zakazan za sutra"
-    }
-  },
-  "s3": {
-    "name": "Speed to Lead",
-    "h3": "Prvi stižete do svakog upita. Uvek.",
-    "body": "Onog trenutka kad neko ostavi podatke — kroz oglas, formu ili poruku — sistem ga zove ili mu piše. Ne sutra, ne za dva sata: odmah, dok je interesovanje na vrhuncu i dok konkurencija još nije ni videla upit. Isti budžet za oglase, više zakazanih poslova.",
-    "ideal": "biznise koji vode plaćene oglase ili primaju upite kroz forme",
-    "v": {
-      "header": "Novi lead · Meta oglas",
-      "t1": "Prijava primljena",
-      "t2": "Sistem poziva lead",
-      "t3": "Razgovor u toku…",
-      "note": "konkurencija: još nije ni otvorila upit"
-    }
-  },
-  "s4": {
     "name": "Content Dashboard",
     "h3": "Brend koji nikad ne ućuti.",
-    "body": "Kompletne, spremne objave za društvene mreže — vizual, tekst, raspored — plus SEO blog tekstovi za sajt. Kvalitet i ritam koji se ne oslanjaju na to da li je neko „stigao da objavi“. Publika vas viđa svake nedelje, a Google vas nalazi kad neko traži ono što radite.",
+    "body": "Spremne objave za društvene mreže — vizual, tekst, raspored — i SEO tekstovi za sajt. Publika vas viđa svake nedelje, a Google vas nalazi kad neko traži ono što radite.",
     "ideal": "brendove koji objavljuju neredovno ili su potpuno utihnuli",
     "v": {
       "header": "Ova nedelja · spremno za objavu",
@@ -126,10 +102,38 @@
       "p5": "objava"
     }
   },
+  "s3": {
+    "name": "Reaktivacija lead-ova",
+    "h3": "Prihod iz baze koju već imate.",
+    "body": "Glasovni agent (radi i preko emaila) zove vaše stare i neaktivne kontakte s konkretnim razlogom da se vrate. Ljude koje ste već platili da privučete — naplaćujete i drugi put.",
+    "ideal": "svaki biznis sa bazom starih ili nekonvertovanih upita",
+    "v": {
+      "header": "Kampanja: stara baza · dan 3",
+      "r1n": "M. Petrović · upit iz marta",
+      "r1s": "termin zakazan",
+      "r2n": "J. Ilić · neaktivan 14 meseci",
+      "r2s": "zainteresovan — prati se",
+      "r3n": "S. Marković · nekonvertovan",
+      "r3s": "poziv zakazan za sutra"
+    }
+  },
+  "s4": {
+    "name": "Speed to Lead",
+    "h3": "Prvi stižete do svakog upita. Uvek.",
+    "body": "Čim neko ostavi podatke — kroz oglas, formu ili poruku — sistem ga zove ili mu piše odmah, dok je interesovanje na vrhuncu i dok konkurencija još nije ni videla upit.",
+    "ideal": "biznise koji vode plaćene oglase ili primaju upite kroz forme",
+    "v": {
+      "header": "Novi lead · Meta oglas",
+      "t1": "Prijava primljena",
+      "t2": "Sistem poziva lead",
+      "t3": "Razgovor u toku…",
+      "note": "konkurencija: još nije ni otvorila upit"
+    }
+  },
   "s5": {
     "name": "AI UGC kreative",
     "h3": "Više kreativa, brže testiranje, deo cene.",
-    "body": "UGC video oglasi generisani AI-jem — bez potrage za kreatorima, bez čekanja na snimanje, bez honorara po klipu. Kad vaši oglasi žive od obima kreativa, ovo je razlika između tri varijante mesečno i trideset: više testova, brže učenje, niža cena po pobedničkom oglasu.",
+    "body": "UGC video oglasi generisani AI-jem — bez potrage za kreatorima i čekanja na snimanje. Umesto tri varijante mesečno, trideset: više testova, brže učenje, niža cena po pobedničkom oglasu.",
     "ideal": "e-commerce i DTC brendove koji se oslanjaju na UGC oglase",
     "v": {
       "header": "Serija kreativa · proizvod X",
@@ -140,6 +144,18 @@
       "status": "u testiranju"
     }
   },
+  "s6": {
+    "name": "AI recepcioner",
+    "h3": "Sledeći korak: kad poruke pokrije chatbot, a ostanu propušteni pozivi.",
+    "body": "Kad chatbot preuzme pisane upite, telefon ostaje jedina rupa. AI recepcioner se javlja na dolazne pozive u glasu vašeg brenda, odgovara na česta pitanja i zakazuje termine. Nadogradnja na chatbot, ne zaseban proizvod — uvodimo ga kad količina poziva to opravda.",
+    "ideal": "poslove kod kojih i posle chatbota ostaje mnogo telefonskih poziva",
+    "v": {
+      "header": "Dolazni poziv · 21:47",
+      "caller": "Dobro veče, da li radite subotom? Trebalo bi mi šišanje…",
+      "agent": "Radimo! Subota u 11:00 je slobodna — da vas upišem?",
+      "result": "✓ Termin zakazan · ubačen u kalendar"
+    }
+  },
   "process": {
     "kicker": "Proces",
     "h2": "Od poziva do sistema koji radi",
@@ -147,7 +163,7 @@
     "docNo": "br. 00",
     "s1": {
       "title": "Besplatan strateški poziv",
-      "body": "Prolazimo kroz vaš način rada i nalazimo tačno gde prihod curi: propušteni pozivi, zaboravljeni upiti, mrtva baza, tišina na mrežama. Izlazite sa konkretnim planom — sarađivali sa nama posle ili ne."
+      "body": "Prolazimo kroz vaš način rada i nalazimo tačno gde prihod curi: propušteni upiti, zaboravljeni lead-ovi, mrtva baza, tišina na mrežama. Izlazite sa konkretnim planom — sarađivali sa nama posle ili ne."
     },
     "s2": {
       "title": "Mi gradimo sistem",
@@ -180,7 +196,7 @@
     "email": "Email adresa",
     "business": "Biznis / sajt",
     "message": "Poruka",
-    "messagePh": "Npr: vodimo stomatološku ordinaciju, propuštamo pozive posle 17h…",
+    "messagePh": "Npr: vodimo stomatološku ordinaciju, ne stižemo da odgovorimo na sve poruke i upite…",
     "send": "Pošalji poruku",
     "sending": "Šalje se…",
     "success": "Poruka je stigla. Javljamo se u roku od 24 sata — verovatno i brže.",
