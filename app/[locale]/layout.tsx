@@ -63,7 +63,7 @@ const jsonLd = {
       alternateName: "Double O Agency",
       url: `${SITE_URL}/`,
       logo: `${SITE_URL}/og.png`,
-      email: "hello@doubleo.agency",
+      email: "lazar.gosic@doubleo.agency",
       description:
         "AI automation agency: a chatbot for website, Instagram and Viber/WhatsApp that answers enquiries and books appointments, plus content, lead reactivation and — as an upgrade — an AI phone receptionist. Done-for-you, 24/7.",
     },
