@@ -328,7 +328,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="kicker">{t("contact.kicker")}</p>
           <h2>{t("contact.h2")}</h2>
           <p>{t("contact.body")}</p>
-          <p className="contact__alt">hello@doubleo.agency</p>
+          <p className="contact__alt">lazar.gosic@doubleo.agency</p>
         </Reveal>
 
         <ContactForm />
