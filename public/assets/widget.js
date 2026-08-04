@@ -30,8 +30,8 @@
       error: script.getAttribute('data-error') || 'Sorry — something went wrong on my end.',
       errorFallback: script.getAttribute('data-error-fallback') || 'You can book directly here: {url}',
       errorRetry: script.getAttribute('data-error-retry') || 'Please try again in a moment.',
-      accent: script.getAttribute('data-accent') || '#9fe870',
-      accentText: script.getAttribute('data-accent-text') || '#163300',
+      accent: script.getAttribute('data-accent') || '#d37bff',
+      accentText: script.getAttribute('data-accent-text') || '#ffffff',
       position: script.getAttribute('data-position') === 'left' ? 'left' : 'right',
       fallbackUrl: script.getAttribute('data-fallback-url') || '',
       storageKey: script.getAttribute('data-storage-key') || 'doubleo_chat',
@@ -79,50 +79,57 @@
   var root = host.attachShadow({ mode: 'open' });
 
   // ---------------------------------------------------------------------------
-  // Design tokens — from app/globals.css (Wise-inspired light design system).
-  // Shadow DOM doesn't inherit page styles, so every token is restated here.
-  // Var names are kept from the old dark theme but repointed to light values,
-  // so only the header (now a forest block), radii and a few literals differ.
-  //   Color:  --ink #163300 (forest header) · --ink-2 #f4f6f2 (composer)
-  //           --panel #ffffff (card/log/input) · --text #454745 · --muted #6b706a
-  //           --line #e8ebe6 / --line-strong #d3d8cf (dividers)
-  //           --green #9fe870 (lime accent, CTA fill) · hover #8fdb5e
-  //           --green-wash #e2f6d5 (pale green, user bubble) · --amber #cb272f (error red)
-  //           --them-wash #f4f6f2 (bot bubble)
+  // Design tokens — mirrored from app/styles/tokens.css and the site's own hero
+  // chat card (app/styles/chat.css), so the popped-out widget and the in-page
+  // chat read as the same product. Shadow DOM doesn't inherit page styles, so
+  // every token is restated here.
+  //   Color:  --ink #1b0c27 (header block + user bubble) · --page #f7f6f7 (composer)
+  //           --panel #ffffff (card/log/input) · --sunk #f2f0f3 (bot bubble)
+  //           --text/--muted are --ink at 78% / 45%, as on the site
+  //           --line #edebee / --line-strong #ddd9e0 (dividers)
+  //           --aurora (brand gradient, launcher fill — same as the brand tile)
+  //           --live #1f9254 (the site's --success, used for the online dot)
+  //           --amber #cb272f (--error)
   //   Type:   Inter Variable everywhere (loaded document-wide via @fontsource).
-  //   Shape:  --radius 18px on panel/bubbles/input · shadow 0 10px 32px rgba(0,0,0,.15)
+  //           General Sans is deliberately not used: next/font hashes its family
+  //           name, so there is nothing stable to reference from a shadow root.
+  //   Shape:  --radius 24px panel · 12px bubbles/input · layered card shadow
   //           · ease cubic-bezier(.22,1,.36,1). Launcher stays circular.
-  //   Accent (launcher/send) is data-attribute driven: --accent #9fe870 fill,
-  //   --accent-text #163300 forest text.
+  //   Accent: data-attribute driven — --accent fills the send button and draws
+  //   focus rings. The launcher uses the aurora gradient instead, matching the
+  //   brand tile in the nav and the assistant avatar in the hero chat.
   // ---------------------------------------------------------------------------
   var css = [
     ':host{all:initial}',
     '*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}',
     ':host{',
       '--accent:' + cfg.accent + ';--accent-text:' + cfg.accentText + ';',
-      '--ink:#163300;--ink-2:#f4f6f2;--panel:#ffffff;',
-      '--text:#454745;--muted:#6b706a;',
-      '--line:#e8ebe6;--line-strong:#d3d8cf;',
-      '--green:#9fe870;--green-hi:#8fdb5e;--green-wash:#e2f6d5;',
-      '--amber:#cb272f;--them-wash:#f4f6f2;',
-      '--shadow:0 10px 32px rgba(0,0,0,.15);--radius:18px;--ease:cubic-bezier(.22,1,.36,1);',
+      '--ink:#1b0c27;--page:#f7f6f7;--panel:#ffffff;--sunk:#f2f0f3;',
+      '--text:rgba(28,12,38,.78);--muted:rgba(28,12,38,.45);',
+      '--line:#edebee;--line-strong:#ddd9e0;',
+      '--aurora:linear-gradient(143deg,#80a9fc 0%,#d37bff 31%,#fcab83 70%,#ff49d4 100%);',
+      '--live:#1f9254;--amber:#cb272f;',
+      '--shadow:0 2px 5px rgba(0,0,0,.07),0 8px 8px rgba(0,0,0,.06),0 19px 11px rgba(0,0,0,.04),0 33px 13px rgba(0,0,0,.01);',
+      '--radius:24px;--radius-msg:12px;--radius-sm:12px;--ease:cubic-bezier(.22,1,.36,1);',
       '--font-display:"Inter Variable","Inter",system-ui,-apple-system,sans-serif;',
       '--font-body:"Inter Variable","Inter",system-ui,-apple-system,sans-serif;',
       'font-family:var(--font-body)',
     '}',
 
-    /* Launcher bubble — circular, mirrors the site's pulsing "live" dot */
+    /* Launcher bubble — the brand tile as a circle: aurora fill with the same
+       inset highlights, white glyph, and a green online dot on the shoulder */
     '.doc-launcher{position:fixed;bottom:22px;' + cfg.position + ':22px;width:56px;height:56px;',
-    'border:1px solid var(--line-strong);border-radius:50%;background:var(--accent);color:var(--accent-text);',
-    'cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;',
+    'border:0;border-radius:50%;background:var(--aurora);color:#fff;',
+    'cursor:pointer;display:flex;align-items:center;justify-content:center;',
+    'box-shadow:inset 0 -2px 4px rgba(255,255,255,.25),inset 0 1px 1px rgba(255,255,255,.4),var(--shadow);',
     'transition:transform .15s var(--ease),filter .15s;font-family:var(--font-display)}',
-    '.doc-launcher:hover{filter:brightness(.95);transform:translateY(-2px)}',
+    '.doc-launcher:hover{filter:brightness(1.04);transform:translateY(-2px)}',
     '.doc-launcher:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:50%}',
     '.doc-launcher svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2}',
     '.doc-launcher-ring{position:absolute;top:-3px;' + (cfg.position === 'left' ? 'left' : 'right') + ':-3px;',
-    'width:10px;height:10px;border-radius:50%;background:var(--ink);border:2px solid var(--panel);',
+    'width:10px;height:10px;border-radius:50%;background:var(--live);border:2px solid var(--panel);',
     'animation:docPulseRing 2.4s infinite}',
-    '@keyframes docPulseRing{0%,100%{box-shadow:0 0 0 0 rgba(22,51,0,.45)}50%{box-shadow:0 0 0 5px rgba(22,51,0,0)}}',
+    '@keyframes docPulseRing{0%,100%{box-shadow:0 0 0 0 rgba(31,146,84,.45)}50%{box-shadow:0 0 0 5px rgba(31,146,84,0)}}',
 
     /* Panel — sharp corners, hairline border, the site's card treatment */
     '.doc-panel{position:fixed;bottom:92px;' + cfg.position + ':22px;width:376px;max-width:calc(100vw - 24px);',
@@ -139,30 +146,31 @@
     '.doc-title{font:600 .95rem var(--font-display);letter-spacing:-.01em;line-height:1.2}',
     '.doc-sub{display:flex;align-items:center;gap:.4rem;margin-top:.3rem;',
     'font-size:.78rem;color:rgba(255,255,255,.72)}',
-    '.doc-sub-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex:none;',
+    '.doc-sub-dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none;',
     'animation:docPulseDot 2.4s infinite}',
-    '@keyframes docPulseDot{0%,100%{box-shadow:0 0 0 0 rgba(159,232,112,.6)}50%{box-shadow:0 0 0 4px rgba(159,232,112,0)}}',
+    '@keyframes docPulseDot{0%,100%{box-shadow:0 0 0 0 rgba(31,146,84,.6)}50%{box-shadow:0 0 0 4px rgba(31,146,84,0)}}',
     '.doc-close{background:none;border:1px solid transparent;color:rgba(255,255,255,.72);cursor:pointer;',
     'padding:6px;transition:color .15s,border-color .15s}',
     '.doc-close:hover{color:#fff}',
-    '.doc-close:focus-visible{outline:2px solid var(--green);outline-offset:2px}',
+    '.doc-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}',
     '.doc-close svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;display:block}',
 
     /* Messages */
     '.doc-log{flex:1;overflow-y:auto;padding:1.1rem 1rem;display:flex;flex-direction:column;',
     'gap:.6rem;background:var(--panel)}',
     '.doc-msg{max-width:84%;padding:.6rem .85rem;font-size:.9rem;line-height:1.5;',
-    'white-space:pre-wrap;word-wrap:break-word;border:1px solid var(--line);border-radius:var(--radius)}',
+    'white-space:pre-wrap;word-wrap:break-word;border:1px solid var(--line);border-radius:var(--radius-msg)}',
     '.doc-msg a{color:inherit;text-decoration:underline}',
-    '.doc-msg-bot{background:var(--them-wash);color:var(--text);align-self:flex-start;border-bottom-left-radius:6px}',
-    '.doc-msg-user{background:var(--green-wash);border-color:transparent;',
-    'color:var(--ink);align-self:flex-end;border-bottom-right-radius:6px}',
+    '.doc-msg-bot{background:var(--sunk);color:var(--text);align-self:flex-start;border-bottom-left-radius:6px}',
+    /* User bubble is the near-black plum, as in the hero chat card */
+    '.doc-msg-user{background:var(--ink);border-color:transparent;',
+    'color:#fff;align-self:flex-end;border-bottom-right-radius:6px}',
     '.doc-msg-err{background:rgba(203,39,47,.08);border-color:rgba(203,39,47,.3);',
     'color:var(--amber);align-self:flex-start}',
 
     /* Typing indicator */
-    '.doc-typing{align-self:flex-start;background:var(--them-wash);border:1px solid var(--line);',
-    'border-radius:var(--radius);padding:.7rem .85rem;display:flex;gap:5px}',
+    '.doc-typing{align-self:flex-start;background:var(--sunk);border:1px solid var(--line);',
+    'border-radius:var(--radius-msg);padding:.7rem .85rem;display:flex;gap:5px}',
     '.doc-typing i{width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.6;',
     'animation:docTypingBounce 1.2s infinite ease-in-out;font-style:normal}',
     '.doc-typing i:nth-child(2){animation-delay:.15s}',
@@ -170,18 +178,18 @@
     '@keyframes docTypingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}',
 
     /* Composer */
-    '.doc-form{display:flex;gap:8px;padding:.75rem;border-top:1px solid var(--line);background:var(--ink-2)}',
+    '.doc-form{display:flex;gap:8px;padding:.75rem;border-top:1px solid var(--line);background:var(--page)}',
     '.doc-input{flex:1;border:1px solid var(--line-strong);background:var(--panel);color:var(--text);',
     'padding:.6rem .8rem;font-size:.88rem;font-family:var(--font-body);resize:none;max-height:96px;',
-    'border-radius:14px;line-height:1.4;transition:border-color .15s}',
+    'border-radius:var(--radius-sm);line-height:1.4;transition:border-color .15s}',
     '.doc-input::placeholder{color:var(--muted)}',
     '.doc-input:focus{outline:none;border-color:var(--ink)}',
     '.doc-send{border:1px solid var(--accent);background:var(--accent);color:var(--accent-text);width:42px;',
-    'border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;',
+    'border-radius:var(--radius-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;',
     'transition:background-color .15s,transform .15s var(--ease),filter .15s}',
     '.doc-send:hover:not(:disabled){filter:brightness(.95);transform:translateY(-1px)}',
     '.doc-send:disabled{opacity:.4;cursor:default}',
-    '.doc-send:focus-visible{outline:2px solid var(--green);outline-offset:2px}',
+    '.doc-send:focus-visible{outline:2px solid var(--ink);outline-offset:2px}',
     '.doc-send svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}',
 
     /* Mobile: full-width sheet */
