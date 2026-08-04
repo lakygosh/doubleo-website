@@ -4,8 +4,17 @@ import type { ReactNode } from "react";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { generalSans, fragmentMono } from "@/lib/fonts";
-import { GA_MEASUREMENT_ID } from "@/lib/config";
-import { CONSENT_BOOTSTRAP } from "@/lib/consent";
+import { GA_MEASUREMENT_ID, GTM_CONTAINER_ID } from "@/lib/config";
+import { CONSENT_BOOTSTRAP, CONSENT_REQUIRED } from "@/lib/consent";
+
+/** GTM's install snippet, verbatim apart from the interpolated container ID. */
+const GTM_LOADER = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_CONTAINER_ID}');`;
+
+const GTM_NOSCRIPT = `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
 
 // Static "sr" default (the site's primary locale) rather than next-intl's getLocale():
 // this root layout is shared with /admin (not locale-prefixed), and reading the request
@@ -16,12 +25,19 @@ import { CONSENT_BOOTSTRAP } from "@/lib/consent";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="sr" className={`js ${generalSans.variable} ${fragmentMono.variable}`}>
-      <body>
-        {/* Plain inline <script>, not next/script: this has to be the first
-            thing that runs on the page, ahead of the GA tag below. */}
-        {GA_MEASUREMENT_ID && (
+      <head>
+        {/* Raw inline scripts, not next/script, because the order here is
+            load-bearing: the consent defaults must be in the dataLayer before
+            GTM starts firing tags, and next/script gives no such guarantee. */}
+        {CONSENT_REQUIRED && (
           <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOTSTRAP }} />
         )}
+        {GTM_CONTAINER_ID && <script dangerouslySetInnerHTML={{ __html: GTM_LOADER }} />}
+      </head>
+      <body>
+        {/* Fires without consent, but only for visitors with JavaScript off —
+            who cannot be shown the banner in the first place. */}
+        {GTM_CONTAINER_ID && <noscript dangerouslySetInnerHTML={{ __html: GTM_NOSCRIPT }} />}
         {children}
         <Analytics />
         {GA_MEASUREMENT_ID && (

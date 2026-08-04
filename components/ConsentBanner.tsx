@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { GA_MEASUREMENT_ID } from "@/lib/config";
-import { readConsent, writeConsent, type ConsentChoice } from "@/lib/consent";
+import { CONSENT_REQUIRED, readConsent, writeConsent, type ConsentChoice } from "@/lib/consent";
 
 /**
  * Non-blocking: consent mode already holds the cookies back, so there is no
@@ -18,7 +17,7 @@ export function ConsentBanner() {
   // prerendered — so the banner is decided after mount rather than rendered
   // into the static HTML.
   useEffect(() => {
-    if (GA_MEASUREMENT_ID && readConsent() === null) setOpen(true);
+    if (CONSENT_REQUIRED && readConsent() === null) setOpen(true);
   }, []);
 
   if (!open) return null;

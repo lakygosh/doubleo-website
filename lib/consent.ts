@@ -8,9 +8,17 @@
  *
  * The ad_* signals stay denied permanently — the site runs no Google Ads and
  * has nothing to gain from asking for them.
+ *
+ * The signals live in the shared dataLayer, so GTM-managed tags obey the same
+ * state as the hardcoded GA4 tag without any extra wiring.
  */
 
+import { GA_MEASUREMENT_ID, GTM_CONTAINER_ID } from "./config";
+
 export const CONSENT_KEY = "doubleo-consent";
+
+/** With neither tag configured there is nothing to ask about. */
+export const CONSENT_REQUIRED = Boolean(GA_MEASUREMENT_ID || GTM_CONTAINER_ID);
 
 export type ConsentChoice = "granted" | "denied";
 
@@ -21,10 +29,10 @@ declare global {
 }
 
 /**
- * Must execute before gtag.js — `default` has to land in the dataLayer ahead
- * of the `config` call, otherwise the first page view sets cookies before the
- * visitor has been asked. Rendered inline at the top of <body> in the root
- * layout, so it runs during parse while GA loads afterInteractive.
+ * Must execute before the GTM loader and before gtag.js — `default` has to
+ * land in the dataLayer ahead of anything that fires tags, otherwise the first
+ * page view sets cookies before the visitor has been asked. Rendered as the
+ * first inline script in <head> of the root layout.
  *
  * It also replays a stored choice, so a returning visitor who accepted is
  * measured properly from the very first hit rather than from the moment the
