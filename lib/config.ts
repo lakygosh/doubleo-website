@@ -14,6 +14,9 @@ export const CHAT_WEBHOOK_URL =
 
 export const CONTACT_EMAIL = "lazar.gosic@doubleo.agency";
 
+/** GA4 measurement ID. Empty string disables the tag entirely (see app/layout.tsx). */
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-QM6DQQGZQC";
+
 export const SOCIALS = {
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
