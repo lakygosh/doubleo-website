@@ -1,0 +1,140 @@
+/* ============================================================
+   Double O — design tokens
+   Palette cloned from the Fluence AI reference:
+   pastel aurora on off-white, near-black for inverted blocks.
+   ============================================================ */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────── */
+  --page: #f7f6f7;
+  --surface: #ffffff;
+  --surface-2: #faf9fa;
+  --surface-sunk: #f2f0f3;
+
+  /* ── Ink ──────────────────────────────────────────────── */
+  --ink: #1b0c27;
+  --ink-80: rgba(28, 12, 38, 0.8);
+  --ink-70: rgba(28, 12, 38, 0.7);
+  --ink-60: rgba(28, 12, 38, 0.6);
+  --ink-40: rgba(28, 12, 38, 0.4);
+
+  /* ── Lines ────────────────────────────────────────────── */
+  --line: #edebee;
+  --line-strong: #ddd9e0;
+  --line-glass: rgba(255, 255, 255, 0.3);
+
+  /* ── Accent + aurora ──────────────────────────────────── */
+  --accent: #d37bff;
+  --accent-soft: #f3e9fa;
+  --accent-ink: #7a2ea8;
+
+  --c-blue: #80aafd;
+  --c-purple: #d37bff;
+  --c-peach: #fcac84;
+  --c-pink: #ff49d4;
+
+  --aurora: linear-gradient(143deg, #80a9fc 0%, #d37bff 31%, #fcab83 70%, #ff49d4 100%);
+  --aurora-soft: linear-gradient(140deg, #efe8f6 0%, #d588fb 61%, #ff49d4 100%);
+  --aurora-wash: linear-gradient(140deg, #efe8f6 0%, #f3e9fa 45%, #f7e6dd 100%);
+
+  /* Bento tints */
+  --tint-lilac: #eae2f2;
+  --tint-violet: #f3e9fa;
+  --tint-rose: #f5e4ef;
+  --tint-peach: #f7e6dd;
+  --tint-sky: #dfe9fd;
+
+  /* ── Inverted blocks (About, CTA, Footer) ─────────────── */
+  --dark: #0b0510;
+  --dark-2: #1b0c27;
+  --on-dark: #ffffff;
+  --on-dark-70: rgba(255, 255, 255, 0.7);
+  --on-dark-50: rgba(255, 255, 255, 0.5);
+  --on-dark-line: rgba(255, 255, 255, 0.12);
+
+  /* ── State ────────────────────────────────────────────── */
+  --success: #1f9254;
+  --error: #cb272f;
+
+  /* ── Shape ────────────────────────────────────────────── */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 40px;
+  --r-pill: 999px;
+
+  /* ── Elevation (layered, as on the reference) ─────────── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 5px rgba(0, 0, 0, 0.04);
+  --shadow-card:
+    0 2px 5px rgba(0, 0, 0, 0.07), 0 8px 8px rgba(0, 0, 0, 0.06),
+    0 19px 11px rgba(0, 0, 0, 0.04), 0 33px 13px rgba(0, 0, 0, 0.01);
+  --shadow-float: 0 5px 20px rgba(0, 0, 0, 0.06);
+  --shadow-glass:
+    inset 0 4px 4px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* ── Glass ────────────────────────────────────────────── */
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-bg-strong: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(10px);
+
+  /* ── Neumorphism ──────────────────────────────────────────
+     Every button on the site uses this: raised at rest, pressed
+     (inset) on hover. The surface colour has to sit close to what's
+     behind it or the illusion breaks, so `--neu-surface` is
+     overridden per context (dark sections, sunken panels). */
+  --neu-surface: #f2f0f4;
+  --neu-light: rgba(255, 255, 255, 0.8);
+  --neu-dark: rgba(0, 0, 0, 0.25);
+
+  --neu-raised: -5px -5px 10px var(--neu-light), 5px 5px 10px var(--neu-dark);
+  --neu-pressed:
+    -1px -1px 5px rgba(255, 255, 255, 0.6), 1px 1px 5px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 5px rgba(255, 255, 255, 1), inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Same relationship, inverted for the near-black sections. */
+  --neu-surface-dark: #191122;
+  --neu-raised-dark:
+    -5px -5px 10px rgba(255, 255, 255, 0.06), 5px 5px 12px rgba(0, 0, 0, 0.7);
+  --neu-pressed-dark:
+    -1px -1px 4px rgba(255, 255, 255, 0.05), 1px 1px 4px rgba(0, 0, 0, 0.6),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.09), inset 2px 2px 5px rgba(0, 0, 0, 0.75);
+
+  /* ── Layout ───────────────────────────────────────────── */
+  --wrap: 1240px;
+  --wrap-narrow: 800px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(4.5rem, 9vw, 8.5rem);
+  --nav-h: 72px;
+
+  /* ── Type scale (fluid) ───────────────────────────────── */
+  --fs-display: clamp(2.5rem, 6vw, 4.25rem);
+  --fs-h1: clamp(2.25rem, 5.2vw, 3.75rem);
+  --fs-h2: clamp(1.95rem, 4.2vw, 3.25rem);
+  --fs-h3: clamp(1.35rem, 2.2vw, 1.75rem);
+  --fs-h4: clamp(1.1rem, 1.6vw, 1.3rem);
+  --fs-lead: clamp(1rem, 1.25vw, 1.15rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.9rem;
+  --fs-xs: 0.8rem;
+  --fs-mono: 0.72rem;
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --ease: cubic-bezier(0.12, 0.23, 0.5, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.18s;
+  --dur: 0.35s;
+  --dur-slow: 0.6s;
+
+  /* ── Z-index ──────────────────────────────────────────── */
+  --z-nav: 100;
+  --z-menu: 110;
+  --z-widget: 90;
+}
+
+/* next/font injects --font-display (General Sans) and --font-mono
+   (Fragment Mono) on <html>. Inter comes from @fontsource-variable/inter,
+   which ships only @font-face rules, so its variable is declared here. */
+:root {
+  --font-body: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+}

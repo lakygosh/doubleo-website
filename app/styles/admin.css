@@ -1,0 +1,106 @@
+/* ============================================================
+   Admin (internal). Retinted to the new palette; structure
+   carried over verbatim from the previous globals.css.
+   ============================================================ */
+
+.admin {
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink-80);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+.admin h1,
+.admin h2,
+.admin h3 {
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.admin a {
+  color: var(--accent-ink);
+  text-underline-offset: 2px;
+}
+.admin hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+.admin label {
+  font-size: 0.95rem;
+  color: var(--ink-70);
+}
+.admin input[type="email"],
+.admin input[type="password"],
+.admin input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 1rem var(--font-body), system-ui, sans-serif;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--r-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.admin input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.admin button {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.15s var(--ease-out), opacity 0.15s;
+}
+.admin button:hover:not(:disabled) {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+.admin button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.admin__primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.admin__primary:hover:not(:disabled) {
+  background: var(--dark-2);
+}
+.admin__danger {
+  border-color: var(--error);
+  color: var(--error);
+  background: var(--surface);
+}
+.admin__danger:hover:not(:disabled) {
+  background: rgba(203, 39, 47, 0.08);
+}
+.admin__card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+}
+.admin__badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--r-pill);
+  font: 600 0.75rem var(--font-display), system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.admin__badge--published {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.admin__badge--draft {
+  background: var(--surface-sunk);
+  color: var(--ink-60);
+}

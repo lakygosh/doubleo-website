@@ -6,3 +6,7 @@ out/
 .vercel
 .env*.local
 *.tsbuildinfo
+
+# Local-only: agent settings and the scraped reference copy of the old site.
+.claude/
+original-website-html
