@@ -95,11 +95,23 @@
 
 /* ── Bento ──────────────────────────────────────────────── */
 
+/* Two rows of two, each row split unevenly and mirrored: narrow + wide,
+   then wide + narrow. The art panels keep a fixed height instead of an
+   aspect ratio so both cards in a row line up despite the width change. */
 .bento__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.bento__cell:nth-child(1),
+.bento__cell:nth-child(4) {
+  grid-column: span 5;
+}
+.bento__cell:nth-child(2),
+.bento__cell:nth-child(3) {
+  grid-column: span 7;
 }
 
 .bento__card {
@@ -123,7 +135,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--r-md);
-  aspect-ratio: 16 / 10;
+  height: clamp(190px, 21vw, 290px);
   display: grid;
   place-items: center;
   padding: clamp(0.9rem, 2vw, 1.5rem);
@@ -154,6 +166,9 @@
   .bento__grid {
     grid-template-columns: 1fr;
   }
+  .bento__cell:nth-child(n) {
+    grid-column: 1 / -1;
+  }
 }
 
 /* ── Bento card mocks ───────────────────────────────────── */
@@ -164,6 +179,14 @@
   max-width: 320px;
   max-height: 100%;
   font-size: 0.78rem;
+}
+
+/* The wide cells give the art panel more room than the narrow ones —
+   let the mock grow into it instead of floating in the middle. */
+@container (min-width: 520px) {
+  .mock {
+    max-width: 420px;
+  }
 }
 
 .mock__panel {
