@@ -529,3 +529,85 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ── Consent banner ───────────────────────────────────────────
+   Bottom-left card, deliberately clear of the chat launcher
+   (fixed bottom-right, 56px + 22px margin) so neither blocks the
+   other. Non-modal: consent mode already withholds the cookies,
+   so the page stays readable while the choice is open. */
+
+.consent {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: var(--z-consent);
+  width: min(26rem, calc(100vw - 44px));
+  padding: 1.15rem 1.25rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  animation: consent-in var(--dur) var(--ease-out) both;
+}
+
+@keyframes consent-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consent {
+    animation: none;
+  }
+}
+
+.consent__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display), var(--font-body);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.consent__body {
+  margin: 0 0 1rem;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+
+.consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.consent__link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: var(--fs-xs);
+  color: var(--ink-60);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consent__link:hover {
+  color: var(--ink);
+}
+
+/* Full width on phones, lifted above the chat launcher rather than
+   sharing the corner with it. */
+@media (max-width: 560px) {
+  .consent {
+    left: 12px;
+    right: 12px;
+    bottom: 88px;
+    width: auto;
+  }
+  .consent__actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

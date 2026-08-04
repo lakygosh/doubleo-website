@@ -6,6 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SetHtmlLang } from "@/components/SetHtmlLang";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SOLUTIONS } from "@/lib/solutions";
@@ -108,6 +109,7 @@ export default async function LocaleLayout({
         <Nav />
         {children}
         <Footer />
+        <ConsentBanner />
         <script
           src="/assets/widget.js"
           defer

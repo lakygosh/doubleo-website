@@ -5,6 +5,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { generalSans, fragmentMono } from "@/lib/fonts";
 import { GA_MEASUREMENT_ID } from "@/lib/config";
+import { CONSENT_BOOTSTRAP } from "@/lib/consent";
 
 // Static "sr" default (the site's primary locale) rather than next-intl's getLocale():
 // this root layout is shared with /admin (not locale-prefixed), and reading the request
@@ -16,6 +17,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="sr" className={`js ${generalSans.variable} ${fragmentMono.variable}`}>
       <body>
+        {/* Plain inline <script>, not next/script: this has to be the first
+            thing that runs on the page, ahead of the GA tag below. */}
+        {GA_MEASUREMENT_ID && (
+          <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOTSTRAP }} />
+        )}
         {children}
         <Analytics />
         {GA_MEASUREMENT_ID && (

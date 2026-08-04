@@ -689,6 +689,14 @@
     "errorRetry": "Try again in a moment."
   },
 
+  "consent": {
+    "title": "Cookies and analytics",
+    "body": "We use Google Analytics to see which pages get read. Until you agree, no cookies are set and measurement stays anonymous.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "privacy": "Read the privacy policy"
+  },
+
   "footer": {
     "tagline": "AI systems that answer, follow up and book — so nothing gets missed.",
     "navLabel": "Footer navigation",

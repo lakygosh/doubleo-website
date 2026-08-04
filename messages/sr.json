@@ -689,6 +689,14 @@
     "errorRetry": "Pokušajte ponovo za trenutak."
   },
 
+  "consent": {
+    "title": "Kolačići i analitika",
+    "body": "Koristimo Google Analytics da vidimo koje se stranice čitaju. Dok ne pristanete, ne postavljamo kolačiće i merenje ostaje anonimno.",
+    "accept": "Prihvatam",
+    "decline": "Odbijam",
+    "privacy": "Pročitajte politiku privatnosti"
+  },
+
   "footer": {
     "tagline": "AI sistemi koji odgovaraju, prate i zakazuju — da ništa ne promakne.",
     "navLabel": "Navigacija u podnožju",
