@@ -1,0 +1,531 @@
+/* ============================================================
+   Nav, solutions dropdown, mobile sheet, footer
+   ============================================================ */
+
+/* ── Brand lockup ───────────────────────────────────────── */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.brand__tile {
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--aurora);
+  box-shadow: inset 0 -2px 4px rgba(255, 255, 255, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.brand__text {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.06rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* ── Nav shell ──────────────────────────────────────────── */
+
+.nav-wrap {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100% - 2rem, var(--wrap));
+  z-index: var(--z-nav);
+  transition: width var(--dur) var(--ease-out), top var(--dur) var(--ease-out);
+}
+
+/* Collapses to a compact centred pill once you scroll. */
+.nav-wrap.is-scrolled {
+  width: min(100% - 2rem, 860px);
+  top: 10px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.9rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-glass);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.nav-wrap.is-scrolled .nav {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-float);
+}
+
+.nav__brand {
+  flex-shrink: 0;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-inline: auto;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--r-xs);
+  font-size: 0.92rem;
+  color: var(--ink-60);
+  white-space: nowrap;
+  transition: color var(--dur-fast), background-color var(--dur-fast);
+}
+
+.nav__link:hover,
+.nav__link.is-open {
+  color: var(--ink);
+  background: rgba(27, 12, 39, 0.05);
+}
+
+.nav__link--trigger svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.nav__link--trigger.is-open svg {
+  transform: rotate(180deg);
+}
+
+.nav__sol {
+  position: relative;
+}
+
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.nav__cta {
+  white-space: nowrap;
+}
+
+.nav__burger {
+  display: none;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background: var(--neu-surface);
+  box-shadow: var(--neu-raised);
+  transition: box-shadow var(--dur) var(--ease-out);
+}
+.nav__burger:hover,
+.nav__burger[aria-expanded="true"] {
+  box-shadow: var(--neu-pressed);
+}
+
+.burger {
+  display: block;
+  width: 20px;
+  height: 14px;
+  position: relative;
+}
+.burger i {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur-fast);
+}
+.burger i:nth-child(1) { top: 2px; }
+.burger i:nth-child(2) { bottom: 2px; }
+.burger.is-open i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.burger.is-open i:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+
+/* ── Solutions dropdown ─────────────────────────────────── */
+
+.solmenu {
+  position: absolute;
+  top: calc(100% + 0.7rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 620px);
+  padding: 0.6rem;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-card);
+  animation: solmenu-in 0.18s var(--ease-out) both;
+  z-index: var(--z-menu);
+}
+
+@keyframes solmenu-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.solmenu__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem;
+}
+
+.solmenu__item {
+  display: flex;
+  gap: 0.7rem;
+  padding: 0.65rem 0.7rem;
+  border-radius: var(--r-sm);
+  transition: background-color var(--dur-fast);
+}
+.solmenu__item:hover {
+  background: var(--surface-sunk);
+}
+
+.solmenu__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: currentColor;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+/* The wash is the accent at low alpha; the glyph itself stays solid. */
+.solmenu__icon > svg {
+  color: #fff;
+}
+
+.solmenu__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.solmenu__name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.solmenu__badge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.12rem 0.38rem;
+  border-radius: var(--r-pill);
+  background: var(--aurora);
+  color: #fff;
+}
+
+.solmenu__desc {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--ink-60);
+}
+
+.solmenu__all {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.65rem;
+  text-align: center;
+  border-radius: var(--r-pill);
+  background: var(--neu-surface);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-70);
+  box-shadow: var(--neu-raised);
+  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast);
+}
+.solmenu__all:hover {
+  box-shadow: var(--neu-pressed);
+  color: var(--accent-ink);
+}
+
+/* ── Language switcher ──────────────────────────────────── */
+
+.lang {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-pressed);
+}
+
+/* Inactive sits flush in the well; the active one lifts out of it. */
+.lang__btn {
+  padding: 0.28rem 0.62rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink-60);
+  cursor: pointer;
+  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast);
+}
+.lang__btn:hover:not(.is-active) {
+  color: var(--accent-ink);
+}
+.lang__btn.is-active {
+  background: var(--neu-surface);
+  color: var(--ink);
+  box-shadow: var(--neu-raised);
+}
+
+.section--dark .lang,
+.footer .lang {
+  background: var(--neu-surface-dark);
+  box-shadow: var(--neu-pressed-dark);
+}
+.section--dark .lang__btn,
+.footer .lang__btn {
+  color: var(--on-dark-50);
+}
+.section--dark .lang__btn.is-active,
+.footer .lang__btn.is-active {
+  background: var(--neu-surface-dark);
+  color: var(--on-dark);
+  box-shadow: var(--neu-raised-dark);
+}
+
+/* ── Mobile sheet ───────────────────────────────────────── */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  background: var(--page);
+  overflow-y: auto;
+  padding: calc(var(--nav-h) + 1.5rem) var(--gutter) 2.5rem;
+  animation: sheet-in 0.22s var(--ease-out) both;
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sheet__inner {
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.sheet__label {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-40);
+  margin-bottom: 0.6rem;
+}
+
+.sheet__sol {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 2rem;
+}
+
+.sheet__solitem {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+
+.sheet__links {
+  display: grid;
+  gap: 0.1rem;
+  margin-bottom: 2rem;
+}
+
+.sheet__link {
+  display: block;
+  padding: 0.6rem 0.2rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+
+.sheet__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 7vw, 6rem) 0;
+}
+
+/* Sits behind the footer content (which is z-index 1) and is clipped by the
+   footer's own overflow. Spins about its centre rather than drifting; the glow
+   is symmetric so it doesn't orbit with the artwork. */
+.footer__shape {
+  right: 5%;
+  top: 14%;
+  animation: shape-spin 30s linear infinite;
+  filter: drop-shadow(0 0 34px rgba(120, 60, 180, 0.22));
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-bottom: 3rem;
+}
+
+.footer__brand .brand__text {
+  color: var(--on-dark);
+}
+
+.footer__tagline {
+  margin-top: 0.9rem;
+  color: var(--on-dark-70);
+  font-size: 0.95rem;
+  max-width: 24ch;
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--on-dark-line);
+  color: var(--on-dark-70);
+  transition: color var(--dur-fast), border-color var(--dur-fast), background-color var(--dur-fast);
+}
+.footer__social a:hover {
+  color: var(--on-dark);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.footer__coltitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+  margin-bottom: 0.9rem;
+}
+
+.footer__col ul {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.footer__col a {
+  font-size: 0.92rem;
+  color: var(--on-dark-70);
+  transition: color var(--dur-fast);
+}
+.footer__col a:hover {
+  color: var(--on-dark);
+}
+
+.footer__muted {
+  font-size: 0.88rem;
+  color: var(--on-dark-50);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 1.4rem 2rem;
+  border-top: 1px solid var(--on-dark-line);
+  font-size: 0.85rem;
+  color: var(--on-dark-50);
+}
+
+.footer__ghost {
+  position: absolute;
+  left: 50%;
+  bottom: -0.22em;
+  transform: translateX(-50%);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(5rem, 19vw, 17rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.038);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 1080px) {
+  .nav__links {
+    display: none;
+  }
+  .nav__burger {
+    display: block;
+  }
+  .nav-wrap,
+  .nav-wrap.is-scrolled {
+    width: min(100% - 1.5rem, 620px);
+  }
+}
+
+@media (max-width: 560px) {
+  .nav__cta {
+    display: none;
+  }
+  .footer__top {
+    grid-template-columns: 1fr;
+  }
+  .footer__cols {
+    grid-template-columns: 1fr 1fr;
+  }
+}

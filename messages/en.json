@@ -1,234 +1,701 @@
 {
   "meta": {
-    "title": "Double O — a chatbot that answers visitors and books appointments, 24/7",
-    "description": "A chatbot for your website, Instagram and Viber/WhatsApp that answers enquiries and books appointments in your place — plus lead reactivation, content and, as an upgrade, an AI phone receptionist. Book a free strategy call."
+    "title": "Double O — AI systems that answer, follow up and book",
+    "description": "We build AI systems for businesses that lose revenue to unanswered messages, slow follow-up and silence online. Chatbots, outreach, content and voice — done for you, running 24/7."
   },
-  "skip": "Skip to content",
   "nav": {
+    "primary": "Main navigation",
     "solutions": "Solutions",
+    "solutionsAll": "See all solutions",
+    "flagship": "Flagship",
+    "about": "About",
     "process": "Process",
-    "why": "Why Double O",
-    "contact": "Contact",
+    "testimonials": "Results",
+    "faq": "FAQ",
     "blog": "Blog",
+    "contact": "Contact",
+    "more": "More",
     "cta": "Book a call",
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
     "langLabel": "Language selection"
   },
-  "hero": {
-    "status": "Answers in seconds · 24/7",
-    "h1": "A chatbot that answers every visitor and <em>books the appointment.</em>",
-    "sub": "One chatbot across your website, Instagram and Viber/WhatsApp — answering questions and booking appointments around the clock. One brain, every channel, no new hire.",
-    "ctaPrimary": "Book a free call",
-    "ctaSecondary": "Explore solutions",
-    "note": "Free strategy call · no obligation · you keep the plan either way"
-  },
-  "heroCard": {
-    "aria": "Chatbot preview: Nova answering a visitor and booking an appointment",
-    "name": "Nova",
-    "status": "Online · replies instantly",
-    "channel": "Instagram",
-    "q": "Hi! Are you open Saturday? I'd like to book a haircut.",
-    "a": "We are — Saturday at 11:00 is free. Want me to book it for you?",
-    "slotLabel": "Appointment booked",
-    "slot": "Sat · 11:00",
-    "foot": "Answered and booked in seconds — no one lifted a finger."
-  },
-  "strip": {
-    "calls": "Messages",
-    "callsV": "answered",
-    "leads": "Appointments",
-    "leadsV": "booked",
-    "content": "Channels",
-    "contentV": "3 in one",
-    "hours": "Business hours",
-    "hoursV": "don’t exist"
-  },
-  "problem": {
-    "kicker": "The problem",
-    "h2": "Where your revenue <em>leaks</em>",
-    "intro": "Small businesses don’t lose work because they’re bad at it. They lose it because nobody picks up in time, nobody follows up, and the brand goes quiet. Those aren’t three small flaws — they’re three holes draining money you already paid to attract.",
-    "l1": {
-      "time": "10:14 pm, Friday",
-      "leak": "A visitor messages you on Instagram: “Are you open Saturday?” Your reply lands on Monday — they’ve already booked with a competitor who answered in two minutes.",
-      "fix": "The chatbot replies in seconds — on your site, Instagram and Viber — and books the appointment before the visitor moves on."
+
+  "home": {
+    "hero": {
+      "eyebrow": "AI automation agency",
+      "h1": "Every enquiry answered. Every lead followed up.",
+      "sub": "Double O builds the AI systems that answer questions, follow up with leads and book appointments while you get on with the work.",
+      "ctaPrimary": "Book a free call",
+      "ctaSecondary": "Explore solutions",
+      "chat": {
+        "greeting": "Hi — I'm the Double O assistant. Ask me anything about what we build, how it works, or what it would cost for your business.",
+        "placeholder": "Ask anything…",
+        "agent": "Double O assistant",
+        "live": "Live",
+        "send": "Send message",
+        "typing": "Assistant is typing",
+        "error": "Something went wrong on our side.",
+        "errorCta": "Book a call instead",
+        "hint": "This is the real chatbot, not a demo. Try it — it's the same system we'd build for you.",
+        "chips": ["What do you build?", "How long does it take?", "What does it cost?"]
+      }
     },
-    "l2": {
-      "time": "Your contact list",
-      "leak": "Hundreds of old enquiries sit in a spreadsheet. You already paid for every one of them — in ads, time and work. Nobody calls them anymore.",
-      "fix": "Reactivation reaches out with a concrete reason to come back. Revenue from a list that was just sitting there."
+
+    "bento": {
+      "kicker": "What we do",
+      "h2": "We build, launch and maintain your AI automation system.",
+      "sub": "One team covering the whole path from first message to booked appointment — so nothing depends on someone remembering to reply.",
+      "cards": [
+        {
+          "title": "Everywhere your customers are",
+          "body": "Website, Instagram, WhatsApp, Viber, Email, Telegram... — one system, one agent, one place to manage it."
+        },
+        {
+          "title": "Trained on your business",
+          "body": "Your services, your prices, your rules and your calendar. It answers the way you would."
+        },
+        {
+          "title": "Follow-up that never forgets",
+          "body": "Old leads, unconverted enquiries, dormant customers — contacted with a reason to come back."
+        },
+        {
+          "title": "Tailored to your business",
+          "body": "No template answers, no template questions. A system built around how your business actually runs."
+        }
+      ],
+      "ui": {
+        "chWeb": "Website",
+        "chIg": "Instagram DM",
+        "chWa": "WhatsApp / Viber",
+        "chTe": "Telegram",
+        "training": "Learning your services…",
+        "autoTitle": "New booking",
+        "generate": "Confirm",
+        "to": "To",
+        "subject": "Subject",
+        "mailBody": "Hi Marko — you asked about pricing back in March. We've had a slot open up this week.",
+        "book": "Book a time",
+        "automate": "Automate everything"
+      }
     },
-    "l3": {
-      "time": "Weeks of silence",
-      "leak": "A quiet profile looks like a closed shop. Customers can’t find you on Google, and trust erodes with every week you don’t post.",
-      "fix": "The content system publishes for you — consistently, in your voice — and writes the SEO articles that make Google recommend you."
+
+    "solutions": {
+      "kicker": "Solutions",
+      "h2": "Six systems. One outcome: more booked work.",
+      "sub": "Start with the chatbot — it catches what you're already losing. Add the rest as the bottleneck moves.",
+      "idealFor": "Ideal for:",
+      "readMore": "See how it works",
+      "flagship": "Flagship"
     },
-    "leakLabel": "The leak",
-    "fixLabel": "Double O",
-    "outro": "The answer isn’t another hire. It’s a system that never sleeps, never forgets and never asks for a break."
+
+    "marquee": {
+      "items": [
+        "Chatbot automation",
+        "Lead reactivation",
+        "Speed to lead",
+        "Blog automation",
+        "AI UGC creatives",
+        "Voice agents",
+        "CRM integration",
+        "Appointment booking"
+      ]
+    },
+
+    "about": {
+      "kicker": "About",
+      "body": "Double O is not an AI company. We're marketing and operations people who got tired of watching good businesses lose customers to an unanswered message. We build the systems that close that gap."
+    },
+
+    "benefits": {
+      "kicker": "Why Double O",
+      "h2": "We don't sell technology. We sell the result.",
+      "sub": "Technology is the tool. What you get is booked appointments, revived leads and higher conversion from the budget you already spend.",
+      "items": [
+        {
+          "title": "Done for you",
+          "body": "From strategy to go-live to tuning. Your job is to keep running your business."
+        },
+        {
+          "title": "Live in weeks, not quarters",
+          "body": "First system in production fast, then improved with real conversations as data."
+        },
+        {
+          "title": "Speaks your language",
+          "body": "Native Serbian and English, in your brand's tone — not translated-sounding filler."
+        },
+        {
+          "title": "Plugs into what you use",
+          "body": "Your calendar, CRM, inbox and phone. No new tool for your team to learn."
+        },
+        {
+          "title": "You keep control",
+          "body": "Anything the system can't or shouldn't handle is handed straight to a human, with context."
+        },
+        {
+          "title": "Measured, not assumed",
+          "body": "Answered, booked, reactivated, converted. If a system doesn't move those, we change it."
+        }
+      ],
+      "keyPoints": [
+        {
+          "title": "Always on",
+          "body": "Enquiries at 11pm on a Sunday get the same answer as ones at 11am on a Tuesday."
+        },
+        {
+          "title": "Priced per project",
+          "body": "No tiers, no seats. We work out what makes you money first, then scope to that."
+        },
+        {
+          "title": "Yours to keep",
+          "body": "The system is built for your business and stays with it. No lock-in to a platform we resell."
+        }
+      ]
+    },
+
+    "trust": {
+      "h2": "Your data stays your data",
+      "sub": "We handle customer conversations, so how they're stored and who can see them is part of the build, not an afterthought.",
+      "badges": [
+        { "label": "GDPR", "note": "EU data handling" },
+        { "label": "EU hosting", "note": "Data stays in region" },
+        { "label": "No resale", "note": "Never used to train third parties" }
+      ]
+    },
+
+    "social": {
+      "kicker": "Results",
+      "h2": "What clients say",
+      "prev": "Previous testimonial",
+      "next": "Next testimonial",
+      "quotes": [
+        {
+          "quote": "We were losing enquiries every night and on weekends without realising it. Within a month the chatbot was booking appointments while we slept — the calendar filled before we'd changed anything else.",
+          "name": "Short-stay rentals",
+          "role": "Owner"
+        },
+        {
+          "quote": "The reactivation campaign brought back people we'd written off eighteen months ago. It paid for the whole project in the first six weeks.",
+          "name": "Dental practice",
+          "role": "Owner, clinic"
+        },
+        {
+          "quote": "What sold us was that they didn't start with the technology. They started with where we were losing money and worked backwards.",
+          "name": "E-commerce brand",
+          "role": "Marketing director"
+        }
+      ],
+      "stats": [
+        { "value": "24/7", "label": "Enquiries answered" },
+        { "value": "< 10s", "label": "Typical first response" },
+        { "value": "∞", "label": "Channels, one system" }
+      ],
+      "logos": ["Clinics", "Salons", "Agencies", "E-commerce", "Services", "Fitness"]
+    },
+
+    "how": {
+      "kicker": "Process",
+      "h2": "From one call to a running system",
+      "sub": "Three steps, no long discovery phase, no committee.",
+      "ctaPrimary": "Book a free call",
+      "ctaSecondary": "See the solutions",
+      "steps": [
+        {
+          "title": "Free strategy call",
+          "body": "We walk through how you operate and pinpoint where revenue leaks: missed enquiries, slow follow-up, a dead list, silence online. You leave with a concrete plan whether you work with us or not."
+        },
+        {
+          "title": "We build the system",
+          "body": "End to end. It learns your services, your prices and your rules, then plugs into the tools you already use — calendar, inbox, CRM, phone. You don't touch a thing."
+        },
+        {
+          "title": "It runs — you watch the results",
+          "body": "The calendar fills, old contacts reply, nothing sits unanswered. We keep tuning it against real conversations."
+        }
+      ]
+    },
+
+    "engage": {
+      "kicker": "How we work",
+      "h2": "No price list. No tiers. Scoped to the job.",
+      "sub": "Three ways to start, depending on how much you want to prove before you commit.",
+      "popular": "Most common",
+      "includes": "What's included",
+      "note": "Every engagement starts with the same free strategy call — you get the plan either way.",
+      "plans": [
+        {
+          "name": "Pilot",
+          "tagline": "Prove it on one problem first",
+          "price": "Fixed fee",
+          "priceNote": "one system, one channel",
+          "cta": "Start with a pilot",
+          "includes": [
+            "One solution, scoped tight",
+            "Live in 2–3 weeks",
+            "Trained on your services and prices",
+            "Handover and a plan for what's next"
+          ]
+        },
+        {
+          "name": "Build",
+          "tagline": "The full front line, end to end",
+          "price": "Per project",
+          "priceNote": "scoped after the strategy call",
+          "cta": "Scope a build",
+          "includes": [
+            "Multiple solutions working together",
+            "Calendar, CRM and inbox integration",
+            "Bilingual (SR / EN) from day one",
+            "Tuning against real conversations"
+          ]
+        },
+        {
+          "name": "Partner",
+          "tagline": "We run it and keep improving it",
+          "price": "Monthly retainer",
+          "priceNote": "on top of a completed build",
+          "cta": "Talk about a retainer",
+          "includes": [
+            "Ongoing tuning and new use cases",
+            "Content and campaigns kept running",
+            "Priority response, direct line",
+            "Monthly report on what it produced"
+          ]
+        }
+      ]
+    },
+
+    "ticker": {
+      "label": "Book a free strategy call"
+    },
+
+    "faq": {
+      "kicker": "FAQ",
+      "h2": "Questions, answered",
+      "stillHave": "Still have a question?",
+      "contactUs": "Get in touch",
+      "happyToHelp": "— we'll be happy to help.",
+      "items": [
+        {
+          "q": "What exactly does Double O build?",
+          "a": "AI systems that handle the parts of your business that depend on someone replying: answering enquiries across your website and social channels, booking appointments into your calendar, following up with leads, reactivating old contacts, and keeping content going out. We scope which of those you actually need on the first call."
+        },
+        {
+          "q": "Do I need to be technical?",
+          "a": "No. We build, connect and run everything. The only thing we need from you is access to the tools you already use and half an hour to walk us through how your business works."
+        },
+        {
+          "q": "How long until it's live?",
+          "a": "A single system — a chatbot on your site, say — is usually live in two to three weeks. A full build across several channels takes longer, and we'll give you a concrete timeline before you commit to anything."
+        },
+        {
+          "q": "Does it work in Serbian?",
+          "a": "Yes, natively. Everything we build is bilingual by default — Serbian and English — and it answers in your brand's tone, not in translated-sounding filler."
+        },
+        {
+          "q": "What does it cost?",
+          "a": "There's no price list, because a chatbot for a two-person salon and a multi-channel system for a clinic group aren't the same job. We work out what the problem is costing you first, then scope to that. The strategy call is free and you keep the plan either way."
+        },
+        {
+          "q": "What happens when the AI can't answer something?",
+          "a": "It hands the conversation to you with the full context, rather than guessing. You set the boundaries for what it should and shouldn't handle on its own."
+        }
+      ]
+    },
+
+    "blog": {
+      "kicker": "Blog",
+      "h2": "Notes on automation that actually pays",
+      "cta": "Read all posts"
+    },
+
+    "cta": {
+      "eyebrow": "Let's talk",
+      "h2": "Ready to stop losing enquiries?",
+      "sub": "One free call. We map where the revenue is leaking and what it would take to close it. You keep the plan either way.",
+      "button": "Book a free call"
+    }
   },
-  "solutions": {
+
+  "sol": {
+    "chatbot": {
+      "name": "Chatbot",
+      "tagline": "Answers every visitor and books the appointment",
+      "h3": "One brain. Every channel. No enquiry left unanswered.",
+      "body": "The same chatbot answers on your website, in Instagram DMs and on WhatsApp or Viber. It knows your services, prices and schedule, handles the questions you answer twenty times a week, books appointments straight into the calendar, and hands you only what needs a human.",
+      "ideal": "clinics, salons, service businesses and agencies — anyone who gets questions before they get customers",
+      "points": [
+        "Website, Instagram and WhatsApp/Viber from one system",
+        "Books into your real calendar, not a form",
+        "Answers in Serbian and English in your tone"
+      ],
+      "hero": {
+        "h1": "A chatbot that answers every visitor and books the appointment",
+        "sub": "Most businesses don't lose customers on price. They lose them to a message nobody answered for six hours. This closes that gap on every channel at once."
+      },
+      "problem": {
+        "h2": "The enquiries you never knew you lost",
+        "body": "People ask before they buy — opening hours, prices, whether you have anything on Saturday. If the answer takes hours, most of them have already booked with someone else. The enquiries that hurt most are the ones that never show up in your inbox at all: the visitor who left, the DM that got buried, the message that came in at 11pm."
+      },
+      "steps": [
+        { "title": "It learns your business", "body": "Services, prices, policies, opening hours, the questions you're sick of answering — plus the ones you never want it to answer alone." },
+        { "title": "It goes live where people ask", "body": "Website widget, Instagram DMs, WhatsApp and Viber. Same brain, same answers, same tone everywhere." },
+        { "title": "It books and hands over", "body": "Straight into your calendar with confirmation. Anything outside its remit comes to you with the full conversation attached." }
+      ],
+      "features": [
+        "Trained on your actual services, prices and rules",
+        "Books appointments into your existing calendar",
+        "Serbian and English, switching to the visitor's language",
+        "Escalates to a human with full conversation context",
+        "Answers instantly at any hour, including weekends",
+        "One place to see every conversation across channels"
+      ],
+      "outcomes": [
+        "Enquiries answered in seconds instead of hours",
+        "Appointments booked outside working hours",
+        "Fewer repeat questions eating your team's day"
+      ],
+      "faq": [
+        { "q": "Will it sound like a robot?", "a": "It's written in your brand's voice and trained on how you actually talk to customers. Most visitors don't ask whether they're talking to a person — they just get their answer." },
+        { "q": "What if it gets something wrong?", "a": "You set what it's allowed to handle. Anything outside those boundaries gets handed to you rather than guessed at, and we tune it against real conversations after launch." },
+        { "q": "Can it take bookings for multiple staff or locations?", "a": "Yes. It reads real availability and books against the right calendar, whichever way your business is structured." }
+      ]
+    },
+
+    "content-dashboard": {
+      "name": "Content Dashboard",
+      "tagline": "A brand that never goes quiet",
+      "h3": "Your audience sees you every week. Google finds you every day.",
+      "body": "Ready-to-post social content — visual, copy and schedule — plus SEO articles for your site. Instead of posting in bursts when someone remembers, you have a queue that stays full and a site that keeps accumulating search traffic.",
+      "ideal": "brands that post inconsistently, or have gone quiet altogether",
+      "points": [
+        "A full week of posts, ready to approve",
+        "SEO articles that compound over months",
+        "Approve on your phone in five minutes"
+      ],
+      "hero": {
+        "h1": "A brand that never goes quiet",
+        "sub": "Consistency beats brilliance on social. This keeps the queue full whether or not anyone on your team had time this week."
+      },
+      "problem": {
+        "h2": "Posting in bursts is worse than not posting",
+        "body": "Three posts in a week, then nothing for a month. The algorithm forgets you, your audience forgets you, and the effort you did put in gets wasted. Meanwhile the search traffic you could be earning goes to whoever bothered to publish."
+      },
+      "steps": [
+        { "title": "We learn your voice", "body": "Your services, your offers, your tone, the things you actually want to be known for." },
+        { "title": "The queue fills itself", "body": "Posts, captions, visuals and SEO articles produced on a schedule and lined up for approval." },
+        { "title": "You approve, it publishes", "body": "Five minutes a week on your phone. Anything you reject gets replaced." }
+      ],
+      "features": [
+        "Weekly social content: visual, copy and schedule",
+        "SEO articles written for what people actually search",
+        "One dashboard to approve, edit or reject",
+        "Serbian and English output",
+        "Tuned to your offers and seasonal pushes",
+        "Publishes automatically once approved"
+      ],
+      "outcomes": [
+        "A feed that stays active without anyone chasing it",
+        "Search traffic that grows month over month",
+        "Content effort that stops depending on free time"
+      ],
+      "faq": [
+        { "q": "Will it just be generic AI slop?", "a": "It's built on your offers, your customers' actual questions and your tone — and you approve everything before it goes out. Anything that reads generic gets rejected and replaced." },
+        { "q": "Do I still need a designer?", "a": "For campaign work, brand assets and anything bespoke, yes. This covers the recurring weekly output that otherwise doesn't happen at all." },
+        { "q": "How long before SEO articles do anything?", "a": "Realistically three to six months before search traffic becomes meaningful, which is exactly why it's worth starting now rather than later." }
+      ]
+    },
+
+    "lead-reactivation": {
+      "name": "Lead Reactivation",
+      "tagline": "Revenue from the list you already own",
+      "h3": "You already paid to acquire these people. Bill them twice.",
+      "body": "A voice agent — email and messaging work too — contacts your old and inactive leads with a concrete reason to come back. No new ad spend, no new audience. Just the contacts sitting in your CRM doing nothing.",
+      "ideal": "any business sitting on a database of past or unconverted leads",
+      "points": [
+        "Works your existing database, not cold lists",
+        "Voice, email or message — whichever suits",
+        "Books the ones who are ready, flags the maybes"
+      ],
+      "hero": {
+        "h1": "Revenue from the list you already own",
+        "sub": "The cheapest customer you'll ever get is one who already talked to you once. Most businesses never go back and ask."
+      },
+      "problem": {
+        "h2": "Your CRM is full of money nobody's collecting",
+        "body": "Enquiries from eight months ago. People who asked for a price and went quiet. Customers who came twice and stopped. You paid to acquire every one of them. Nobody has the time to call three hundred old contacts — so nobody does."
+      },
+      "steps": [
+        { "title": "We work out the reason", "body": "Not \"just checking in\" — a specific, credible reason to come back now. That's the whole campaign." },
+        { "title": "The agent works the list", "body": "Calls, emails or messages at a sensible pace, handles the conversation and answers the obvious questions." },
+        { "title": "You get the warm ones", "body": "Booked appointments land in your calendar. Interested-but-not-yet get flagged for follow-up. The rest are marked closed." }
+      ],
+      "features": [
+        "Voice agent that handles a real conversation",
+        "Email and messaging campaigns as alternatives",
+        "Segments by how and when they went cold",
+        "Books straight into your calendar",
+        "Respects do-not-contact and opt-outs",
+        "Reports exactly what the list produced"
+      ],
+      "outcomes": [
+        "Revenue from contacts you'd written off",
+        "A clean, re-segmented database afterwards",
+        "Cost per booking far below paid acquisition"
+      ],
+      "faq": [
+        { "q": "Isn't calling old leads annoying?", "a": "It is if you have nothing to say. The campaign is built around a specific reason to come back, and anyone who says no is marked and never contacted again." },
+        { "q": "How old can the leads be?", "a": "We've seen contacts from well over a year back convert. Older lists usually need a stronger reason, which we work out before launching." },
+        { "q": "Is this legal under GDPR?", "a": "Contacting people who previously enquired about your services is generally permissible, but it depends on how they were collected and what they consented to. We go through this with you before anything goes out." }
+      ]
+    },
+
+    "speed-to-lead": {
+      "name": "Speed to Lead",
+      "tagline": "You reach every lead first, every time",
+      "h3": "The first business to respond usually wins. Make that you.",
+      "body": "The moment someone leaves their details — through an ad, a form, a message — the system calls or texts them immediately, while their interest is at its peak and before your competitors have even opened the notification.",
+      "ideal": "businesses running paid ads or collecting inbound form leads",
+      "points": [
+        "Responds in seconds, not hours",
+        "Calls or texts, whichever converts better",
+        "Qualifies and books before you're involved"
+      ],
+      "hero": {
+        "h1": "You reach every lead first. Every time.",
+        "sub": "Lead response time is the single most controllable factor in conversion — and almost nobody controls it."
+      },
+      "problem": {
+        "h2": "The lead you paid for goes cold in minutes",
+        "body": "Someone fills in your form at 14:03. Your team sees it at 17:40, calls at 09:15 the next morning, and gets voicemail. By then they've filled in two other forms and spoken to whoever answered fastest. You paid for that click regardless."
+      },
+      "steps": [
+        { "title": "The trigger fires instantly", "body": "Ad lead, website form, DM — the moment the details land, the clock starts and the system moves." },
+        { "title": "It reaches out immediately", "body": "A call or a message within seconds, while they're still on your site and still thinking about it." },
+        { "title": "It qualifies and books", "body": "Answers the first questions, checks fit, and puts the appointment in your calendar. You get a warm, briefed lead." }
+      ],
+      "features": [
+        "Fires on ad leads, forms and inbound messages",
+        "Voice call or SMS/WhatsApp, or both in sequence",
+        "Qualifies against your criteria before booking",
+        "Retries on a schedule if there's no answer",
+        "Hands off to a human whenever you want it to",
+        "Logs everything back to your CRM"
+      ],
+      "outcomes": [
+        "Higher conversion from the same ad spend",
+        "Leads reached before competitors see them",
+        "No more leads dying in an unwatched inbox"
+      ],
+      "faq": [
+        { "q": "Won't an instant call feel pushy?", "a": "It reads as attentive, not pushy — they submitted the form seconds ago and are still thinking about it. Response rates are dramatically higher than the next-morning call." },
+        { "q": "What if I'd rather my own team called?", "a": "Then the system texts first to hold their attention and alerts your team immediately, so the human call happens while it still counts." },
+        { "q": "Does it work with my ad platform?", "a": "Meta and Google lead forms, website forms and most CRMs, yes. We confirm your specific stack on the call." }
+      ]
+    },
+
+    "ai-ugc-creatives": {
+      "name": "AI UGC Creatives",
+      "tagline": "More creatives, faster testing, a fraction of the cost",
+      "h3": "Thirty ad variants a month instead of three.",
+      "body": "AI-generated UGC-style video ads — no creator hunting, no shoot scheduling, no waiting two weeks for a revision. More variants means more tests, faster learning and a lower cost per winning ad.",
+      "ideal": "e-commerce and DTC brands that live or die on UGC ad performance",
+      "points": [
+        "Batches of variants, not one hero video",
+        "New hooks tested weekly, not quarterly",
+        "No creator sourcing or shoot logistics"
+      ],
+      "hero": {
+        "h1": "More creatives, faster testing, a fraction of the cost",
+        "sub": "Creative volume is the lever on paid social. Most brands can't pull it because every video costs a creator, a brief and two weeks."
+      },
+      "problem": {
+        "h2": "Three creatives a month can't find a winner",
+        "body": "Paid social rewards volume: the more hooks you test, the faster you find the one that works. But sourcing creators, briefing, shooting and revising caps most brands at a handful of assets a month — so you're optimising budget around creative you already know is mediocre."
+      },
+      "steps": [
+        { "title": "We build the hook bank", "body": "Angles, objections and openers pulled from your reviews, your ads data and your customers' actual language." },
+        { "title": "Variants get produced in batches", "body": "Multiple presenters, hooks and edits per concept, formatted for each placement." },
+        { "title": "You test and we iterate", "body": "Winners get more variants built around them. Losers get cut. The bank keeps growing." }
+      ],
+      "features": [
+        "UGC-style video ads without creators",
+        "Batches of hook and angle variants",
+        "Formatted for Reels, TikTok and Shorts",
+        "Serbian and English voiceover",
+        "Iterated against your actual ad performance",
+        "Turnaround in days, not weeks"
+      ],
+      "outcomes": [
+        "More tests per month at a lower cost per asset",
+        "Faster identification of winning angles",
+        "Creative that stops being the bottleneck"
+      ],
+      "faq": [
+        { "q": "Will people notice it's AI?", "a": "Some will. In practice what matters on paid social is whether the hook stops the scroll — and you can test far more hooks this way than with live creators." },
+        { "q": "Can it replace real UGC entirely?", "a": "We wouldn't recommend it. Use this for volume and testing, then put budget behind real creators for the angles that prove out." },
+        { "q": "Do I need existing ad data?", "a": "It helps, but it isn't required. Without it we build the first hook bank from reviews, objections and competitor angles." }
+      ]
+    },
+
+    "ai-receptionist": {
+      "name": "AI Receptionist",
+      "tagline": "The calls you're missing, answered",
+      "h3": "Once the chatbot covers messages, the phone is the last gap.",
+      "body": "An AI receptionist answers incoming calls in your brand's voice, handles the routine questions and books appointments. It's the natural upgrade once written enquiries are covered and missed calls are the thing still costing you.",
+      "ideal": "businesses where plenty of phone calls remain even after the chatbot",
+      "points": [
+        "Answers on the first ring, always",
+        "Books appointments during the call",
+        "Transfers to a human when it should"
+      ],
+      "hero": {
+        "h1": "The calls you're missing, answered",
+        "sub": "A missed call is rarely a callback. Usually it's a customer who dialled the next number on the list."
+      },
+      "problem": {
+        "h2": "Nobody leaves a voicemail any more",
+        "body": "You're with a customer, it's after hours, or everyone's on another line. The phone rings out. That caller doesn't wait — they ring the next business that comes up. You never find out it happened."
+      },
+      "steps": [
+        { "title": "It picks up what you can't", "body": "After hours, during the rush, or when every line is busy — whichever rules you set." },
+        { "title": "It handles the routine", "body": "Opening hours, prices, availability, directions — the calls that don't need you specifically." },
+        { "title": "It books or transfers", "body": "Appointment straight into the calendar, or a warm transfer to a human with context when it matters." }
+      ],
+      "features": [
+        "Natural voice in Serbian or English",
+        "Answers immediately, 24/7 or on your schedule",
+        "Books into your existing calendar",
+        "Transfers to a human on your rules",
+        "Sends you a summary of every call",
+        "Works alongside the chatbot on one knowledge base"
+      ],
+      "outcomes": [
+        "No more calls ringing out unanswered",
+        "Appointments booked outside opening hours",
+        "Your team interrupted only when it matters"
+      ],
+      "faq": [
+        { "q": "Should I start with this or the chatbot?", "a": "Almost always the chatbot. It's cheaper, covers more enquiries and proves the knowledge base. The receptionist makes sense once written enquiries are handled and missed calls are what's left." },
+        { "q": "Can callers tell it's AI?", "a": "Many can, and that's fine — the alternative was nobody answering. It says what it is if asked, and transfers to a human whenever the caller wants one." },
+        { "q": "Does it replace my receptionist?", "a": "It covers the calls that currently go unanswered and the routine questions that eat their day. Most clients use it to make a human receptionist more effective, not to remove one." }
+      ]
+    }
+  },
+
+  "solutionsPage": {
     "kicker": "Solutions",
-    "h2": "One chatbot, three channels — <em>and the systems around it.</em>",
-    "intro": "The chatbot sits at the centre, catching every enquiry. Around it we build the supporting systems — content, reactivation and instant lead response — and, as an upgrade, a phone receptionist.",
-    "idealFor": "Ideal for"
+    "h1": "Everything we build",
+    "sub": "Six systems that plug the places businesses lose revenue. Start with one — most people start with the chatbot — and add the rest as the bottleneck moves.",
+    "cta": "See how it works",
+    "flagship": "Flagship",
+    "helpTitle": "Not sure which one you need?",
+    "helpBody": "That's what the free strategy call is for. We map where you're actually losing revenue and tell you which system closes it — even if that answer is \"none of them yet\".",
+    "helpCta": "Book a free call"
   },
-  "s1": {
-    "name": "Chatbot",
-    "h3": "One brain. Three channels. No enquiry left unanswered.",
-    "body": "The same chatbot answers on your website, in Instagram DMs and on Viber/WhatsApp. It knows your services, prices and schedule, answers common questions, books appointments and consultations straight into the calendar, and hands you only what needs a human. One solution learns once — every channel speaks in the same voice.",
-    "ideal": "clinics, salons, service businesses, agencies — any business that gets questions before it gets customers",
-    "v": {
-      "header": "One bot · three channels",
-      "c1n": "Website",
-      "c1d": "visitors researching before they reach out",
-      "c2n": "Instagram DM",
-      "c2d": "questions in messages and comments",
-      "c3n": "Viber / WhatsApp",
-      "c3d": "customers who’d rather text",
-      "foot": "Same brain, same voice — across all three."
-    }
+
+  "solutionPage": {
+    "backToAll": "All solutions",
+    "problemKicker": "The problem",
+    "howKicker": "How it works",
+    "featuresKicker": "What you get",
+    "featuresH2": "What's included",
+    "outcomesKicker": "The result",
+    "outcomesH2": "What changes",
+    "idealFor": "Ideal for",
+    "faqKicker": "FAQ",
+    "faqH2": "Common questions",
+    "ctaH2": "Want this running for your business?",
+    "ctaSub": "One free call. We'll tell you whether this is the right place to start — and if it isn't, which one is.",
+    "ctaButton": "Book a free call",
+    "otherKicker": "Also available",
+    "otherH2": "Other solutions"
   },
-  "s2": {
-    "name": "Content Dashboard",
-    "h3": "A brand that never goes quiet.",
-    "body": "Ready-to-post social content — visual, copy, schedule — plus SEO articles for your site. Your audience sees you every week, and Google finds you when someone searches for what you do.",
-    "ideal": "brands that post inconsistently or have gone quiet altogether",
-    "v": {
-      "header": "This week · ready to post",
-      "d1": "Mon",
-      "d2": "Tue",
-      "d3": "Wed",
-      "d4": "Thu",
-      "d5": "Fri",
-      "p1": "post",
-      "p2": "reel",
-      "p3": "post",
-      "p4": "SEO blog",
-      "p5": "post"
-    }
-  },
-  "s3": {
-    "name": "Lead Reactivation",
-    "h3": "Revenue from the list you already own.",
-    "body": "A voice agent (email works too) calls your old and inactive contacts with a concrete reason to return. People you already paid to acquire — billed a second time.",
-    "ideal": "any business sitting on a database of past or unconverted leads",
-    "v": {
-      "header": "Campaign: old list · day 3",
-      "r1n": "M. Harris · enquiry from March",
-      "r1s": "booked",
-      "r2n": "J. Cole · inactive 14 months",
-      "r2s": "interested — following up",
-      "r3n": "S. Brooks · unconverted",
-      "r3s": "call scheduled tomorrow"
-    }
-  },
-  "s4": {
-    "name": "Speed to Lead",
-    "h3": "You reach every lead first. Every time.",
-    "body": "The moment someone leaves their details — through an ad, a form, a message — the system calls or texts them right away, while interest is at its peak and before your competitors have even seen the enquiry.",
-    "ideal": "businesses running paid ads or collecting inbound form leads",
-    "v": {
-      "header": "New lead · Meta ad",
-      "t1": "Form submitted",
-      "t2": "System calls the lead",
-      "t3": "Conversation running…",
-      "note": "competitors: haven’t even opened it"
-    }
-  },
-  "s5": {
-    "name": "AI UGC Creatives",
-    "h3": "More creatives, faster testing, a fraction of the cost.",
-    "body": "AI-generated UGC-style video ads — no creator hunting, no waiting on shoots. Instead of three variants a month, thirty: more tests, faster learning, a lower cost per winning ad.",
-    "ideal": "e-commerce and DTC brands that rely on UGC ads",
-    "v": {
-      "header": "Creative batch · product X",
-      "v1": "hook A",
-      "v2": "hook B",
-      "v3": "hook C",
-      "v4": "+ 9 more",
-      "status": "testing"
-    }
-  },
-  "s6": {
-    "name": "AI Receptionist",
-    "h3": "The next step: once the chatbot covers messages, but missed calls remain.",
-    "body": "Once the chatbot takes on written enquiries, the phone is the last gap left. The AI receptionist answers incoming calls in your brand’s voice, handles common questions and books appointments. An upgrade to the chatbot, not a separate product — we add it once call volume justifies it.",
-    "ideal": "businesses where plenty of phone calls remain even after the chatbot",
-    "v": {
-      "header": "Incoming call · 9:47 pm",
-      "caller": "Hi, are you open Saturdays? I’d need a haircut…",
-      "agent": "We are! Saturday 11:00 is free — shall I book you in?",
-      "result": "✓ Booked · added to calendar"
-    }
-  },
-  "process": {
-    "kicker": "Process",
-    "h2": "From one call to a running system",
-    "docLabel": "Work order · Double O",
-    "docNo": "no. 00",
-    "s1": {
-      "title": "Free strategy call",
-      "body": "We walk through how you operate and pinpoint exactly where revenue leaks: missed enquiries, forgotten leads, a dead list, silence online. You leave with a concrete plan — whether you work with us afterwards or not."
-    },
-    "s2": {
-      "title": "We build the system",
-      "body": "We do everything, end to end: the system learns your voice, your services and your rules, and plugs into the tools you already use — calendar, phone, CRM. You don’t touch a thing."
-    },
-    "s3": {
-      "title": "It runs — you watch the results",
-      "body": "The calendar fills, old contacts write back, posts go out on time. You do the work you know — the system handles everything you used to miss."
-    }
-  },
-  "why": {
-    "kicker": "Why Double O",
-    "h2": "We don’t sell technology. <em>We sell the result.</em>",
-    "body": "We’re marketing and operations people first, “AI” second. Technology is the tool — what you get is booked appointments, revived leads, higher conversion from the same budget, and a brand that’s always present. If a system doesn’t deliver that, we don’t build it.",
-    "p1": { "t": "Done for you", "b": "From strategy to go-live. Your job is to keep running your business." },
-    "p2": { "t": "Always on", "b": "Fully remote, reachable 24/7 — same as the systems we build." },
-    "p3": { "t": "Priced per project", "b": "No price list, no tiers. We establish what makes you money first, then scope the project — the value you receive always exceeds the price you pay." }
-  },
-  "cta": {
-    "h2": "Find out where your revenue is <em>leaking.</em>",
-    "body": "A short call, a concrete plan, zero obligation. If you decide to do it all yourself afterwards — the plan is yours to keep.",
-    "button": "Book a free strategy call",
-    "micro": "30 minutes · online · no prep needed"
-  },
+
   "contact": {
     "kicker": "Contact",
-    "h2": "Rather write than talk?",
-    "body": "Tell us briefly what you do and what’s holding you back right now. We reply within 24 hours — usually much faster.",
-    "name": "Full name",
-    "email": "Email address",
-    "business": "Business / website",
-    "message": "Message",
-    "messagePh": "E.g. we run a dental practice and can’t keep up with messages and enquiries…",
+    "h1": "Let's work out what's leaking",
+    "sub": "Tell us roughly what your business does and where you think you're losing enquiries. We'll come back with whether we can help — and how.",
+    "callTitle": "Prefer to talk?",
+    "callBody": "Book a free 30-minute strategy call. No pitch deck, no obligation, and you keep the plan whether or not you work with us.",
+    "callCta": "Book a free call",
+    "emailTitle": "Rather write?",
+    "name": "Your name",
+    "email": "Email",
+    "business": "Company / website",
+    "message": "What are you trying to fix?",
+    "messagePh": "A couple of sentences is plenty — e.g. we run a dental practice and can't keep up with messages.",
     "send": "Send message",
     "sending": "Sending…",
-    "success": "Message received. We’ll get back to you within 24 hours — probably sooner.",
-    "error": "Something went wrong while sending. Try again — or write to us directly at lazar.gosic@doubleo.agency."
+    "success": "Thanks — we'll come back to you within one business day.",
+    "error": "That didn't send. Email us directly at lazar.gosic@doubleo.agency."
   },
-  "footer": {
-    "tag": "The systems we build don’t sleep. So you can.",
-    "solutions": "Solutions",
-    "process": "Process",
-    "contact": "Contact",
-    "rights": "All rights reserved."
+
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated",
+    "intro": "This policy explains what Double O collects when you use this website, why, and what your rights are. If anything here is unclear, email us and we'll answer plainly.",
+    "sections": [
+      {
+        "h": "What we collect",
+        "b": "Two things. If you send us a message — through the contact form, the chatbot, or email — we receive what you wrote and any contact details you included. Separately, we collect anonymous usage analytics: which pages were viewed, roughly where in the world from, and what kind of device. That analytics data is not tied to your identity."
+      },
+      {
+        "h": "The chatbot",
+        "b": "Conversations with the chatbot on this site are processed to generate a reply and are stored so the conversation has context. Please don't send sensitive personal information through it — for anything of that nature, email us directly."
+      },
+      {
+        "h": "Why we process it",
+        "b": "To answer your enquiry, to arrange a call if you ask for one, and to understand which parts of the site are useful. We do not sell your data, and we do not share it with third parties for their own marketing."
+      },
+      {
+        "h": "How long we keep it",
+        "b": "Enquiries are kept for as long as we have an active or prospective working relationship, then deleted. Chatbot conversations are retained for a limited period for quality and debugging. Analytics data is aggregated and anonymous."
+      },
+      {
+        "h": "Your rights",
+        "b": "You can ask us what we hold about you, ask for it to be corrected, or ask for it to be deleted. Email us and we'll action it — there's no form to fill in."
+      },
+      {
+        "h": "Contact",
+        "b": "Questions about any of this go to lazar.gosic@doubleo.agency."
+      }
+    ]
   },
+
+  "notFound": {
+    "code": "404",
+    "h1": "That page doesn't exist",
+    "sub": "The link may be old, or we may have moved something. Here's the way back.",
+    "home": "Back to home",
+    "solutions": "See solutions"
+  },
+
   "blog": {
     "kicker": "Blog",
-    "indexTitle": "Blog",
-    "indexIntro": "Notes on AI systems, automation, and how small businesses stop leaking revenue.",
-    "empty": "The first posts are coming soon.",
-    "readMore": "Read more",
-    "back": "Back to blog"
+    "indexTitle": "Notes on automation that actually pays",
+    "indexIntro": "What we're learning building AI systems for real businesses — what works, what doesn't, and what it costs.",
+    "empty": "No posts yet. Check back soon.",
+    "readMore": "Read post",
+    "back": "All posts"
   },
+
   "chat": {
-    "subtitle": "Nova · AI assistant",
-    "welcome": "Hi! I'm Nova, Double O's AI assistant. How can I help?",
-    "placeholder": "Type a message…",
-    "error": "Sorry — something went wrong on my end.",
+    "subtitle": "Answers in seconds",
+    "welcome": "Hi — ask me anything about what we build, how it works, or what it would cost.",
+    "placeholder": "Type your message…",
+    "error": "Something went wrong on our side.",
     "errorFallback": "You can book a call directly here: {url}",
-    "errorRetry": "Please try again in a moment."
+    "errorRetry": "Try again in a moment."
+  },
+
+  "footer": {
+    "tagline": "AI systems that answer, follow up and book — so nothing gets missed.",
+    "navLabel": "Footer navigation",
+    "company": "Company",
+    "getInTouch": "Get in touch",
+    "address": "Remote-first · working across Serbia and the EU",
+    "privacy": "Privacy Policy",
+    "rights": "All rights reserved."
   }
 }

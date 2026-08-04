@@ -3,10 +3,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import { SetHtmlLang } from "@/components/SetHtmlLang";
-import { SITE_URL, CALCOM_URL } from "@/lib/config";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { SOLUTIONS } from "@/lib/solutions";
+import { SITE_URL, CALCOM_URL, CONTACT_EMAIL } from "@/lib/config";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -53,59 +56,6 @@ export async function generateMetadata({
   };
 }
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#org`,
-      name: "Double O",
-      alternateName: "Double O Agency",
-      url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/og.png`,
-      email: "lazar.gosic@doubleo.agency",
-      description:
-        "AI automation agency: a chatbot for website, Instagram and Viber/WhatsApp that answers enquiries and books appointments, plus content, lead reactivation and — as an upgrade — an AI phone receptionist. Done-for-you, 24/7.",
-    },
-    {
-      "@type": "Service",
-      serviceType: "AI Chatbot",
-      name: "AI Chatbot (Website, Instagram, Viber/WhatsApp)",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "Service",
-      serviceType: "Content Dashboard",
-      name: "Content Dashboard",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "Service",
-      serviceType: "Lead Reactivation",
-      name: "Lead Reactivation",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "Service",
-      serviceType: "Speed to Lead",
-      name: "Speed to Lead",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "Service",
-      serviceType: "AI UGC Creatives",
-      name: "AI UGC Creatives",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "Service",
-      serviceType: "AI Inbound Receptionist",
-      name: "AI Receptionist",
-      provider: { "@id": `${SITE_URL}/#org` },
-    },
-  ],
-};
-
 export default async function LocaleLayout({
   children,
   params,
@@ -119,30 +69,63 @@ export default async function LocaleLayout({
   setRequestLocale(locale as Locale);
   const messages = await getMessages();
   const t = await getTranslations({ locale, namespace: "chat" });
+  const tSol = await getTranslations({ locale, namespace: "sol" });
+  const tMeta = await getTranslations({ locale, namespace: "meta" });
+
+  // Service nodes are generated from lib/solutions.ts so the graph can never
+  // drift from what the site actually lists.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#org`,
+        name: "Double O",
+        alternateName: "Double O Agency",
+        url: `${SITE_URL}/`,
+        logo: `${SITE_URL}/og.png`,
+        email: CONTACT_EMAIL,
+        description: tMeta("description"),
+      },
+      ...SOLUTIONS.map((s) => ({
+        "@type": "Service",
+        "@id": `${SITE_URL}/${locale}/solutions/${s.slug}#service`,
+        serviceType: s.serviceType,
+        name: tSol(`${s.slug}.name`),
+        description: tSol(`${s.slug}.tagline`),
+        url: `${SITE_URL}/${locale}/solutions/${s.slug}`,
+        provider: { "@id": `${SITE_URL}/#org` },
+      })),
+    ],
+  };
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <SetHtmlLang locale={locale} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Header />
-      {children}
-      <Footer />
-      <script
-        src="/assets/widget.js"
-        defer
-        data-webhook-url="https://n8n.doubleo.agency/webhook/11a27b23-153e-4a19-bf67-b83410c1355a/chat"
-        data-title="Double O"
-        data-subtitle={t("subtitle")}
-        data-welcome={t("welcome")}
-        data-placeholder={t("placeholder")}
-        data-error={t("error")}
-        data-error-fallback={t("errorFallback", { url: CALCOM_URL || SITE_URL })}
-        data-error-retry={t("errorRetry")}
-        data-accent="#9fe870"
-        data-accent-text="#163300"
-        data-position="right"
-        data-fallback-url={CALCOM_URL}
-      />
+      <MotionProvider>
+        <SetHtmlLang locale={locale} />
+        <SmoothScroll />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <Nav />
+        {children}
+        <Footer />
+        <script
+          src="/assets/widget.js"
+          defer
+          // Same-origin proxy — see app/api/chat/route.ts
+          data-webhook-url="/api/chat"
+          data-title="Double O"
+          data-subtitle={t("subtitle")}
+          data-welcome={t("welcome")}
+          data-placeholder={t("placeholder")}
+          data-error={t("error")}
+          data-error-fallback={t("errorFallback", { url: CALCOM_URL || SITE_URL })}
+          data-error-retry={t("errorRetry")}
+          data-accent="#d37bff"
+          data-accent-text="#ffffff"
+          data-position="right"
+          data-fallback-url={CALCOM_URL}
+        />
+      </MotionProvider>
     </NextIntlClientProvider>
   );
 }

@@ -1,0 +1,232 @@
+/* ============================================================
+   Styles backing components/motion/*
+   ============================================================ */
+
+/* ── Scroll word reveal (About) ─────────────────────────── */
+
+.swr {
+  /* Tall track; the child pins for the middle 100vh of it. */
+  height: 220vh;
+  position: relative;
+}
+
+.swr__sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.swr__text {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.6vw, 3.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--on-dark);
+  max-width: 22ch;
+}
+
+.swr__word {
+  display: inline-block;
+  margin-right: 0.25em;
+  will-change: opacity, filter;
+}
+
+@media (max-width: 809px) {
+  .swr {
+    height: 180vh;
+  }
+  .swr__text {
+    max-width: none;
+  }
+}
+
+/* ── Marquee ────────────────────────────────────────────── */
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x linear infinite;
+}
+
+.marquee__track--rev {
+  animation-direction: reverse;
+}
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
+  }
+}
+
+/* ── Sticky stack ───────────────────────────────────────── */
+
+.stack {
+  perspective: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stack__slot {
+  position: sticky;
+  will-change: transform;
+}
+
+/* The last card doesn't need to pin — it just ends the stack. */
+.stack__slot:last-child {
+  position: relative;
+  top: auto !important;
+}
+
+@media (max-width: 809px) {
+  .stack__slot {
+    position: static;
+  }
+}
+
+/* ── Aurora backdrop ────────────────────────────────────── */
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(165deg, #e9def5 0%, #efe4f3 38%, #f8e3e0 68%, #fdefe0 100%);
+}
+
+.aurora__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aurora__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.75;
+  will-change: transform;
+}
+
+.aurora__blob--1 {
+  width: 62%;
+  aspect-ratio: 1.2;
+  left: -12%;
+  top: -18%;
+  background: radial-gradient(circle, #cfa8f5 0%, rgba(207, 168, 245, 0) 68%);
+  animation: aurora-drift-a 26s ease-in-out infinite alternate;
+}
+
+.aurora__blob--2 {
+  width: 58%;
+  aspect-ratio: 1;
+  right: -10%;
+  top: -8%;
+  background: radial-gradient(circle, #ffd3b0 0%, rgba(255, 211, 176, 0) 70%);
+  animation: aurora-drift-b 32s ease-in-out infinite alternate;
+}
+
+.aurora__blob--3 {
+  width: 70%;
+  aspect-ratio: 1.4;
+  left: 8%;
+  bottom: -28%;
+  background: radial-gradient(circle, #e3c9f7 0%, rgba(227, 201, 247, 0) 66%);
+  animation: aurora-drift-c 29s ease-in-out infinite alternate;
+}
+
+.aurora__blob--4 {
+  width: 44%;
+  aspect-ratio: 1;
+  right: 14%;
+  bottom: -12%;
+  background: radial-gradient(circle, #ffc2e9 0%, rgba(255, 194, 233, 0) 70%);
+  animation: aurora-drift-a 35s ease-in-out infinite alternate-reverse;
+}
+
+.aurora__grain {
+  opacity: 0.16;
+}
+
+/* Soft dissolve into the page colour at the bottom edge. */
+.aurora__fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 28%;
+  background: linear-gradient(180deg, rgba(247, 246, 247, 0) 0%, var(--page) 96%);
+  pointer-events: none;
+}
+
+@keyframes aurora-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(6%, 8%, 0) scale(1.14); }
+}
+@keyframes aurora-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.08); }
+  to   { transform: translate3d(-8%, 6%, 0) scale(0.95); }
+}
+@keyframes aurora-drift-c {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(4%, -7%, 0) scale(1.1); }
+}
+
+/* ── Fluid glass shapes (public/Shapes) ─────────────────── */
+
+/* Artwork carries its own shading, so this only handles placement and the
+   drift. Height follows each file's own aspect ratio. */
+.shape {
+  --shape-size: 160px;
+  position: absolute;
+  width: var(--shape-size);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  animation: shape-float 8.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 18px 34px rgba(120, 60, 180, 0.16));
+}
+
+/* A long diagonal drift, so they read as floating rather than bobbing. */
+@keyframes shape-float {
+  from { transform: translate3d(-7px, 19px, 0) rotate(-9deg); }
+  to   { transform: translate3d(7px, -35px, 0) rotate(9deg); }
+}
+
+/* Continuous spin about the centre, with a gentle rise and fall folded in.
+   Runs `infinite` rather than `alternate` so the rotation never reverses —
+   both ends of the cycle land on the same pose, so the loop is invisible. */
+@keyframes shape-spin {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(0, -20px, 0) rotate(180deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(360deg); }
+}
+
+@media (max-width: 809px) {
+  .shape {
+    display: none;
+  }
+}

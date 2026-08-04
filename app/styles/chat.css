@@ -1,0 +1,312 @@
+/* ============================================================
+   Hero chat card (components/chat)
+   ============================================================ */
+
+/* Narrow enough that the decorative shapes either side of it get real
+   clearance inside the frame — roughly the reference's chat-to-frame ratio. */
+.hchat {
+  width: min(100%, 640px);
+  margin-inline: auto;
+  display: grid;
+  gap: 0.9rem;
+}
+
+/* ── Transcript ─────────────────────────────────────────── */
+
+.hchat__stage {
+  border-radius: var(--r-md);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: var(--shadow-glass);
+}
+
+.hchat__scroll {
+  height: clamp(190px, 26vh, 260px);
+  transition: height var(--dur) var(--ease-out);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Overlay scrollbar: invisible at rest, a thin rounded thumb once the
+   visitor is actually in the transcript. The gutter is always reserved so
+   the thumb appearing never reflows the messages. */
+.hchat__scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.hchat__scroll:hover,
+.hchat__scroll:focus-within {
+  scrollbar-color: rgba(28, 12, 38, 0.22) transparent;
+}
+
+.hchat__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.hchat__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.hchat__scroll::-webkit-scrollbar-thumb {
+  border-radius: var(--r-pill);
+  background: transparent;
+  transition: background var(--dur) var(--ease-out);
+}
+.hchat__scroll:hover::-webkit-scrollbar-thumb,
+.hchat__scroll:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(28, 12, 38, 0.22);
+}
+.hchat__scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 12, 38, 0.38);
+}
+
+/* Before the first message there's nothing to scroll — collapse to the
+   greeting rather than showing an empty well. */
+.hchat__scroll--empty {
+  height: auto;
+  min-height: 0;
+}
+
+.hchat__greeting {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-top: auto;
+}
+.hchat__greeting p {
+  font-size: 0.94rem;
+  color: var(--ink-70);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.62rem 0.85rem;
+  border-radius: var(--r-xs);
+  box-shadow: var(--shadow-float);
+}
+
+.hchat__msg {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+.hchat__msg--user {
+  justify-content: flex-end;
+}
+
+.hchat__bubble {
+  max-width: 78%;
+  padding: 0.62rem 0.85rem;
+  border-radius: var(--r-xs);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  box-shadow: var(--shadow-float);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hchat__msg--user .hchat__bubble {
+  background: var(--ink);
+  color: #fff;
+}
+
+.hchat__bubble--err {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--error);
+}
+.hchat__bubble--err a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hchat__avatar,
+.hchat__me {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--aurora);
+  box-shadow: inset 0 -1.6px 3.2px rgba(255, 255, 255, 0.2),
+    inset 0 0.8px 0.8px rgba(255, 255, 255, 0.25);
+}
+.hchat__me {
+  background: linear-gradient(143deg, #cdd6e6, #9aa4b8);
+}
+
+.hchat__typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0.8rem 0.9rem;
+}
+.hchat__typing i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-40);
+  animation: hchat-dot 1.2s ease-in-out infinite;
+}
+.hchat__typing i:nth-child(2) { animation-delay: 0.15s; }
+.hchat__typing i:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes hchat-dot {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30%           { opacity: 1;    transform: translateY(-3px); }
+}
+
+/* ── Composer ───────────────────────────────────────────── */
+
+.hchat__composer {
+  border-radius: var(--r-md);
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+  box-shadow: var(--shadow-float);
+}
+
+.hchat__ctx {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hchat__ctxpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-70);
+}
+
+.hchat__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-40);
+}
+.hchat__live i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: hchat-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hchat-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+.hchat__input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  resize: none;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  padding: 0.15rem 0.25rem 0.35rem;
+  color: var(--ink);
+  /* Deliberately taller than one line — leaves breathing room under the
+     placeholder before the chip row, as on the reference. */
+  min-height: 4.5rem;
+}
+.hchat__input:focus {
+  outline: none;
+}
+.hchat__input::placeholder {
+  color: var(--ink-40);
+}
+
+.hchat__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.hchat__chips {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.hchat__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--r-pill);
+  border: 0;
+  background: var(--neu-surface);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  color: var(--ink-70);
+  cursor: pointer;
+  box-shadow: var(--neu-raised);
+  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast);
+}
+.hchat__chip svg {
+  color: var(--accent);
+}
+.hchat__chip:hover:not(:disabled),
+.hchat__chip:focus-visible:not(:disabled) {
+  box-shadow: var(--neu-pressed);
+  color: var(--accent-ink);
+}
+.hchat__chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.hchat__send {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--neu-surface);
+  color: var(--accent-ink);
+  cursor: pointer;
+  box-shadow: var(--neu-raised);
+  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast);
+}
+.hchat__send:hover:not(:disabled),
+.hchat__send:focus-visible:not(:disabled) {
+  box-shadow: var(--neu-pressed);
+  color: var(--accent);
+}
+.hchat__send:disabled {
+  opacity: 0.45;
+  cursor: default;
+  color: var(--ink-40);
+}
+
+@media (max-width: 560px) {
+  .hchat__chips {
+    display: none;
+  }
+  .hchat__bottom {
+    justify-content: flex-end;
+  }
+}

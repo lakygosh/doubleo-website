@@ -70,20 +70,40 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     publisher: { "@id": `${SITE_URL}/#org` },
   };
 
+  const published = localized.publishedAt
+    ? new Date(localized.publishedAt).toLocaleDateString(locale === "sr" ? "sr-RS" : "en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : null;
+
   return (
     <main id="main">
       <article className="post">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <Link href="/blog" className="post__back">
-          &larr; {t("back")}
-        </Link>
-        <h1 className="post__title">{localized.title}</h1>
+        <div className="wrap wrap--narrow">
+          <Link href="/blog" className="post__back">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+            {t("back")}
+          </Link>
+          {published && <p className="post__date">{published}</p>}
+          <h1 className="post__title">{localized.title}</h1>
+        </div>
+
         {localized.coverImageUrl && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={localized.coverImageUrl} alt={localized.title} className="post__cover" />
+          <div className="wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={localized.coverImageUrl} alt="" className="post__cover" />
+          </div>
         )}
-        <div className="post__body">
-          <Markdown content={localized.content} />
+
+        <div className="wrap wrap--narrow">
+          <div className="post__body prose">
+            <Markdown content={localized.content} />
+          </div>
         </div>
       </article>
     </main>

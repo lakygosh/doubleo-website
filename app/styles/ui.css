@@ -1,0 +1,306 @@
+/* ============================================================
+   Buttons, cards, accordion, forms
+   ============================================================ */
+
+/* ── Buttons ──────────────────────────────────────────────
+   Neumorphic: raised at rest, pressed in on hover, accent text on
+   hover. Shared by every button-like control on the site (see also
+   .neu in this file, plus the chat, nav and carousel controls). */
+
+.btn,
+.neu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.62rem 1.25rem;
+  border-radius: var(--r-pill);
+  border: 0;
+  background: var(--neu-surface);
+  color: var(--ink-70);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: var(--neu-raised);
+  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast),
+    background-color var(--dur-fast);
+}
+
+.btn:hover,
+.neu:hover {
+  box-shadow: var(--neu-pressed);
+  color: var(--accent-ink);
+}
+
+/* Keyboard users get the pressed state too, not just a focus ring. */
+.btn:focus-visible,
+.neu:focus-visible {
+  box-shadow: var(--neu-pressed);
+  color: var(--accent-ink);
+}
+
+.btn:disabled,
+.neu:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: var(--neu-raised);
+  color: var(--ink-40);
+}
+
+.btn--lg {
+  padding: 0.85rem 1.6rem;
+  font-size: 0.98rem;
+}
+
+/* Primary keeps the dark fill so the main CTA still leads the page —
+   same raised/pressed behaviour, tuned for a dark surface. */
+.btn--primary {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.55), 5px 5px 12px rgba(0, 0, 0, 0.35);
+}
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  color: #fff;
+  box-shadow:
+    -1px -1px 4px rgba(255, 255, 255, 0.4), 1px 1px 4px rgba(0, 0, 0, 0.35),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.14), inset 2px 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Secondary is the plain neumorphic pill — the default look. */
+.btn--secondary {
+  background: var(--neu-surface);
+}
+
+/* On imagery: the aurora hero and solution heroes. Slightly lighter so it
+   still reads as raised against the gradient. */
+.btn--ghost {
+  background: rgba(250, 249, 251, 0.92);
+  color: var(--ink-70);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* On the near-black sections. */
+.btn--light {
+  background: #fff;
+  color: var(--ink-70);
+  box-shadow: -5px -5px 12px rgba(255, 255, 255, 0.12), 5px 5px 14px rgba(0, 0, 0, 0.6);
+}
+.btn--light:hover,
+.btn--light:focus-visible {
+  color: var(--accent-ink);
+  box-shadow:
+    -1px -1px 4px rgba(255, 255, 255, 0.1), 1px 1px 4px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 5px rgba(255, 255, 255, 1), inset 2px 2px 4px rgba(0, 0, 0, 0.28);
+}
+
+/* Any neumorphic control sitting on a dark section. */
+.section--dark .btn:not(.btn--light):not(.btn--primary),
+.section--dark .neu {
+  background: var(--neu-surface-dark);
+  color: var(--on-dark-70);
+  box-shadow: var(--neu-raised-dark);
+}
+.section--dark .btn:not(.btn--light):not(.btn--primary):hover,
+.section--dark .neu:hover {
+  color: var(--accent);
+  box-shadow: var(--neu-pressed-dark);
+}
+
+/* Sunken panels sit a shade darker, so buttons inside them match. */
+.solhelp,
+.blog-empty {
+  --neu-surface: #eeecf1;
+}
+
+.btn__arrow {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+/* Circular variant — icon-only controls (send, carousel arrows). */
+.neu--round {
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+/* ── Cards ──────────────────────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--flat {
+  box-shadow: none;
+}
+
+.card--pad {
+  padding: clamp(1.25rem, 2.4vw, 1.85rem);
+}
+
+/* Gradient hairline along the top edge — used for the highlighted plan. */
+.card--featured {
+  position: relative;
+  overflow: hidden;
+}
+.card--featured::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--aurora);
+}
+
+/* ── Accordion (FAQ) ────────────────────────────────────── */
+
+.acc {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.acc__item {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.acc__item.is-open {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.acc__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+  text-align: left;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+
+.acc__sign {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.acc__sign::before,
+.acc__sign::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1.8px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease-out);
+}
+.acc__sign::after {
+  transform: rotate(90deg);
+}
+.acc__item.is-open .acc__sign::after {
+  transform: rotate(0deg);
+}
+
+.acc__a {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--ink-60);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+/* ── Forms ──────────────────────────────────────────────── */
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-70);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-40);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form__status {
+  font-size: 0.9rem;
+}
+.form__status--ok {
+  color: var(--success);
+}
+.form__status--err {
+  color: var(--error);
+}
+
+/* ── Small shared bits ──────────────────────────────────── */
+
+.kicker {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-40);
+}
+
+.tick {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--aurora);
+  color: #fff;
+  flex-shrink: 0;
+}
