@@ -21,6 +21,15 @@ interface ThreeDSliderProps {
   onItemClick?: (item: SliderItemData, index: number) => void;
   /** LOCAL PATCH — see the wheel handler. Off by default. */
   wheelControl?: boolean;
+  /**
+   * LOCAL PATCH — how far apart the cards fan out. Upstream hard-codes these,
+   * and its defaults throw a neighbouring card a card-and-a-half sideways,
+   * which reads as six unrelated cards rather than one deck. Values are
+   * percentages of card size, spread across however many items there are.
+   */
+  spreadX?: number;
+  spreadY?: number;
+  rotation?: number;
   /** LOCAL PATCH — fires whenever the front-most card changes, by any means. */
   onActiveChange?: (index: number) => void;
 }
@@ -112,6 +121,9 @@ const ThreeDSlider: React.FC<ThreeDSliderProps> = ({
   onItemClick,
   wheelControl = false,
   onActiveChange,
+  spreadX = 750,
+  spreadY = 180,
+  rotation = 110,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   // Keep callback ref stable without causing re-renders
@@ -175,9 +187,9 @@ const ThreeDSlider: React.FC<ThreeDSliderProps> = ({
         if (!card) continue;
 
         const ratio = (i - activeFloat) / denom;
-        const tx = (ratio * 750).toFixed(2);
-        const ty = (ratio * 180).toFixed(2);
-        const rot = (ratio * 110).toFixed(2);
+        const tx = (ratio * spreadX).toFixed(2);
+        const ty = (ratio * spreadY).toFixed(2);
+        const rot = (ratio * rotation).toFixed(2);
 
         const dist = Math.abs(i - activeFloat);
         const z = numItems - dist;
@@ -289,7 +301,7 @@ const ThreeDSlider: React.FC<ThreeDSliderProps> = ({
       cards.forEach(c => c.remove());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items, speedWheel, speedDrag, wheelControl]);
+  }, [items, speedWheel, speedDrag, wheelControl, spreadX, spreadY, rotation]);
 
   return (
     /* LOCAL PATCH: `bg-black/90` dropped from the class list. It is a Tailwind

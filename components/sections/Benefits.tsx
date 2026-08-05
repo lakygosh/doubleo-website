@@ -52,6 +52,12 @@ export function Benefits() {
             items={slides}
             onActiveChange={onActiveChange}
             speedDrag={-0.12}
+            /* Well under the component's defaults (750/180/110): those fan
+               a neighbouring card a card-and-a-half sideways, which reads as
+               six loose cards instead of one deck. */
+            spreadX={330}
+            spreadY={70}
+            rotation={44}
             containerStyle={{ background: "var(--dark)" }}
           />
 
