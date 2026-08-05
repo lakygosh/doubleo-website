@@ -223,6 +223,9 @@ const CoolSlideGallery: React.FC<CoolSlideGalleryProps> = ({
   const lockRef = useRef(false);
   const dragStartX = useRef(0);
   const isDragging = useRef(false);
+  // LOCAL PATCH: pointer is down but has not moved far enough to count as a
+  // drag yet. See handlePointerDown.
+  const dragPending = useRef(false);
 
   // ── Locking ──────────────────────────────────────────────────────────────
   const lock = useCallback(() => {
@@ -277,17 +280,37 @@ const CoolSlideGallery: React.FC<CoolSlideGalleryProps> = ({
   }, [autoplay, autoplayDirection, autoplayDelay, n, step]);
 
   // ── Pointer drag ─────────────────────────────────────────────────────────
+  /* LOCAL PATCH — capture is deferred until the pointer actually moves.
+     Upstream captures on pointerdown, and a captured pointer retargets the
+     click to the capturing element: the container, never the card. That
+     killed the cards' own onClick, so `clickable` did nothing whenever
+     `draggable` was on. Arming on down and capturing on the first few
+     pixels of movement keeps drag working and lets a plain click through.
+     Re-apply this if the component is ever pulled fresh from the registry. */
+  const DRAG_SLOP = 4;
+
   const handlePointerDown = (e: React.PointerEvent) => {
     if (!draggable || lockRef.current) return;
-    isDragging.current = true;
+    dragPending.current = true;
     dragStartX.current = e.clientX;
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!dragPending.current || isDragging.current) return;
+    if (Math.abs(e.clientX - dragStartX.current) <= DRAG_SLOP) return;
+    isDragging.current = true;
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    if (!isDragging.current) return;
+    const dragged = isDragging.current;
+    dragPending.current = false;
     isDragging.current = false;
-    (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    if (!dragged) return;
+
+    const el = e.currentTarget as HTMLElement;
+    if (el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
+
     const delta = e.clientX - dragStartX.current;
     if (Math.abs(delta) > dragThreshold) {
       step(delta > 0 ? -1 : 1);
@@ -337,6 +360,7 @@ const CoolSlideGallery: React.FC<CoolSlideGalleryProps> = ({
       aria-roledescription="carousel"
       aria-label="Cool Slide Gallery"
       onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
       onTouchStart={handleTouchStart}
