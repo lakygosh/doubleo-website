@@ -402,6 +402,10 @@ const CoolSlideGallery: React.FC<CoolSlideGalleryProps> = ({
                 height: cardHeight,
                 borderRadius: effectiveRadius,
                 overflow: "hidden",
+                // LOCAL PATCH: an opaque floor. The card was transparent
+                // wherever its image did not cover, so anything behind it in
+                // the 3D stack showed through.
+                background: "var(--surface)",
                 transformStyle: "preserve-3d",
                 transformOrigin: "center center",
                 pointerEvents: visible && !autoplay ? "auto" : "none",
