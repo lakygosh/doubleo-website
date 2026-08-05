@@ -112,7 +112,7 @@
       "h2": "Mali tim, direktan kontakt.",
       "sub": "Nema account menadžera između vas i ljudi koji grade sistem. Pričate sa onima koji ga i puštaju u rad.",
       "members": [
-        { "name": "Lazar Gošić", "role": "Suosnivač · Automation engineer", "photo": "/team/lazar.webp" },
+        { "name": "Lazar", "role": "Suosnivač · Automation engineer", "photo": "/team/lazar.webp" },
         { "name": "Nevena", "role": "AI automation engineer", "photo": "/team/nevena.webp" },
         { "name": "Pavle", "role": "Automation engineer", "photo": "/team/pavle.webp" }
       ]

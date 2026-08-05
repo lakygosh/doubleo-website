@@ -112,7 +112,7 @@
       "h2": "A small team you talk to directly.",
       "sub": "No account manager between you and the people building the system. You speak to the ones who ship it.",
       "members": [
-        { "name": "Lazar Gošić", "role": "Co-founder · Automation engineer", "photo": "/team/lazar.webp" },
+        { "name": "Lazar", "role": "Co-founder · Automation engineer", "photo": "/team/lazar.webp" },
         { "name": "Nevena", "role": "AI automation engineer", "photo": "/team/nevena.webp" },
         { "name": "Pavle", "role": "Automation engineer", "photo": "/team/pavle.webp" }
       ]
