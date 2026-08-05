@@ -577,34 +577,13 @@
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
-/* The slider's cards hold a number and a title and nothing else, so each
-   reason's body copy lives here and follows the front-most card. */
-.benefits__detail {
-  max-width: 56ch;
-  margin: clamp(1.4rem, 3vw, 2.2rem) auto 0;
-  text-align: center;
-  min-height: 7.5rem; /* holds its height so the keypoints below never jump */
-}
+/* Title and body both live on the cards; this is only the position marker. */
 .benefits__count {
-  display: block;
+  margin-top: clamp(1rem, 2vw, 1.4rem);
+  text-align: center;
   font-family: var(--font-mono), monospace;
   font-size: 0.8rem;
   color: var(--accent-ink);
-  margin-bottom: 0.7rem;
-}
-.benefits__detail h3 {
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  margin-bottom: 0.5rem;
-}
-.benefits__detail p {
-  font-size: 0.98rem;
-  color: var(--ink-60);
-}
-
-@media (max-width: 560px) {
-  .benefits__detail {
-    min-height: 9.5rem;
-  }
 }
 
 .keypoints {

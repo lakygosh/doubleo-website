@@ -7,6 +7,8 @@ export interface SliderItemData {
   title: string;
   num: string;
   imageUrl: string;
+  /** LOCAL PATCH — body copy under the title. See createCard. */
+  body?: string;
   data?: any;
 }
 
@@ -28,9 +30,12 @@ function createCard(item: SliderItemData, index: number): HTMLDivElement {
   const card = document.createElement("div");
   card.className =
     "absolute top-1/2 left-1/2 cursor-pointer select-none rounded-2xl shadow-2xl bg-zinc-900 overflow-hidden border border-white/10";
+  /* LOCAL PATCH: cards are bigger than upstream's. They now carry a
+     paragraph, not just a title, and the original 180px floor left no room
+     to read one. */
   card.style.cssText = `
-    --w: clamp(180px, 28vw, 280px);
-    --h: clamp(240px, 36vw, 380px);
+    --w: clamp(230px, 30vw, 320px);
+    --h: clamp(310px, 41vw, 430px);
     width: var(--w); height: var(--h);
     margin-top: calc(var(--h) / -2);
     margin-left: calc(var(--w) / -2);
@@ -45,10 +50,12 @@ function createCard(item: SliderItemData, index: number): HTMLDivElement {
   inner.style.cssText = "position:absolute;inset:0;z-index:10;";
   inner.dataset.inner = "true";
 
-  // gradient overlay
+  /* LOCAL PATCH: the veil is heavier and starts higher than upstream's,
+     because a paragraph needs a readable backdrop where a two-word title
+     could get by on a text shadow. */
   const grad = document.createElement("div");
   grad.style.cssText =
-    "position:absolute;inset:0;z-index:10;background:linear-gradient(to bottom,rgba(0,0,0,.4) 0%,transparent 50%,rgba(0,0,0,.8) 100%);";
+    "position:absolute;inset:0;z-index:10;background:linear-gradient(to bottom,rgba(11,5,16,.45) 0%,rgba(11,5,16,.12) 32%,rgba(11,5,16,.82) 68%,rgba(11,5,16,.94) 100%);";
 
   // number
   const num = document.createElement("div");
@@ -56,11 +63,26 @@ function createCard(item: SliderItemData, index: number): HTMLDivElement {
     "position:absolute;z-index:20;color:rgba(255,255,255,.9);font-weight:900;top:12px;left:20px;font-size:clamp(28px,6vw,64px);letter-spacing:-0.04em;opacity:.8;";
   num.textContent = item.num;
 
-  // title
+  /* LOCAL PATCH: title and body share one bottom-anchored block instead of
+     the title being pinned on its own, so the paragraph pushes the title up
+     rather than overlapping it. */
+  const caption = document.createElement("div");
+  caption.style.cssText =
+    "position:absolute;z-index:20;left:0;right:0;bottom:0;padding:0 18px 18px;";
+
   const title = document.createElement("div");
   title.style.cssText =
-    "position:absolute;z-index:20;color:#fff;font-weight:700;bottom:20px;left:20px;font-size:clamp(18px,2.5vw,26px);letter-spacing:-0.02em;text-shadow:0 2px 8px rgba(0,0,0,.5);";
+    "color:#fff;font-weight:700;font-size:clamp(17px,2.2vw,22px);line-height:1.2;letter-spacing:-0.02em;text-shadow:0 2px 8px rgba(0,0,0,.5);";
   title.textContent = item.title;
+  caption.appendChild(title);
+
+  if (item.body) {
+    const body = document.createElement("div");
+    body.style.cssText =
+      "margin-top:7px;color:rgba(255,255,255,.82);font-weight:400;font-size:clamp(12px,1.15vw,13.5px);line-height:1.45;text-shadow:0 1px 6px rgba(0,0,0,.6);";
+    body.textContent = item.body;
+    caption.appendChild(body);
+  }
 
   // image
   const img = document.createElement("img");
@@ -73,7 +95,7 @@ function createCard(item: SliderItemData, index: number): HTMLDivElement {
 
   inner.appendChild(grad);
   inner.appendChild(num);
-  inner.appendChild(title);
+  inner.appendChild(caption);
   inner.appendChild(img);
   card.appendChild(inner);
 

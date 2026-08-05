@@ -27,6 +27,7 @@ export function Benefits() {
     () =>
       items.map((b, i) => ({
         title: b.title,
+        body: b.body,
         num: String(i + 1).padStart(2, "0"),
         imageUrl: `/why/${i + 1}.svg`,
       })),
@@ -54,20 +55,15 @@ export function Benefits() {
             containerStyle={{ background: "var(--dark)" }}
           />
 
-          {/* The copy the cards have no room for. aria-live so the text is
-              announced when the slider moves under a keyboard or a drag. */}
-          <div className="benefits__detail" aria-live="polite">
-            <span className="benefits__count">
-              {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
-            </span>
-            <h3>{items[active].title}</h3>
-            <p>{items[active].body}</p>
-          </div>
+          {/* The cards carry the copy now, so all that's left below is where
+              you are in the six. aria-live so a drag is still announced. */}
+          <p className="benefits__count" aria-live="polite">
+            {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
+          </p>
 
           {/* The slider builds its cards with document.createElement inside an
-              effect, so none of them exist in the server HTML and only the
-              active reason is readable above. Everything the section claims
-              stays crawlable and available without JS here. */}
+              effect, so none of them exist in the server HTML. Everything the
+              section claims stays crawlable and available without JS here. */}
           <ul className="u-sr-only">
             {items.map((b) => (
               <li key={b.title}>
