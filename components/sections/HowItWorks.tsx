@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Appear } from "@/components/motion/Appear";
+import { InteractiveCard } from "@/components/motion/InteractiveCard";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { ArrowIcon } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
@@ -46,11 +47,11 @@ export function HowItWorks() {
         <ol className="how__steps">
           {steps.map((s, i) => (
             <Appear key={s.title} y={28} delay={0.08 * i}>
-              <li className="step">
+              <InteractiveCard as="li" className="step">
                 <span className="step__no">{String(i + 1).padStart(2, "0")}</span>
                 <h3>{s.title}</h3>
                 <p>{s.body}</p>
-              </li>
+              </InteractiveCard>
             </Appear>
           ))}
         </ol>

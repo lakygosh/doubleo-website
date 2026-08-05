@@ -127,6 +127,30 @@
   }
 }
 
+/* ── Interactive (tilt) card ────────────────────────────── */
+
+.tilt {
+  height: 100%;
+  perspective: 1000px;
+  list-style: none;
+}
+
+/* The glow is clipped by the card's own radius and overflow. It sits above
+   the card surface but below nothing else — content stays readable because
+   the gradient fades out well before full strength. */
+.tilt__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+@media (hover: none) {
+  .tilt__glow {
+    display: none;
+  }
+}
+
 /* ── Aurora backdrop ────────────────────────────────────── */
 
 .aurora {
