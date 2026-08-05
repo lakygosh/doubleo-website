@@ -559,40 +559,38 @@
 
 /* ── Benefits ───────────────────────────────────────────── */
 
-.benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.9rem, 2vw, 1.4rem);
+.benefits__slider {
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
-.benefit {
-  height: 100%;
-  padding: clamp(1.2rem, 2.2vw, 1.7rem);
-  border-radius: var(--r-lg);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  transition: border-color var(--dur), transform var(--dur) var(--ease-out);
+/* The slider's cards hold a number and a title and nothing else, so each
+   reason's body copy lives here and follows the front-most card. */
+.benefits__detail {
+  max-width: 56ch;
+  margin: clamp(1.4rem, 3vw, 2.2rem) auto 0;
+  text-align: center;
+  min-height: 7.5rem; /* holds its height so the keypoints below never jump */
 }
-.benefit:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-.benefit__no {
+.benefits__count {
   display: block;
   font-family: var(--font-mono), monospace;
-  font-size: 0.85rem;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--accent);
-  margin-bottom: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--accent-ink);
+  margin-bottom: 0.7rem;
 }
-.benefit h3 {
-  font-size: 1.12rem;
-  margin-bottom: 0.4rem;
+.benefits__detail h3 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  margin-bottom: 0.5rem;
 }
-.benefit p {
-  font-size: 0.93rem;
+.benefits__detail p {
+  font-size: 0.98rem;
   color: var(--ink-60);
+}
+
+@media (max-width: 560px) {
+  .benefits__detail {
+    min-height: 9.5rem;
+  }
 }
 
 .keypoints {
@@ -629,13 +627,11 @@
 .keypoint--3 { background: linear-gradient(143deg, #fcab83 0%, #f288b0 60%, #d37bff 100%); }
 
 @media (max-width: 900px) {
-  .benefits__grid,
   .keypoints {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 560px) {
-  .benefits__grid,
   .keypoints {
     grid-template-columns: 1fr;
   }

@@ -1,17 +1,37 @@
 "use client";
 
+import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Appear } from "@/components/motion/Appear";
 import { SplitWords } from "@/components/motion/SplitWords";
+import ThreeDSlider from "@/components/lightswind/3d-slider";
 
 /**
- * "Why Double O" — the reference's Key Benefits grid plus the three
- * gradient key-point cards that sit beside it.
+ * "Why Double O" — the six reasons as Lightswind's 3d-slider, plus the three
+ * gradient key-point cards below it.
+ *
+ * The slider's cards carry only a number and a title; each reason's body copy
+ * lives under the slider and follows the front-most card. That is why the
+ * component was patched to report active changes — a click, a drag and a
+ * settle all have to move the text, or the section reads as broken.
  */
 export function Benefits() {
   const t = useTranslations("home.benefits");
   const items = t.raw("items") as { title: string; body: string }[];
   const keys = t.raw("keyPoints") as { title: string; body: string }[];
+
+  const [active, setActive] = useState(0);
+  const onActiveChange = useCallback((i: number) => setActive(i), []);
+
+  const slides = useMemo(
+    () =>
+      items.map((b, i) => ({
+        title: b.title,
+        num: String(i + 1).padStart(2, "0"),
+        imageUrl: `/why/${i + 1}.svg`,
+      })),
+    [items]
+  );
 
   return (
     <section className="section benefits" id="why">
@@ -26,17 +46,37 @@ export function Benefits() {
           </Appear>
         </div>
 
-        <div className="benefits__grid">
-          {items.map((b, i) => (
-            <Appear key={b.title} y={26} delay={0.05 * i}>
-              <article className="benefit">
-                <span className="benefit__no">{String(i + 1).padStart(2, "0")}</span>
+        <Appear y={26} className="benefits__slider">
+          <ThreeDSlider
+            items={slides}
+            onActiveChange={onActiveChange}
+            speedDrag={-0.12}
+            containerStyle={{ background: "var(--dark)" }}
+          />
+
+          {/* The copy the cards have no room for. aria-live so the text is
+              announced when the slider moves under a keyboard or a drag. */}
+          <div className="benefits__detail" aria-live="polite">
+            <span className="benefits__count">
+              {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
+            </span>
+            <h3>{items[active].title}</h3>
+            <p>{items[active].body}</p>
+          </div>
+
+          {/* The slider builds its cards with document.createElement inside an
+              effect, so none of them exist in the server HTML and only the
+              active reason is readable above. Everything the section claims
+              stays crawlable and available without JS here. */}
+          <ul className="u-sr-only">
+            {items.map((b) => (
+              <li key={b.title}>
                 <h3>{b.title}</h3>
                 <p>{b.body}</p>
-              </article>
-            </Appear>
-          ))}
-        </div>
+              </li>
+            ))}
+          </ul>
+        </Appear>
 
         <div className="keypoints">
           {keys.map((k, i) => (
