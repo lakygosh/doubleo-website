@@ -107,6 +107,17 @@
       "body": "Double O is not an AI company. We're marketing and operations people who got tired of watching good businesses lose customers to an unanswered message. We build the systems that close that gap."
     },
 
+    "team": {
+      "kicker": "Our team",
+      "h2": "A small team you talk to directly.",
+      "sub": "No account manager between you and the people building the system. You speak to the ones who ship it.",
+      "members": [
+        { "name": "First Last", "role": "Founder and strategy", "photo": "" },
+        { "name": "First Last", "role": "Automation and integrations", "photo": "" },
+        { "name": "First Last", "role": "Design and content", "photo": "" }
+      ]
+    },
+
     "benefits": {
       "kicker": "Why Double O",
       "h2": "We don't sell technology. We sell the result.",

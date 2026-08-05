@@ -107,6 +107,17 @@
       "body": "Double O nije AI kompanija. Mi smo ljudi iz marketinga i operacija kojima je dosadilo da gledaju kako dobri biznisi gube klijente zbog neodgovorene poruke. Gradimo sisteme koji rešavaju taj izazov."
     },
 
+    "team": {
+      "kicker": "Naš tim",
+      "h2": "Mali tim, direktan kontakt.",
+      "sub": "Nema account menadžera između vas i ljudi koji grade sistem. Pričate sa onima koji ga i puštaju u rad.",
+      "members": [
+        { "name": "Ime Prezime", "role": "Osnivač i strategija", "photo": "" },
+        { "name": "Ime Prezime", "role": "Automatizacija i integracije", "photo": "" },
+        { "name": "Ime Prezime", "role": "Dizajn i sadržaj", "photo": "" }
+      ]
+    },
+
     "benefits": {
       "kicker": "Zašto Double O",
       "h2": "Ne prodajemo tehnologiju. Prodajemo rezultat.",
