@@ -682,3 +682,47 @@ Per-solution accent colours (for colour-coding offer line items):
 Recommended density for a one-page offer: hero → 4–6 sections → dark CTA. Body copy in
 `--ink-60`, key deliverables as `.plan__list` rows with aurora ticks, price in display
 600 / `-0.03em`.
+
+---
+
+## Tailwind (third-party components only)
+
+Tailwind v4 is installed, but **it is not how we author UI**. Every section on this
+site is hand-written CSS against the tokens above, and that does not change. Tailwind
+is here so drop-in components from Lightswind (and anything else shadcn-shaped) render
+correctly instead of unstyled.
+
+Three rules keep it from bleeding into the rest of the site:
+
+1. **No preflight.** `app/styles/tailwind.css` imports the `theme` and `utilities`
+   layers only. Tailwind's reset would fight `base.css` over margins, heading
+   sizes, list styles and default border colour — on every page.
+2. **Our CSS is unlayered, Tailwind's is layered.** Unlayered rules always win, so
+   no utility can override a site style by accident. The trade-off is the reverse:
+   you cannot patch a site component with a Tailwind class. Don't try — edit the CSS.
+3. **The palette bridge is the point.** `@theme` in `app/styles/tailwind.css` maps
+   `background` / `foreground` / `primary` / `border` / `muted` / `radius` onto our
+   palette, so a dropped-in component inherits Double O's colours rather than its
+   own demo theme. Those values are literals copied from `tokens.css` — **when a
+   token changes, change it in both places.** `tokens.css` stays the source of truth.
+
+### Adding a Lightswind component
+
+```bash
+npx lightswind add <component-name>
+```
+
+It lands in `components/lightswind/`. Then, before using it:
+
+- **Check what it drags in.** Several of them need `@react-three/fiber`,
+  `@tsparticles/*` or `@motionone/utils`. If the component isn't worth the
+  dependency, port the effect by hand instead — see
+  `components/motion/InteractiveCard.tsx`, which is Lightswind's `interactive-card`
+  rewritten against our tokens in ~80 lines and no new packages.
+- **Check it typechecks.** The published sources are loose about unused variables
+  and `any`; `npx tsc --noEmit` is the gate.
+- **Strip its box model.** They ship fixed widths and aspect ratios
+  (`w-[320px] aspect-[17/21]`). Those are demo values, not layout.
+
+Do not run `npx lightswind init` or `add` without a component name — it dumps all
+~180 components into the repo, most of which do not compile.

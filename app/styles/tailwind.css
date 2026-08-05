@@ -1,0 +1,79 @@
+/* ============================================================
+   Double O — Tailwind v4 entry
+   Tailwind is here for third-party components (Lightswind), not for
+   authoring our own UI. Our stylesheets stay hand-written.
+   ============================================================ */
+
+/* Preflight is deliberately NOT imported.
+   It resets margins, heading size/weight, list styles and the default
+   border colour — all of which base.css already defines for the whole
+   site. Loading both would change the cascade on every page. Pulling the
+   theme and utilities layers separately gives us Tailwind's utilities
+   with none of its reset. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Our own CSS is unlayered, and unlayered rules beat layered ones no
+   matter the order — so nothing Tailwind emits can override a site style
+   by accident. The flip side: a Tailwind utility will not override our
+   CSS either. That only matters inside third-party components, which
+   carry no site classes. */
+
+/* Class scanning. v4 infers sources from the project root; naming them
+   keeps it deterministic and off node_modules. */
+@source "../../app";
+@source "../../components";
+
+/* ── Palette bridge ───────────────────────────────────────
+   Lightswind (and anything else shadcn-shaped) styles itself with
+   `bg-background`, `text-foreground`, `border-border`, `bg-primary`…
+   Mapping those names onto our palette is what makes a dropped-in
+   component look like Double O instead of like its own demo.
+
+   Values are literals rather than var(--token) references so Tailwind can
+   compute opacity modifiers (`bg-primary/60`) with color-mix. Keep them in
+   sync with tokens.css — that file is the source of truth. */
+@theme {
+  --color-background: #f7f6f7; /* --page */
+  --color-foreground: #1b0c27; /* --ink */
+
+  --color-card: #ffffff; /* --surface */
+  --color-card-foreground: #1b0c27;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1b0c27;
+
+  --color-primary: #d37bff; /* --accent */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3e9fa; /* --accent-soft */
+  --color-secondary-foreground: #7a2ea8; /* --accent-ink */
+
+  --color-muted: #f2f0f3; /* --surface-sunk */
+  --color-muted-foreground: #736a7a; /* --ink-60, flattened onto --page */
+  --color-accent: #f3e9fa;
+  --color-accent-foreground: #7a2ea8;
+
+  --color-destructive: #cb272f; /* --error */
+  --color-destructive-foreground: #ffffff;
+  --color-success: #1f9254;
+
+  --color-border: #edebee; /* --line */
+  --color-input: #ddd9e0; /* --line-strong */
+  --color-ring: #d37bff;
+
+  /* Brand hues, so a component can reach for them directly. */
+  --color-brand-blue: #80aafd;
+  --color-brand-purple: #d37bff;
+  --color-brand-peach: #fcac84;
+  --color-brand-pink: #ff49d4;
+
+  --radius-lg: 16px; /* --r-md */
+  --radius-xl: 24px; /* --r-lg */
+  --radius-2xl: 40px; /* --r-xl */
+
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+  /* No --font-mono here: next/font already owns that variable for Fragment
+     Mono (lib/fonts.ts). Redefining it would fight the font loader. */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
