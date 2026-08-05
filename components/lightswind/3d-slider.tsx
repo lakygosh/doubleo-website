@@ -193,7 +193,15 @@ const ThreeDSlider: React.FC<ThreeDSliderProps> = ({
 
         const dist = Math.abs(i - activeFloat);
         const z = numItems - dist;
-        const op = Math.max(0, Math.min(1, (z / numItems) * 3 - 1.8)).toFixed(2);
+
+        /* LOCAL PATCH: cards in the deck are solid. Upstream ramps opacity
+           with distance — with six items the first card back sat at 0.70 and
+           the second at 0.20, so the third read straight through the second.
+           Opacity is only there to retire cards that have left the deck, so
+           it now holds at 1 until SOLID_DEPTH and fades out over the step
+           after it. */
+        const SOLID_DEPTH = 2;
+        const op = Math.max(0, Math.min(1, SOLID_DEPTH + 1 - dist)).toFixed(2);
         const zStr = Math.round(z * 10).toString();
 
         const c = cache[i];
