@@ -36,7 +36,10 @@ export function Solutions() {
             const points = tSol.raw(`${s.slug}.points`) as string[];
             return (
               <StickyStackItem key={s.slug} index={i} total={SOLUTIONS.length}>
-                <article className="solcard" style={{ ["--sol" as string]: s.accent }}>
+                <article
+                  className={i % 2 ? "solcard solcard--flip" : "solcard"}
+                  style={{ ["--sol" as string]: s.accent }}
+                >
                   <div className="solcard__body">
                     <div className="solcard__head">
                       <span className="solcard__icon">

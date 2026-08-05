@@ -362,6 +362,15 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Every other card mirrors: art on the left, copy on the right. The wider
+   column follows the copy, so the art keeps the same size either way. */
+.solcard--flip {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+.solcard--flip .solcard__art {
+  order: -1;
+}
+
 .solcard__body {
   padding: clamp(1.5rem, 3vw, 2.6rem);
   display: flex;
