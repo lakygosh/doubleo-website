@@ -78,6 +78,15 @@ export function ScrollWordReveal({ text, className }: { text: string; className?
 
   const words = text.split(" ");
 
+  /* Words light over overlapping slices so the wave reads as continuous. The
+     overlap has to be paid for out of the track, not tacked onto the end —
+     dividing by `words.length` alone pushed the last word's range past 1,
+     where progress is already clamped, so it never finished lighting up.
+     `END` leaves a beat with the sentence fully lit before the track lets go. */
+  const OVERLAP = 1.6;
+  const END = 0.92;
+  const step = END / (words.length - 1 + OVERLAP);
+
   if (reduced) {
     return (
       <div className="swr">
@@ -96,9 +105,7 @@ export function ScrollWordReveal({ text, className }: { text: string; className?
             <Word
               key={i}
               progress={progress}
-              // Each word lights over its own slice, with a little overlap so
-              // the wave reads as continuous rather than stepped.
-              range={[i / words.length, (i + 1.6) / words.length]}
+              range={[i * step, (i + OVERLAP) * step]}
             >
               {word}
             </Word>
