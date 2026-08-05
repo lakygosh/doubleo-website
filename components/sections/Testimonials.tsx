@@ -27,6 +27,16 @@ export function Testimonials() {
     setI((v) => (v + step + quotes.length) % quotes.length);
   };
 
+  /* The prev/next buttons are hidden under 560px (see sections.css), so on a
+     phone the card itself has to be draggable. `drag="x"` sets touch-action:
+     pan-y, which leaves vertical page scrolling alone. Flicks count as well as
+     long drags, hence velocity folded into the threshold. */
+  const onDragEnd = (_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
+    const power = info.offset.x + info.velocity.x * 0.2;
+    if (power <= -60) go(1);
+    else if (power >= 60) go(-1);
+  };
+
   const active = quotes[i];
 
   return (
@@ -65,6 +75,12 @@ export function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: dir * -28 }}
                 transition={{ duration: 0.32, ease: EASE }}
+                drag="x"
+                dragDirectionLock
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.16}
+                dragMomentum={false}
+                onDragEnd={onDragEnd}
               >
                 <blockquote>{active.quote}</blockquote>
                 <figcaption>
