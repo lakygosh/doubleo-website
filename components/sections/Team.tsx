@@ -52,9 +52,10 @@ export function Team() {
             radius={4}
             gap={7}
             /* Reads backwards: the component computes the black overlay as
-               1 - dimOpacity/100, so a high number here is a light veil.
-               85 leaves the side cards clearly visible. */
-            dimOpacity={85}
+               1 - dimOpacity/100, so a LOW number here is a heavy veil.
+               55 puts the side cards under 45% black — clearly recessed
+               behind the active one, without the wash-out that 28 gave. */
+            dimOpacity={55}
             tilt={12}
             sideTilt={4}
             easing="smooth"
