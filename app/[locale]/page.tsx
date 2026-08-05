@@ -7,6 +7,7 @@ import { Bento } from "@/components/sections/Bento";
 import { Solutions } from "@/components/sections/Solutions";
 import { MarqueeStrip, CtaTicker } from "@/components/sections/MarqueeStrip";
 import { About } from "@/components/sections/About";
+import { Team } from "@/components/sections/Team";
 import { Benefits } from "@/components/sections/Benefits";
 import { Trust } from "@/components/sections/Trust";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -28,6 +29,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Solutions />
       <MarqueeStrip />
       <About />
+      <Team />
       <Benefits />
       <Trust />
       <Testimonials />
