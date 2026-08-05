@@ -88,12 +88,31 @@
   perspective: 1200px;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+
+  /* Each card pins this much lower than the one before it, so a band of every
+     earlier card stays visible above it. StickyStack.tsx multiplies it by the
+     card's index. */
+  --stack-offset: clamp(12px, 1.6vw, 20px);
 }
 
 .stack__slot {
   position: sticky;
   will-change: transform;
+}
+
+.stack__item {
+  position: relative;
+}
+
+/* Opaque dimming for cards that have receded — see StickyStack.tsx for why
+   this can't be opacity on the card itself. */
+.stack__scrim {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-xl);
+  background: var(--page);
+  pointer-events: none;
 }
 
 /* The last card doesn't need to pin — it just ends the stack. */

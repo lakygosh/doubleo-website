@@ -6,19 +6,32 @@ import { useEffect, useRef, type ReactNode } from "react";
 /**
  * Sticky card stack, as used for the reference's "Product Overview" section.
  *
- * Every card pins at the same line, so the incoming card lands exactly on top
- * of the one before it and covers it completely. As the next card rises, the
- * outgoing one scales down from its top edge and dims — it reads as receding
- * into the stack rather than sliding away.
+ * Each card pins slightly lower than the one before it, so a band of every
+ * earlier card stays visible above the incoming one and the section reads as
+ * a physical deck. A card recedes by `DEPTH_STEP` for every card stacked on
+ * top of it — the effect compounds, so the card at the back of a six-card
+ * stack ends up at half size.
  *
- * Scaling from `top` matters: the outgoing card's top edge stays on the pin
- * line while its bottom rises, so a card at scale 0.88 is always strictly
- * shorter than the full-size card arriving over it. That guarantees full
- * coverage without forcing every card to the same height.
+ * Two things are load-bearing:
+ *
+ * - Scaling from `top`: the outgoing card's top edge stays on its pin line
+ *   while its bottom rises, so it is always strictly shorter and narrower
+ *   than the card arriving over it. Full coverage without forcing every card
+ *   to the same height.
+ * - The dim is an opaque scrim laid over the card, never `opacity` on the
+ *   card itself. Fading the card would make it translucent and the cards
+ *   further back would show through it.
  */
 
-/** Distance from the viewport top that every card pins to. */
+/** Distance from the viewport top that the first card pins to. */
 const PIN_TOP = "calc(var(--nav-h) + 2rem)";
+/** How much each card shrinks per card stacked on top of it. */
+const DEPTH_STEP = 0.1;
+/** Floor for the compounded scale — half size, as on the reference. */
+const MIN_SCALE = 0.5;
+/** Scrim opacity per depth step, and its ceiling. */
+const DIM_STEP = 0.16;
+const MAX_DIM = 0.5;
 
 export function StickyStackItem({
   children,
@@ -33,7 +46,8 @@ export function StickyStackItem({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const progress = useMotionValue(0);
+  /** How many cards are stacked on top of this one, as a continuous value. */
+  const depth = useMotionValue(0);
   const isLast = index === total - 1;
 
   useEffect(() => {
@@ -45,16 +59,23 @@ export function StickyStackItem({
     let frame = 0;
     const measure = () => {
       frame = 0;
-      const next = el.nextElementSibling as HTMLElement | null;
-      if (!next) return;
 
-      // While pinned, this card's top *is* the pin line. The next card's top
-      // closes on it; one card-height out is where the recede starts.
+      // While pinned, this card's top *is* its pin line. Every later card
+      // closes on it in turn; one card-height out is where its contribution
+      // starts, and it reaches a full 1 once that card has landed. Summing
+      // them is what makes the recede compound down the stack.
       const pinTop = el.getBoundingClientRect().top;
       const travel = el.offsetHeight || 1;
-      const remaining = next.getBoundingClientRect().top - pinTop;
-      const p = 1 - remaining / travel;
-      progress.set(p < 0 ? 0 : p > 1 ? 1 : p);
+      let d = 0;
+
+      for (let sib = el.nextElementSibling; sib; sib = sib.nextElementSibling) {
+        const remaining = (sib as HTMLElement).getBoundingClientRect().top - pinTop;
+        const p = 1 - remaining / travel;
+        if (p <= 0) break; // later cards are further away still
+        d += p > 1 ? 1 : p;
+      }
+
+      depth.set(d);
     };
 
     const onScroll = () => {
@@ -69,22 +90,24 @@ export function StickyStackItem({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [progress, reduced, isLast]);
+  }, [depth, reduced, isLast]);
 
-  const scale = useTransform(progress, [0, 1], [1, 0.88]);
-  const opacity = useTransform(progress, [0, 1], [1, 0.72]);
+  const scale = useTransform(depth, (d) => Math.max(1 - d * DEPTH_STEP, MIN_SCALE));
+  const dim = useTransform(depth, (d) => Math.min(d * DIM_STEP, MAX_DIM));
+  const still = reduced || isLast;
 
   return (
-    <div className="stack__slot" ref={ref} style={{ top: PIN_TOP, zIndex: index }}>
+    <div
+      className="stack__slot"
+      ref={ref}
+      style={{ top: `calc(${PIN_TOP} + ${index} * var(--stack-offset))`, zIndex: index }}
+    >
       <motion.div
-        className={className}
-        style={
-          reduced || isLast
-            ? undefined
-            : { scale, opacity, transformOrigin: "center top", willChange: "transform" }
-        }
+        className={className ? `stack__item ${className}` : "stack__item"}
+        style={still ? undefined : { scale, transformOrigin: "center top", willChange: "transform" }}
       >
         {children}
+        {!still && <motion.span className="stack__scrim" style={{ opacity: dim }} aria-hidden="true" />}
       </motion.div>
     </div>
   );
