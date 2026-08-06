@@ -6,6 +6,16 @@ import { SITE_URL } from "@/lib/config";
 import { languageAlternates } from "@/lib/seo";
 
 /**
+ * Hourly ISR, matching the blog index, as a net under the `revalidatePath`
+ * calls in app/api/posts and the admin actions. Those cover every route the
+ * app itself publishes through — but a post written straight into Supabase
+ * fires neither, and without a TTL this route would then serve the deployment's
+ * build-time snapshot until someone redeployed. The index already got bitten by
+ * a variant of that; see the note on its own `revalidate`.
+ */
+export const revalidate = 3600;
+
+/**
  * Google ignores <priority> and <changefreq> outright, so neither is emitted.
  * <lastmod> is the one hint it reads — and only for as long as it stays
  * honest, which rules out stamping build time on everything. Bump this by hand
