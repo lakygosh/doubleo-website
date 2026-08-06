@@ -2,7 +2,7 @@
  * Double O Chat Widget v1.1 — embeddable AI chat wired to an n8n Chat Trigger.
  * All branding is data-attribute driven (data-webhook-url, data-title,
  * data-subtitle, data-welcome, data-placeholder, data-error[-fallback|-retry],
- * data-accent, data-accent-text, data-position, data-fallback-url) — new
+ * data-accent, data-accent-text, data-position, data-fallback-url, data-logo-url) — new
  * client = new attribute values, same file.
  *
  * Language sync: re-reads its own data-* attributes whenever the host page
@@ -34,6 +34,13 @@
       accentText: script.getAttribute('data-accent-text') || '#ffffff',
       position: script.getAttribute('data-position') === 'left' ? 'left' : 'right',
       fallbackUrl: script.getAttribute('data-fallback-url') || '',
+      // Brand mark for the launcher and the panel header. Defaults to the
+      // Double O logo sitting next to this file on whatever origin serves it,
+      // so an embed on a third-party page still resolves. data-logo-url=""
+      // drops the mark entirely for white-label embeds.
+      logoUrl: script.hasAttribute('data-logo-url')
+        ? script.getAttribute('data-logo-url')
+        : new URL('../logo-mark.png', script.src).href,
       storageKey: script.getAttribute('data-storage-key') || 'doubleo_chat',
       zIndex: script.getAttribute('data-z-index') || '2147483000'
     };
@@ -96,8 +103,8 @@
   //   Shape:  --radius 24px panel · 12px bubbles/input · layered card shadow
   //           · ease cubic-bezier(.22,1,.36,1). Launcher stays circular.
   //   Accent: data-attribute driven — --accent fills the send button and draws
-  //   focus rings. The launcher uses the aurora gradient instead, matching the
-  //   brand tile in the nav and the assistant avatar in the hero chat.
+  //   focus rings. The launcher and header carry the brand mark (data-logo-url)
+  //   instead, matching the lockup in the nav and the hero chat avatar.
   // ---------------------------------------------------------------------------
   var css = [
     ':host{all:initial}',
@@ -116,16 +123,20 @@
       'font-family:var(--font-body)',
     '}',
 
-    /* Launcher bubble — the brand tile as a circle: aurora fill with the same
-       inset highlights, white glyph, and a green online dot on the shoulder */
+    /* Launcher bubble — the brand mark on a white disc (the mark carries the
+       gradient itself), with a green online dot on the shoulder. Without a
+       logo it falls back to the aurora fill and a white chat glyph. */
     '.doc-launcher{position:fixed;bottom:22px;' + cfg.position + ':22px;width:56px;height:56px;',
-    'border:0;border-radius:50%;background:var(--aurora);color:#fff;',
+    'border:0;border-radius:50%;color:#fff;',
+    'background:' + (cfg.logoUrl ? 'var(--panel)' : 'var(--aurora)') + ';',
     'cursor:pointer;display:flex;align-items:center;justify-content:center;',
     'box-shadow:inset 0 -2px 4px rgba(255,255,255,.25),inset 0 1px 1px rgba(255,255,255,.4),var(--shadow);',
     'transition:transform .15s var(--ease),filter .15s;font-family:var(--font-display)}',
     '.doc-launcher:hover{filter:brightness(1.04);transform:translateY(-2px)}',
     '.doc-launcher:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:50%}',
     '.doc-launcher svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2}',
+    '.doc-launcher img{width:34px;height:auto;display:block;pointer-events:none}',
+    '.doc-logo{width:30px;height:auto;flex:none;display:block}',
     '.doc-launcher-ring{position:absolute;top:-3px;' + (cfg.position === 'left' ? 'left' : 'right') + ':-3px;',
     'width:10px;height:10px;border-radius:50%;background:var(--live);border:2px solid var(--panel);',
     'animation:docPulseRing 2.4s infinite}',
@@ -216,7 +227,12 @@
   var launcher = document.createElement('button');
   launcher.className = 'doc-launcher';
   launcher.type = 'button';
-  launcher.innerHTML = iconChat + '<span class="doc-launcher-ring" aria-hidden="true"></span>';
+  var brandImg = cfg.logoUrl
+    ? '<img class="doc-logo" src="' + cfg.logoUrl + '" alt="" aria-hidden="true">'
+    : '';
+  launcher.innerHTML =
+    (cfg.logoUrl ? brandImg : iconChat) +
+    '<span class="doc-launcher-ring" aria-hidden="true"></span>';
   root.appendChild(launcher);
 
   var panel = document.createElement('section');
@@ -225,6 +241,7 @@
   panel.setAttribute('aria-hidden', 'true');
   panel.innerHTML =
     '<header class="doc-head">' +
+      brandImg +
       '<div class="doc-head-txt">' +
         '<div class="doc-title"></div>' +
         '<div class="doc-sub"><span class="doc-sub-dot" aria-hidden="true"></span><span class="doc-sub-text"></span></div>' +
