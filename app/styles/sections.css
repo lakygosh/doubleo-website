@@ -684,61 +684,103 @@
 
 .testimonials {
   position: relative;
-  overflow: hidden;
+  /* `clip`, not `hidden` — same reason as .about in base.css. `hidden` makes
+     this a scroll container, which unpins the sticky stage inside it and the
+     deck never animates. */
+  overflow: clip;
+  isolation: isolate;
 }
+/* Full-bleed clouds photo. The mask fades the top and bottom edges so the
+   section melts into the plain ones around it; the tint keeps the middle pale
+   enough for ink-coloured text to hold its contrast. */
 .testimonials__bg {
   position: absolute;
-  inset: 0;
-  opacity: 0.55;
+  inset: -1px 0;
+  z-index: -1;
+  /* The fades are in vh, not per cent: the section is several screens tall
+     because of the scroll track, and a percentage fade would smear across the
+     whole thing. */
+  --fade: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 30vh,
+    #000 calc(100% - 24vh),
+    transparent 100%
+  );
+  -webkit-mask-image: var(--fade);
+  mask-image: var(--fade);
   pointer-events: none;
+}
+/* The section is a few screens tall because of the scroll track, so one copy
+   of the photo would be stretched to nothing. It is tiled as two halves
+   instead: the upper one flipped 180° on the vertical axis, the lower one the
+   right way up. They meet mirrored, so the same edge of the photo lands on
+   both sides of the seam and the joint is invisible. Each half also carries
+   the white tint that keeps ink-coloured text legible over it. */
+.testimonials__bg::before,
+.testimonials__bg::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 50%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42)),
+    url("/photos/Clouds_frame.jpg") center / cover no-repeat;
+}
+.testimonials__bg::before {
+  top: 0;
+  transform: scaleY(-1);
+}
+.testimonials__bg::after {
+  bottom: 0;
+  /* A hair of overlap so a fractional section height can't leave a light
+     seam line down the middle. */
+  height: calc(50% + 1px);
 }
 .testimonials__inner {
   position: relative;
   z-index: 1;
 }
 
-.tcarousel {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+/* The scroll track: one screen per card plus one to settle, so the deck has
+   room to deal itself out while the stage stays pinned. */
+.tstack {
+  height: 340vh;
+  margin-top: clamp(1rem, 3vw, 2rem);
 }
-
-.tcarousel__nav {
+.tstack__sticky {
+  position: sticky;
+  top: 0;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border: 0;
-  border-radius: 50%;
-  background: var(--neu-surface);
-  color: var(--ink-70);
-  cursor: pointer;
-  box-shadow: var(--neu-raised);
-  transition: box-shadow var(--dur) var(--ease-out), color var(--dur-fast);
+  height: 100svh;
 }
-.tcarousel__nav:hover,
-.tcarousel__nav:focus-visible {
-  box-shadow: var(--neu-pressed);
-  color: var(--accent-ink);
+/* CardsContainer positions its cards absolutely against this box, so the deck
+   needs a fixed size rather than one derived from the longest quote. */
+.tstack__deck {
+  width: min(640px, 100%);
+  height: clamp(360px, 46vh, 440px);
 }
 
-.tcarousel__stage {
-  flex: 1;
-  min-width: 0;
-}
-
-.tcard {
-  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+.tstack__card {
+  justify-content: center;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
   border-radius: var(--r-lg);
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 24px 60px rgba(31, 18, 48, 0.14);
 }
-.tcard blockquote {
+.tcard__mark {
+  display: block;
+  width: 26px;
+  height: auto;
+  margin-bottom: 1rem;
+  fill: var(--accent);
+  opacity: 0.4;
+}
+.tstack__card blockquote {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.05rem, 1.9vw, 1.4rem);
   line-height: 1.45;
@@ -746,22 +788,22 @@
   color: var(--ink);
   margin-bottom: 1.5rem;
 }
-.tcard figcaption {
+.tstack__card figcaption {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
+/* Radix Avatar owns the box; this is the brand fill for it. */
 .tcard__avatar {
-  display: grid;
-  place-items: center;
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tcard__avatar-text {
   background: var(--aurora);
   color: #fff;
   font-family: var(--font-display), sans-serif;
   font-weight: 600;
-  flex-shrink: 0;
 }
 .tcard__name {
   display: block;
@@ -772,27 +814,6 @@
   display: block;
   font-size: 0.85rem;
   color: var(--ink-60);
-}
-
-.tcarousel__dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 1.25rem;
-}
-.tcarousel__dots button {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ink-40);
-  opacity: 0.35;
-  transition: opacity var(--dur-fast), width var(--dur-fast);
-}
-.tcarousel__dots button.is-active {
-  opacity: 1;
-  width: 20px;
-  border-radius: var(--r-pill);
-  background: var(--accent);
 }
 
 .stats {
@@ -828,8 +849,35 @@
 }
 
 @media (max-width: 560px) {
-  .tcarousel__nav {
-    display: none;
+  /* Quotes wrap to more lines on a narrow screen, and the deck's height is
+     fixed, so it needs more of it. */
+  .tstack__deck {
+    height: clamp(400px, 58vh, 480px);
+  }
+}
+
+/* The deck is driven entirely by scroll position, so with reduced motion the
+   only honest thing to do is stop the stage sticking and lay the quotes out
+   as a plain list. */
+@media (prefers-reduced-motion: reduce) {
+  .tstack {
+    height: auto;
+  }
+  .tstack__sticky {
+    position: static;
+    height: auto;
+  }
+  .tstack__deck {
+    display: grid;
+    gap: 1rem;
+    height: auto;
+    width: min(640px, 100%);
+    margin-inline: auto;
+  }
+  .tstack__card {
+    position: static !important;
+    transform: none !important;
+    filter: none !important;
   }
 }
 
