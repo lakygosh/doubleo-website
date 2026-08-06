@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { SOLUTIONS, getSolution, isSolutionSlug } from "@/lib/solutions";
 import { SITE_URL, CALCOM_URL } from "@/lib/config";
+import { alternates, faqJsonLd } from "@/lib/seo";
 import { SolutionIcon } from "@/components/ui/SolutionIcon";
 import { ArrowIcon } from "@/components/ui/Button";
 import { AuroraBackdrop } from "@/components/motion/AuroraBackdrop";
@@ -32,13 +33,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/solutions/${slug}`,
-      languages: {
-        sr: `${SITE_URL}/sr/solutions/${slug}`,
-        en: `${SITE_URL}/en/solutions/${slug}`,
-      },
-    },
+    alternates: alternates(locale, `/solutions/${slug}`),
     openGraph: {
       type: "website",
       title,
@@ -212,6 +207,12 @@ export default async function SolutionPage({
       </section>
 
       {/* FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd(faq, `${SITE_URL}/${locale}/solutions/${slug}#faq`)),
+        }}
+      />
       <SolutionFaq items={faq} kicker={p("faqKicker")} heading={p("faqH2")} />
 
       {/* Other solutions */}

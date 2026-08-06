@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { Appear, EASE } from "@/components/motion/Appear";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { Link } from "@/i18n/navigation";
@@ -52,19 +52,16 @@ export function Faq({
                     <span className="acc__sign" aria-hidden="true" />
                   </button>
                 </h3>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: EASE }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <p className="acc__a">{item.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Collapsed rather than unmounted — see SolutionFaq. */}
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.28, ease: EASE }}
+                  style={{ overflow: "hidden" }}
+                  aria-hidden={!isOpen}
+                >
+                  <p className="acc__a">{item.a}</p>
+                </motion.div>
               </div>
             );
           })}

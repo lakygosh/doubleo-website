@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { SITE_URL, CALCOM_URL, CONTACT_EMAIL } from "@/lib/config";
+import { CALCOM_URL, CONTACT_EMAIL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 import { ContactForm } from "@/components/ContactForm";
 import { Appear } from "@/components/motion/Appear";
 import { SplitWords } from "@/components/motion/SplitWords";
@@ -22,10 +23,7 @@ export async function generateMetadata({
   return {
     title: `${t("h1")} — Double O`,
     description: t("sub"),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/contact`,
-      languages: { sr: `${SITE_URL}/sr/contact`, en: `${SITE_URL}/en/contact` },
-    },
+    alternates: alternates(locale, "/contact"),
   };
 }
 

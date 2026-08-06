@@ -3,7 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { SOLUTIONS } from "@/lib/solutions";
-import { SITE_URL, CALCOM_URL } from "@/lib/config";
+import { CALCOM_URL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 import { SolutionIcon } from "@/components/ui/SolutionIcon";
 import { ArrowIcon } from "@/components/ui/Button";
 import { Appear } from "@/components/motion/Appear";
@@ -24,13 +25,7 @@ export async function generateMetadata({
   return {
     title: `${t("h1")} — Double O`,
     description: t("sub"),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/solutions`,
-      languages: {
-        sr: `${SITE_URL}/sr/solutions`,
-        en: `${SITE_URL}/en/solutions`,
-      },
-    },
+    alternates: alternates(locale, "/solutions"),
   };
 }
 

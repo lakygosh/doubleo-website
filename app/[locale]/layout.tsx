@@ -11,6 +11,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SOLUTIONS } from "@/lib/solutions";
 import { SITE_URL, CALCOM_URL, CONTACT_EMAIL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,13 +28,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: {
-        sr: `${SITE_URL}/sr`,
-        en: `${SITE_URL}/en`,
-      },
-    },
+    alternates: alternates(locale),
     openGraph: {
       type: "website",
       siteName: "Double O",

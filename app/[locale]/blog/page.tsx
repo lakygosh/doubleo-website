@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPublishedPosts, localizePost, type LocalizedPost } from "@/lib/posts";
+import { SITE_URL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 import { BlogCard, BlogLead, BlogRow } from "@/components/ui/BlogCard";
 import { BlogCtaCard } from "@/components/blog/BlogCta";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -41,6 +44,37 @@ function toBlocks(posts: LocalizedPost[]): Block[] {
   }
 
   return blocks;
+}
+
+/**
+ * Without this the segment inherits the locale layout's metadata, which
+ * canonicalises the index to the home page — and the sitemap loses that
+ * argument every time.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
+
+  const title = `${t("indexTitle")} — Double O`;
+  const description = t("indexIntro");
+
+  return {
+    title,
+    description,
+    alternates: alternates(locale, "/blog"),
+    openGraph: {
+      type: "website",
+      title,
+      description,
+      url: `${SITE_URL}/${locale}/blog`,
+      images: [{ url: `${SITE_URL}/og.png`, width: 1200, height: 630 }],
+      locale: locale === "sr" ? "sr_RS" : "en_US",
+    },
+  };
 }
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {

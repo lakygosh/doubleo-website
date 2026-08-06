@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { SITE_URL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -19,13 +19,7 @@ export async function generateMetadata({
     title: `${t("title")} — Double O`,
     description: t("intro"),
     robots: { index: false, follow: true },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/privacy-policy`,
-      languages: {
-        sr: `${SITE_URL}/sr/privacy-policy`,
-        en: `${SITE_URL}/en/privacy-policy`,
-      },
-    },
+    alternates: alternates(locale, "/privacy-policy"),
   };
 }
 

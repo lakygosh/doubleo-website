@@ -1,6 +1,7 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
-import { CALCOM_URL } from "@/lib/config";
+import { CALCOM_URL, SITE_URL } from "@/lib/config";
+import { faqJsonLd } from "@/lib/seo";
 
 import { Hero } from "@/components/sections/Hero";
 import { Bento } from "@/components/sections/Bento";
@@ -22,6 +23,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale as Locale);
 
+  // Read here rather than inside <Faq/> so the answers can be mirrored into
+  // structured data — the component itself is a client component.
+  const t = await getTranslations("home.faq");
+  const faq = t.raw("items") as { q: string; a: string }[];
+
   return (
     <main id="main">
       <Hero />
@@ -36,6 +42,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <HowItWorks />
       <Engagement />
       <CtaTicker href={CALCOM_URL || "/contact"} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd(faq, `${SITE_URL}/${locale}#faq`)),
+        }}
+      />
       <Faq />
       <BlogTeaser locale={locale as Locale} />
       <FinalCta />

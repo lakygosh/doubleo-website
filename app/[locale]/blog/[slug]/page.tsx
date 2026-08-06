@@ -7,6 +7,7 @@ import { extractHeadings, readingMinutes } from "@/lib/toc";
 import { getPublishedPostBySlug, getPublishedPosts, localizePost } from "@/lib/posts";
 import { routing, type Locale } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/config";
+import { alternates } from "@/lib/seo";
 import { BrandMark } from "@/components/layout/BrandMark";
 import { BlogCard } from "@/components/ui/BlogCard";
 import { BlogCtaPanel } from "@/components/blog/BlogCta";
@@ -41,13 +42,7 @@ export async function generateMetadata({
   return {
     title: localized.seoTitle,
     description: localized.seoDescription,
-    alternates: {
-      canonical: url,
-      languages: {
-        sr: `${SITE_URL}/sr/blog/${slug}`,
-        en: `${SITE_URL}/en/blog/${slug}`,
-      },
-    },
+    alternates: alternates(locale, `/blog/${slug}`),
     openGraph: {
       type: "article",
       title: localized.seoTitle,
