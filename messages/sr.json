@@ -688,7 +688,22 @@
     "indexIntro": "Šta učimo gradeći AI sisteme za prave biznise — šta radi, šta ne radi i koliko košta.",
     "empty": "Uskoro stižu prvi tekstovi.",
     "readMore": "Pročitaj tekst",
-    "back": "Svi tekstovi"
+    "back": "Svi tekstovi",
+    "featuredLabel": "Počnite odavde",
+    "recentLabel": "Svi tekstovi",
+    "moreLabel": "Nastavite da čitate",
+    "tocLabel": "Na ovoj strani",
+    "updatedOn": "Ažurirano",
+    "readingTime": "{minutes} min čitanja",
+
+    "cta": {
+      "cardTitle": "Zanima vas kako bi to izgledalo kod vas?",
+      "cardBody": "Jedan besplatan poziv. Mapiramo gde se automatizacija stvarno isplati — i gde ne.",
+      "panelKicker": "Besplatan poziv",
+      "panelTitle": "Želite ovo da radi u vašem biznisu?",
+      "panelBody": "Recite nam šta timu pojede nedelju. Mi ćemo reći šta prvo da automatizujete.",
+      "button": "Zakaži besplatan poziv"
+    }
   },
 
   "chat": {

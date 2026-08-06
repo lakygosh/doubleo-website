@@ -688,7 +688,22 @@
     "indexIntro": "What we're learning building AI systems for real businesses — what works, what doesn't, and what it costs.",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read post",
-    "back": "All posts"
+    "back": "All posts",
+    "featuredLabel": "Start here",
+    "recentLabel": "All posts",
+    "moreLabel": "Keep reading",
+    "tocLabel": "On this page",
+    "updatedOn": "Updated",
+    "readingTime": "{minutes} min read",
+
+    "cta": {
+      "cardTitle": "Curious what this looks like for your business?",
+      "cardBody": "One free call. We map where automation actually pays — and where it doesn't.",
+      "panelKicker": "Free call",
+      "panelTitle": "Want this running for your business?",
+      "panelBody": "Tell us what's eating your team's week. We'll tell you what to automate first.",
+      "button": "Book a free call"
+    }
   },
 
   "chat": {

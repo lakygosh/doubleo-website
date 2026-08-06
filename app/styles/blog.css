@@ -1,0 +1,401 @@
+/* ============================================================
+   Blog index + blog post
+   Card and grid primitives (.bcard, .bgrid) live in sections.css,
+   because the homepage teaser uses them too. This file is the two
+   blog pages' own layout on top of those.
+   ============================================================ */
+
+/* ── Index hero ─────────────────────────────────────────── */
+
+.bloghero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(2.5rem, 5vw, 4rem);
+}
+
+.bloghero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bloghero__shape {
+  right: 9%;
+  top: 26%;
+}
+
+.bloghero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: center;
+}
+
+.bloghero__inner h1 {
+  max-width: 20ch;
+}
+
+.bloghero__sub {
+  max-width: 46ch;
+  color: var(--ink-70);
+  font-size: var(--fs-lead);
+}
+
+/* ── Section rail ───────────────────────────────────────── */
+
+/* The kicker + hairline that opens each band of posts. */
+.brail {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+.brail::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ── "Start here" strip ─────────────────────────────────── */
+
+.browgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.brow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--line);
+  transition: border-color var(--dur) var(--ease-out);
+}
+.brow:hover {
+  border-left-color: var(--accent);
+}
+
+/* Square and small on purpose — roughly a fifth of a .bcard cover. */
+.brow__media {
+  position: relative;
+  display: block;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--surface-sunk);
+}
+.brow__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.brow:hover .brow__media img {
+  transform: scale(1.06);
+}
+
+.brow__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.brow__title {
+  font-size: 1.05rem;
+  line-height: 1.32;
+}
+.brow__title a {
+  transition: color var(--dur-fast);
+}
+.brow__title a:hover {
+  color: var(--accent-ink);
+}
+
+/* ── The feed ───────────────────────────────────────────── */
+
+.bfeed {
+  display: grid;
+  gap: clamp(3rem, 6vw, 4.5rem);
+}
+
+.bblock {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* .bgrid carries its own top margin for the homepage teaser; here the
+   surrounding rail and block gaps already do that spacing. */
+.bblock .bgrid,
+.brail + .bgrid {
+  margin-top: 0;
+}
+
+/* Wide lead article opening each block. */
+.blead {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.blead__media {
+  aspect-ratio: 8 / 5;
+}
+
+.blead__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.blead__title {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.14;
+}
+.blead__title a {
+  transition: color var(--dur-fast);
+}
+.blead__title a:hover {
+  color: var(--accent-ink);
+}
+
+.blead__excerpt {
+  color: var(--ink-60);
+  max-width: 52ch;
+}
+
+/* ── Promo tile in the grid ─────────────────────────────── */
+
+.bctacard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: var(--r-lg);
+}
+.bctacard__title {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ── Post header ────────────────────────────────────────── */
+
+.post {
+  padding: calc(var(--nav-h) + clamp(2.5rem, 6vw, 4.5rem)) 0 var(--section-y);
+}
+
+.posthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+/* The shared .post__back sits left-aligned on other pages; centre it here. */
+.posthead .post__back {
+  margin-bottom: 0;
+}
+
+.posthead .post__title {
+  margin-bottom: 0;
+  max-width: 20ch;
+}
+
+.posthead__lead {
+  font-size: var(--fs-lead);
+  color: var(--ink-70);
+  max-width: 56ch;
+}
+
+.postmeta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-60);
+}
+
+.postmeta__by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.postmeta__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ink-40);
+}
+
+.postmeta__facts {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-40);
+}
+
+.postcover {
+  margin: clamp(2rem, 4vw, 3.25rem) 0 clamp(2rem, 4vw, 3rem);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--surface-sunk);
+}
+.postcover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+
+/* ── Post body: contents rail | body | CTA rail ─────────── */
+
+.postgrid {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 17rem);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+}
+
+.postgrid__body {
+  min-width: 0;
+}
+
+.postgrid__toc,
+.postgrid__aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* Anchors have to clear the sticky nav when Lenis isn't driving the scroll. */
+.post__body h2,
+.post__body h3 {
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* .prose gives headings a top margin; on the first one it just knocks the
+   body out of line with the two rails beside it. */
+.post__body > :first-child {
+  margin-top: 0;
+}
+
+/* ── Table of contents ──────────────────────────────────── */
+
+.toc {
+  max-height: calc(100vh - var(--nav-h) - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.5rem;
+}
+
+.toc__label {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-40);
+  margin-bottom: 0.9rem;
+}
+
+.toc__list {
+  display: grid;
+  gap: 0.1rem;
+  border-left: 1px solid var(--line);
+}
+
+.toc__item--h3 {
+  padding-left: 0.75rem;
+}
+
+.toc__link {
+  display: block;
+  padding: 0.35rem 0 0.35rem 0.85rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--ink-60);
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.toc__link:hover {
+  color: var(--ink);
+}
+.toc__link.is-active {
+  color: var(--accent-ink);
+  border-left-color: var(--accent);
+}
+
+/* ── Sticky CTA rail ────────────────────────────────────── */
+
+.bctapanel {
+  border-radius: var(--r-lg);
+}
+.bctapanel__kicker {
+  position: relative;
+  display: block;
+  margin-bottom: 0.6rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 1180px) {
+  /* Contents rail is the first thing to go — the body needs the width more. */
+  .postgrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 16rem);
+  }
+  .postgrid__toc {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .browgrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .blead {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+  .blead__media {
+    aspect-ratio: 2 / 1;
+  }
+  .postgrid {
+    grid-template-columns: 1fr;
+  }
+  .postgrid__aside {
+    position: static;
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .postcover {
+    border-radius: var(--r-lg);
+  }
+  .postcover img {
+    aspect-ratio: 3 / 2;
+  }
+}
