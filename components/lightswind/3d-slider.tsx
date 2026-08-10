@@ -308,7 +308,6 @@ const ThreeDSlider: React.FC<ThreeDSliderProps> = ({
       if (rafId) cancelAnimationFrame(rafId);
       cards.forEach(c => c.remove());
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, speedWheel, speedDrag, wheelControl, spreadX, spreadY, rotation]);
 
   return (

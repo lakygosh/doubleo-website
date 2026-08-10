@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -430,7 +430,10 @@ const CoolSlideGallery: React.FC<CoolSlideGalleryProps> = ({
               aria-label={slide.title ?? slide.alt ?? `Slide ${i + 1}`}
               aria-hidden={!visible}
             >
-              {/* Image */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- the slide
+                  is absolutely positioned and drag-transformed; next/image's
+                  wrapper fights the transform, and the team photos it renders
+                  are already sized webp from scripts/make-team.mjs */}
               <img
                 src={slide.src}
                 alt={slide.alt ?? slide.title ?? `Slide ${i + 1}`}

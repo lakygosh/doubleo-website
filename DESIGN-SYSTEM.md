@@ -712,6 +712,10 @@ Three rules keep it from bleeding into the rest of the site:
 npx lightswind add <component-name>
 ```
 
+Via `npx` deliberately — `lightswind` is a scaffolding CLI, not a runtime library.
+It must never end up in `package.json`, where it costs ~66 MB of install (it depends
+on three.js) for code nothing imports.
+
 It lands in `components/lightswind/`. Then, before using it:
 
 - **Check what it drags in.** Several of them need `@react-three/fiber`,
@@ -719,8 +723,11 @@ It lands in `components/lightswind/`. Then, before using it:
   dependency, port the effect by hand instead — see
   `components/motion/InteractiveCard.tsx`, which is Lightswind's `interactive-card`
   rewritten against our tokens in ~80 lines and no new packages.
+- **Rewrite its `framer-motion` imports to `motion/react`.** They are the same v12
+  codebase under two package names, and the site standardised on `motion`. Leaving
+  the import as published ships a second copy of the animation runtime to the browser.
 - **Check it typechecks.** The published sources are loose about unused variables
-  and `any`; `npx tsc --noEmit` is the gate.
+  and `any`; `npx tsc --noEmit` is the gate, and `npm run lint` catches the rest.
 - **Strip its box model.** They ship fixed widths and aspect ratios
   (`w-[320px] aspect-[17/21]`). Those are demo values, not layout.
 
