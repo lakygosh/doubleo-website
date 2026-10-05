@@ -86,7 +86,7 @@ Defaults for most of these live in `lib/config.ts`. An env var overrides its def
 | `POSTS_API_BEARER_TOKEN` | Secret n8n sends as `Authorization: Bearer <token>` to `POST /api/posts` |
 | `NEXT_PUBLIC_SITE_URL` | Base URL for canonical links, OG tags and the sitemap |
 | `NEXT_PUBLIC_CALCOM_URL`, `NEXT_PUBLIC_FORM_ENDPOINT` | Booking link and contact-form relay |
-| `NEXT_PUBLIC_CHAT_WEBHOOK_URL` | n8n chat agent webhook, reached through `/api/chat` |
+| `CHAT_WEBHOOK_URL` | n8n chat agent webhook (server-only), reached through `/api/chat` |
 | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_GTM_ID` | GA4 and Tag Manager. An empty value disables the tag (use this on previews) |
 | `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_FACEBOOK_URL` | Footer social links, each shown only when set |
 
