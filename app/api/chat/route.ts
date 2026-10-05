@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { CHAT_WEBHOOK_URL } from "@/lib/config";
 
 /**
  * Server-side proxy to the n8n chat agent.
@@ -8,8 +7,9 @@ import { CHAT_WEBHOOK_URL } from "@/lib/config";
  * The webhook sets `Access-Control-Allow-Origin: https://doubleo.agency`, so a
  * browser calling it directly only works on the production domain — never on
  * localhost or a Vercel preview. Going through this route makes the request
- * same-origin, so the chat behaves identically in every environment, and it
- * keeps the webhook URL off the client.
+ * same-origin, so the chat behaves identically in every environment. The
+ * webhook URL is a server-only env var (no NEXT_PUBLIC_ prefix, no default),
+ * so it never ships in the client bundle or the repo.
  */
 
 export const runtime = "nodejs";
@@ -23,6 +23,11 @@ const Body = z.object({
 const TIMEOUT_MS = 45_000;
 
 export async function POST(request: Request) {
+  const webhookUrl = process.env.CHAT_WEBHOOK_URL;
+  if (!webhookUrl) {
+    return NextResponse.json({ error: "chat_not_configured" }, { status: 503 });
+  }
+
   let parsed;
   try {
     parsed = Body.parse(await request.json());
@@ -34,7 +39,7 @@ export async function POST(request: Request) {
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
   try {
-    const upstream = await fetch(CHAT_WEBHOOK_URL, {
+    const upstream = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // Exactly the payload shape the n8n workflow expects.
