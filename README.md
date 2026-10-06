@@ -1,6 +1,6 @@
 # Double O Website
 
-Bilingual (Serbian / English) website, blog and AI chat for **Double O**, an AI automation agency that builds chatbots, outreach, content and voice systems for businesses. I co-founded the agency and built this site.
+Bilingual (Serbian / English) website, blog and AI chat for **Double O**, an AI automation agency that builds chatbots, outreach, content and voice systems for businesses. I founded the agency and built this site.
 
 **Live demo:** https://doubleo-website-lazar22gosic-2579s-projects.vercel.app
 **Production domain:** https://doubleo.agency
